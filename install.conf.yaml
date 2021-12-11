@@ -1,3 +1,6 @@
 - clean: []
-- link: {}
+- link:
+    ~/.config/kitty: kitty
+    ~/.zshrc: zshrc
+    ~/Library/Preferences/espanso: espanso
 - shell: []

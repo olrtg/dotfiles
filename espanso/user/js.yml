@@ -1,0 +1,6 @@
+name: js
+parent: default
+
+matches:
+  - trigger: '/clg'
+    replace: "console.log('$|$');"

@@ -1,0 +1,6 @@
+name: npm
+parent: default
+
+matches:
+  - trigger: '/ns'
+    replace: 'npm run start'

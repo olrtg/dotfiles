@@ -1,0 +1,19 @@
+name: browser
+parent: default
+
+matches:
+  # other js frameworks default port
+  - trigger: '/l3'
+    replace: 'http://localhost:3000/'
+
+  # angular default port
+  - trigger: '/l4'
+    replace: 'http://localhost:4200/'
+
+  # ionic default port
+  - trigger: '/l8'
+    replace: 'http://localhost:8100/'
+
+  # especify port
+  - trigger: '/lp'
+    replace: 'http://localhost:$|$/'
