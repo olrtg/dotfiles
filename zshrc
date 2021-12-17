@@ -56,7 +56,7 @@ typeset -U path cdpath fpath
 bindkey -v
 export KEYTIMEOUT=1
 
-export ANDROID_HOME="$HOME/Android/Sdk/"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 export GIT_EDITOR=vim
 
@@ -64,11 +64,10 @@ path=(
     $HOME/.local/bin
     $HOME/.bin
     $HOME/bin
-    $HOME/.composer/vendor/bin
-    $HOME/.go/bin
+    $HOME/dev/git/flutter/bin
     ./vendor/bin
-    ${ANDROID_HOME}tools/
-    ${ANDROID_HOME}platform-tools/
+    ${ANDROID_HOME}/tools/
+    ${ANDROID_HOME}/platform-tools/
     $path
 )
 
