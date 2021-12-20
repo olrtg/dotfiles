@@ -1,0 +1,12 @@
+name: emoji
+parent: default
+
+matches:
+  - trigger: '/eok'
+    replace: '✅'
+
+  - trigger: '/eno'
+    replace: '❌'
+  
+  - trigger: '/ewa'
+    replace: '🚧'
