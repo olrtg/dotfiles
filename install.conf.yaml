@@ -1,6 +1,16 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
 - clean: []
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
     ~/.config/kitty: kitty
+    ~/.config/starship.toml: starship.toml
     ~/.zshrc: zshrc
-    ~/Library/Preferences/espanso: espanso
+
 - shell: []

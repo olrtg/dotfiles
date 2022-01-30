@@ -5,3 +5,4 @@
 [submodule "kitty/gruvbox"]
 	path = kitty/gruvbox
 	url = https://github.com/wdomitrz/kitty-gruvbox-theme
+	ignore = dirty
