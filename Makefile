@@ -1,3 +1,5 @@
+.PHONY: install brew brew-restore macos
+
 # Run dotbot's script
 install:
 	./install
@@ -14,3 +16,7 @@ brew-restore:
 	brew upgrade
 	brew bundle install --file=macos/Brewfile
 	brew cleanup
+
+# Set MacOS defaults
+macos:
+	./macos/set-defaults.sh
