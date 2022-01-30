@@ -3,7 +3,7 @@
         create: true
         relink: true
 
-- clean: []
+- clean: ['~', '~/.config']
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -13,5 +13,3 @@
     ~/.config/kitty: kitty
     ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/.zshrc
-
-- shell: []
