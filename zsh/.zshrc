@@ -38,3 +38,6 @@ alias ls="ls -lah"
 
 # Starship
 eval "$(starship init zsh)"
+
+# MOTD
+echo "Alpaca went crazy! (◕('人')◕)"
