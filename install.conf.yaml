@@ -9,8 +9,8 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.config/kitty: kitty
-    ~/.config/starship.toml: starship.toml
-    ~/.zshrc: zshrc
+    ~/.config/kitty: kitty/kitty.conf
+    ~/.config/starship.toml: zsh/starship.toml
+    ~/.zshrc: zsh/zshrc
 
 - shell: []

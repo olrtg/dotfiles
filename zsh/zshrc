@@ -34,6 +34,7 @@ path=(
 alias v="$EDITOR"
 alias vim="$EDITOR"
 alias cls="clear"
+alias ls="ls -lah"
 
 # Starship
 eval "$(starship init zsh)"
