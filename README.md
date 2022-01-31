@@ -2,6 +2,9 @@
 
 [![Powered by dotbot][dbshield]][dblink]
 
+[dblink]: https://github.com/anishathalye/dotbot
+[dbshield]: https://img.shields.io/badge/powered%20by-dotbot-blue?style=flat
+
 > Personal dotfiles configuration for Kitty, Zsh, Git, and more to rapidly bootstrap a new system.
 
 ## Usage
