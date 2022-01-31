@@ -1,4 +1,4 @@
-# Dotfilesj
+# Dotfiles
 
 [![Powered by dotbot][dbshield]][dblink]
 
