@@ -39,5 +39,8 @@ alias ls="ls -lah"
 # Starship
 eval "$(starship init zsh)"
 
+# fnm
+eval "$(fnm env --use-on-cd)"
+
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
