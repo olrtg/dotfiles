@@ -1,4 +1,4 @@
-.PHONY: install brew brew-restore macos
+.PHONY: install brew brew-restore macos karabiner
 
 # Run dotbot's script
 install:
@@ -20,3 +20,7 @@ brew-restore:
 # Set MacOS defaults
 macos:
 	./macos/set-defaults.sh
+
+# 
+karabiner:
+	deno run --allow-env --allow-read --allow-write karabiner/karabiner.ts

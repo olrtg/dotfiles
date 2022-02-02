@@ -11,5 +11,11 @@
 - link:
     ~/.gitconfig: git/.gitconfig
     ~/.config/kitty: kitty
+    ~/prettierrc.js: node/prettierrc.js
     ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/.zshrc
+
+    ~/.hammerspoon:
+      if: '[ `uname` = Darwin ]'
+      path: hammerspoon
+      force: true
