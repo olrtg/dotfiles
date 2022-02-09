@@ -1,3 +1,10 @@
 #!/bin/sh
 
-npm i -g pnpm @antfu/ni prettier eslint_d
+# Utilities
+npm i -g pnpm @antfu/ni nvim
+
+# Linters and formatters
+npm i -g prettier eslint_d
+
+# Angular
+npm i -g @angular/cli
