@@ -7,13 +7,13 @@ local bindApp = function(appName)
   end
 end
 
-hs.hotkey.bind(config.hyper, 'c', bindApp('Visual Studio Code'))
-hs.hotkey.bind(config.hyper, ';', bindApp('kitty'))
+hs.hotkey.bind(config.hyper, 'c', bindApp('kitty'))
 hs.hotkey.bind(config.hyper, 'g', bindApp('Whatsapp'))
 hs.hotkey.bind(config.hyper, 'e', bindApp('Discord'))
 hs.hotkey.bind(config.hyper, 'r', bindApp('Notion'))
 hs.hotkey.bind(config.hyper, 'f', bindApp('Google Chrome'))
 hs.hotkey.bind(config.hyper, 'v', bindApp('Spotify'))
+hs.hotkey.bind(config.hyper, 't', bindApp('Tomito'))
 
 -- Spotify shorcuts
 hs.hotkey.bind(config.hyper, '\\', hs.spotify.playpause)
