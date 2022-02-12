@@ -1,5 +1,7 @@
 return {
   { "williamboman/nvim-lsp-installer" },
+  { "nathom/filetype.nvim" },
+
   {
       "windwp/nvim-ts-autotag",
       ft = { "html", "javascriptreact" },
