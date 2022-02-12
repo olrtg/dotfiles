@@ -10,7 +10,6 @@ local sources = {
 
    -- Lua
    b.formatting.stylua,
-   b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
 
    -- Shell
    b.formatting.shfmt,
