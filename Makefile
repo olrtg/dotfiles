@@ -4,6 +4,13 @@
 install:
 	./install
 
+# Install dependencies
+install-deps:
+	./node/install-deps.sh
+	./python/install-deps.sh
+	git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
+	nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
+
 # Save snapshot of all Homebrew packages to macos/Brewfile
 brew:
 	brew bundle dump -f --file=macos/Brewfile
@@ -21,6 +28,6 @@ brew-restore:
 macos:
 	./macos/set-defaults.sh
 
-# 
+# Setup karabiner's commands 
 karabiner:
 	deno run --allow-env --allow-read --allow-write karabiner/karabiner.ts

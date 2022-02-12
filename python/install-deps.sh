@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pip3 lookatme pynvim
+pip3 pynvim
