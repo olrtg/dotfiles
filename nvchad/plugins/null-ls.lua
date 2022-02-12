@@ -4,8 +4,8 @@ local b = null_ls.builtins
 local sources = {
 
    -- webdev stuff
-   b.formatting.deno_fmt,
-   b.formatting.prettierd.with { filetypes = { "html", "markdown", "css" } },
+   b.formatting.prettier,
+   b.diagnostics.eslint,
 
    -- Lua
    b.formatting.stylua,
