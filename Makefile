@@ -6,8 +6,8 @@ install:
 
 # Install dependencies
 install-deps:
-	./node/install-deps.sh
-	./python/install-deps.sh
+	rustup-init
+	./dependencies/install-deps.sh
 	git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 	nvim +'hi NormalFloat guibg=#1e222a' +PackerSync
 
