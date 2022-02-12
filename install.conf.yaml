@@ -12,7 +12,7 @@
     ~/.gitconfig: git/.gitconfig
     ~/.config/kitty: kitty
     ~/prettierrc.js: node/prettierrc.js
-    ~/.config/nvim/lua/custom: nvim
+    ~/.config/nvim/lua/custom: nvchad
     ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/.zshrc
 
