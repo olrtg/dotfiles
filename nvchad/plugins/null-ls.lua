@@ -12,8 +12,8 @@ local sources = {
    b.diagnostics.luacheck.with { extra_args = { "--global vim" } },
 
    -- Shell
-   -- b.formatting.shfmt,
-   -- b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
+   b.formatting.shfmt,
+   b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
 }
 
 local M = {}
