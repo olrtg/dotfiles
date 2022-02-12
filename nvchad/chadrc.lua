@@ -1,7 +1,7 @@
 local M = {}
 
 local plugin_conf = require "custom.plugins.configs"
-local userPlugins = require "custom.plugins"
+local user_plugins = require "custom.plugins"
 
 M.plugins = {
    status = {
@@ -20,11 +20,15 @@ M.plugins = {
       nvim_tree = plugin_conf.nvimtree,
    },
 
-   install = userPlugins,
+   install = user_plugins,
 }
 
 M.ui = {
    theme = "gruvbox",
+}
+
+M.options = {
+  relativenumber = true,
 }
 
 return M
