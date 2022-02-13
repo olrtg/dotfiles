@@ -2,6 +2,7 @@ return {
   { "williamboman/nvim-lsp-installer" },
   { "nathom/filetype.nvim" },
   { "b0o/schemastore.nvim" },
+  { "tpope/vim-surround" },
 
   {
       "windwp/nvim-ts-autotag",

@@ -5,8 +5,8 @@ local user_plugins = require "custom.plugins"
 
 M.plugins = {
    status = {
+      dashboard = true,
       colorizer = true,
-      snippets = true,
    },
 
    options = {
@@ -25,6 +25,7 @@ M.plugins = {
 
 M.ui = {
    theme = "gruvbox",
+   transparency = true,
 }
 
 M.options = {
