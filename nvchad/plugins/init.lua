@@ -3,6 +3,7 @@ return {
   { "nathom/filetype.nvim" },
   { "b0o/schemastore.nvim" },
   { "tpope/vim-surround" },
+  { "felipec/vim-sanegx" },
 
   {
       "windwp/nvim-ts-autotag",
