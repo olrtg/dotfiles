@@ -36,6 +36,11 @@ M.setup_lsp = function(attach, capabilities)
         opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
       end
 
+      if server.name == 'emmet_ls' then
+        local emmet_opts = require("custom.plugins.lsp.emmet_ls")
+        opts = vim.tbl_deep_extend("force", emmet_opts, opts)
+      end
+
       if server.name == 'sumneko_lua' then
         local sumneko_opts = require("custom.plugins.lsp.sumneko_lua")
         opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
