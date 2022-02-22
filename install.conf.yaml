@@ -1,7 +1,7 @@
 - defaults:
     link:
-        create: true
-        relink: true
+      create: true
+      relink: true
 
 - clean: ['~', '~/.config']
 
@@ -11,8 +11,8 @@
 - link:
     ~/.gitconfig: git/.gitconfig
     ~/.config/kitty: kitty
-    ~/prettierrc.js: node/prettierrc.js
-    ~/.config/nvim/lua/custom: nvchad
+    ~/prettierrc.js: dependencies/prettierrc.js
+    ~/.config/lvim: lvim
     ~/.config/starship.toml: zsh/starship.toml
     ~/.zshrc: zsh/.zshrc
 

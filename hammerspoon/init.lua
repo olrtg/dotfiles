@@ -1,1 +1,1 @@
-require('apps')
+require("apps")

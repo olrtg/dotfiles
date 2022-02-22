@@ -13,7 +13,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/jsontools
 antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
-antibody bundle robbyrussell/oh-my-zsh path:plugins/volta
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle robbyrussell/oh-my-zsh path:plugins/z
 antibody bundle zsh-users/zsh-autosuggestions
@@ -21,12 +20,13 @@ antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last mo
 
 # Configuration
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export EDITOR=nvim
+export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
 
 path=(
     ${ANDROID_HOME}/tools/
     ${ANDROID_HOME}/platform-tools/
+    ${HOME}/.local/bin
     $path
 )
 
