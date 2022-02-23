@@ -9,10 +9,8 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
 antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
-antibody bundle robbyrussell/oh-my-zsh path:plugins/jsontools
 antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
-antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle robbyrussell/oh-my-zsh path:plugins/z
 antibody bundle zsh-users/zsh-autosuggestions
@@ -35,6 +33,7 @@ alias v="$EDITOR"
 alias vim="$EDITOR"
 alias cls="clear"
 alias ls="ls -lah"
+alias rs="source ~/.zshrc"
 
 # Starship
 eval "$(starship init zsh)"
