@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Node
-npm i -g pnpm @antfu/ni nvim prettier eslint jsonlint @angular/cli
+npm i -g pnpm @antfu/ni nvim prettier eslint jsonlint @angular/cli fast-cli
 
 # Python
 pip3 pynvim
