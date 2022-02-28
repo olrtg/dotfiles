@@ -34,6 +34,7 @@ alias vim="$EDITOR"
 alias cls="clear"
 alias ls="ls -lah"
 alias rs="source ~/.zshrc"
+alias lz="lazygit"
 
 # Starship
 eval "$(starship init zsh)"
