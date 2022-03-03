@@ -2,9 +2,8 @@
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "gruvbox"
-lvim.lsp.diagnostics.virtual_text = false
+lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 vim.opt.relativenumber = true
--- vim.diagnostic.config({ virtual_text = false }) -- disable inline diagnostics
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -16,30 +15,10 @@ lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.nvimtree.setup.view.width = 35
-
--- if you don't want all the parsers change this to a table of the ones you want
-lvim.builtin.treesitter.ensure_installed = {
-	"bash",
-	"c",
-	"javascript",
-	"json",
-	"lua",
-	"python",
-	"typescript",
-	"tsx",
-	"css",
-	"rust",
-	"java",
-	"yaml",
-}
-
-lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 
 -- generic LSP settings
-
--- ---@usage disable automatic installation of servers
--- lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = false
 
 -- ---@usage Select which servers should be configured manually. Requires `:LvimCacheRest` to take effect.
 -- See the full default list `:lua print(vim.inspect(lvim.lsp.override))`
@@ -77,7 +56,7 @@ formatters.setup({
 		command = "prettier",
 		extra_args = { "--no-semi", "--single-quote", "--trailing-comma=all", "--arrow-parens=avoid" },
 	},
-	{ command = "eslint" },
+	-- { command = "eslint" },
 	{ command = "stylua" },
 	{ command = "shfmt" },
 })
@@ -112,9 +91,28 @@ lvim.plugins = {
 		event = "BufRead",
 	},
 	{ "b0o/schemastore.nvim" },
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({ "*" }, {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
+		end,
+	},
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- lvim.autocommands.custom_groups = {
 --   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
 -- }
+
+function _G.P(v)
+	print(vim.inspect(v))
+	return v
+end
