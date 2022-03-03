@@ -31,7 +31,7 @@ echo "  > Autohide Dock"
 defaults write com.apple.dock autohide -bool true
 
 echo "  > Set icon size to 48px"
-defaults write com.apple.dock silesize -int 48
+defaults write com.apple.dock tilesize -int 48
 
 echo "  > Do not show recent apps"
 defaults write com.apple.dock show-recents -bool false
