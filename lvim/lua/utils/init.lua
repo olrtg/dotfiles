@@ -28,12 +28,8 @@ utils.is_web_project = function()
 	return (vim.fn.glob("package.json") ~= "" or vim.fn.glob("yarn.lock") ~= "" or vim.fn.glob("node_modules") ~= "")
 end
 
-utils.decode_json_file = function(filename)
-	if vim.fn.filereadable(filename) == 0 then
-		return nil
-	end
-
-	return vim.fn.json_decode(vim.fn.readfile(filename))
+utils.project_has_tailwindcss_dependency = function()
+	return (vim.fn.glob("tailwind*") ~= "" or utils.is_in_package_json("tailwindcss"))
 end
 
 return utils

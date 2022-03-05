@@ -22,6 +22,7 @@ local project_has_prettier_config = function()
 	return hasprettier
 end
 
+-- Formatters
 local formatters_table = {
 	{ command = "eslint_d" },
 	{ command = "stylua" },
@@ -65,6 +66,11 @@ else
 	})
 end
 
+if utils.project_has_tailwindcss_dependency() == true then
+	table.insert(formatters_table, { command = "rustywind" })
+end
+
+-- Linters
 local linters_table = {
 	{ command = "eslint_d" },
 	{ command = "jsonlint" },
