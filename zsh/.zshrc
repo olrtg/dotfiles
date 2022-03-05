@@ -25,6 +25,7 @@ path=(
     ${ANDROID_HOME}/tools/
     ${ANDROID_HOME}/platform-tools/
     ${HOME}/.local/bin
+    $(go env GOPATH)/bin
     $path
 )
 
