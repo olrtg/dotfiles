@@ -23,14 +23,17 @@ local project_has_prettier_config = function()
 end
 
 local formatters_table = {
-	-- web stuff
 	{ command = "eslint_d" },
-
-	-- lua
 	{ command = "stylua" },
-
-	-- shell
-	{ command = "shfmt" },
+	{
+		exe = "shfmt",
+		filetypes = {
+			"sh",
+			"shell",
+			"bash",
+			"zsh",
+		},
+	},
 }
 
 if project_has_prettier_config() == true then
@@ -71,6 +74,27 @@ local linters_table = {
 			"shell",
 			"bash",
 			"zsh",
+		},
+	},
+	{
+		exe = "markdownlint",
+		filetype = {
+			"markdown",
+		},
+	},
+	{
+		exe = "write-good",
+		filetype = {
+			"markdown",
+		},
+	},
+	{
+		exe = "stylelint",
+		filetypes = {
+			"css",
+			"scss",
+			"sass",
+			"less",
 		},
 	},
 }
