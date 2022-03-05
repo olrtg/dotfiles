@@ -17,14 +17,15 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 local linters = require("lvim.lsp.null-ls.linters")
 
 local project_has_prettier_config = function()
-	local hasprettier = (vim.fn.glob(".prettierrc*") ~= "" or utils.is_in_package_json("prettier"))
-	-- print("Project does has prettier configured? " .. tostring(hasprettier))
-	return hasprettier
+	return (vim.fn.glob(".prettierrc*") ~= "" or utils.is_in_package_json("prettier"))
+end
+
+local project_has_eslint_config = function()
+	return (vim.fn.glob(".eslintrc*") ~= "" or utils.is_in_package_json("eslint"))
 end
 
 -- Formatters
 local formatters_table = {
-	{ command = "eslint_d" },
 	{ command = "stylua" },
 	{
 		exe = "shfmt",
@@ -66,13 +67,16 @@ else
 	})
 end
 
+if project_has_eslint_config() == true then
+	table.insert(formatters_table, { command = "eslint_d" })
+end
+
 if utils.project_has_tailwindcss_dependency() == true then
 	table.insert(formatters_table, { command = "rustywind" })
 end
 
 -- Linters
 local linters_table = {
-	{ command = "eslint_d" },
 	{ command = "jsonlint" },
 	{
 		command = "shellcheck",
@@ -105,6 +109,12 @@ local linters_table = {
 		},
 	},
 }
+
+if project_has_eslint_config() == true then
+	table.insert(linters_table, { command = "eslint_d" })
+else
+	table.insert(linters_table, { command = "tsc" })
+end
 
 formatters.setup(formatters_table)
 linters.setup(linters_table)
