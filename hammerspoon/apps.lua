@@ -7,8 +7,7 @@ local bindApp = function(appName)
 	end
 end
 
-hs.hotkey.bind(config.hyper, "c", bindApp("Visual Studio Code"))
-hs.hotkey.bind(config.hyper, ";", bindApp("kitty"))
+hs.hotkey.bind(config.hyper, "c", bindApp("kitty"))
 hs.hotkey.bind(config.hyper, "g", bindApp("Whatsapp"))
 hs.hotkey.bind(config.hyper, "e", bindApp("Discord"))
 hs.hotkey.bind(config.hyper, "r", bindApp("Notion"))
