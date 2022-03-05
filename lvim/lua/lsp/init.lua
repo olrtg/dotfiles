@@ -67,6 +67,7 @@ end
 
 local linters_table = {
 	{ command = "eslint_d" },
+	{ command = "jsonlint" },
 	{
 		command = "shellcheck",
 		filetypes = {
