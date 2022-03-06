@@ -10,6 +10,9 @@ require("lsp.emmet")
 -- tailwindcss
 require("lsp.tailwindcss")
 
+-- bashls
+require("lsp.bash")
+
 lvim.lsp.automatic_servers_installation = false
 
 local utils = require("utils")
