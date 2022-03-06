@@ -19,6 +19,8 @@ antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
 # Configuration
+zstyle ':completion:*' completer _expand_alias _complete _ignored # expand alias with tab
+
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
@@ -31,7 +33,7 @@ path=(
 	$path
 )
 
-# Aliases & Functions
+# Aliases
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias cls="clear"
