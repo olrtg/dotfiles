@@ -6,6 +6,7 @@ ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SL
 export ZSH
 
 antibody bundle robbyrussell/oh-my-zsh
+antibody bundle robbyrussell/oh-my-zsh path:plugins/brew
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
 antibody bundle robbyrussell/oh-my-zsh path:plugins/git
