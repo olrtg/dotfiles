@@ -2,7 +2,8 @@
 
 source <(antibody init) # load antibody
 
-export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
+export ZSH
 
 antibody bundle robbyrussell/oh-my-zsh
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
@@ -22,16 +23,16 @@ export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
 
 path=(
-    ${ANDROID_HOME}/tools/
-    ${ANDROID_HOME}/platform-tools/
-    ${HOME}/.local/bin
-    $(go env GOPATH)/bin
-    $path
+	${ANDROID_HOME}/tools/
+	${ANDROID_HOME}/platform-tools/
+	${HOME}/.local/bin
+	$(go env GOPATH)/bin
+	$path
 )
 
 # Aliases & Functions
-alias v="$EDITOR"
-alias vim="$EDITOR"
+alias v='$EDITOR'
+alias vim='$EDITOR'
 alias cls="clear"
 alias ls="ls -lah"
 alias rs="source ~/.zshrc"
