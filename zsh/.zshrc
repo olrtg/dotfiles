@@ -11,6 +11,7 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
 antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
+antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
 antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
