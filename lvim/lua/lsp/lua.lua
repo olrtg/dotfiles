@@ -1,6 +1,14 @@
 local sumneko_opts = {
 	settings = {
-		Lua = { diagnostics = { globals = { "hs" } } },
+		Lua = {
+			diagnostics = { globals = { "hs" } },
+			workspace = {
+				library = {
+					"/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/",
+					"~/.hammerspoon/Spoons/EmmyLua.spoon/annotations",
+				},
+			},
+		},
 	},
 }
 
