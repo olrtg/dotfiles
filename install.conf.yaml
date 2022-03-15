@@ -3,7 +3,7 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -13,9 +13,11 @@
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
     ~/.config/starship.toml: zsh/starship.toml
+    ~/.tmux/inspired_github.tmux.conf: tmux/inspired_github.tmux.conf
+    ~/.tmux.conf: tmux/.tmux.conf
     ~/.zshrc: zsh/.zshrc
 
     ~/.hammerspoon:
-      if: '[ `uname` = Darwin ]'
+      if: "[ `uname` = Darwin ]"
       path: hammerspoon
       force: true
