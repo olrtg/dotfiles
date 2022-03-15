@@ -3,7 +3,7 @@ lvim.log.level = "warn"
 
 lvim.format_on_save = true
 
-lvim.colorscheme = "gruvbox"
+lvim.colorscheme = "inspired-github"
 
 lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 
@@ -13,7 +13,7 @@ lvim.leader = "space"
 
 -- Builtins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = true
+lvim.builtin.dashboard.active = false
 
 lvim.builtin.notify.active = true
 

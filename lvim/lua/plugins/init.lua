@@ -1,5 +1,6 @@
 lvim.plugins = {
 	{ "ellisonleao/gruvbox.nvim" },
+	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
 
 	{
