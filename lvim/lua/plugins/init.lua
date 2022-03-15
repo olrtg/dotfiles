@@ -1,3 +1,6 @@
+require("plugins.lualine").config()
+require("plugins.bufferline").config()
+
 lvim.plugins = {
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
