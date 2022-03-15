@@ -116,7 +116,7 @@ local linters_table = {
 if project_has_eslint_config() == true then
 	table.insert(linters_table, { command = "eslint_d" })
 else
-	table.insert(linters_table, { command = "tsc" })
+	table.insert(linters_table, { command = "tsc", filetypes = { "typescript" } })
 end
 
 formatters.setup(formatters_table)
