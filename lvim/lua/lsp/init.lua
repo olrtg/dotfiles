@@ -39,6 +39,12 @@ local formatters_table = {
 			"zsh",
 		},
 	},
+	{
+		exe = "markdownlint",
+		filetype = {
+			"markdown",
+		},
+	},
 }
 
 if project_has_prettier_config() == true then
