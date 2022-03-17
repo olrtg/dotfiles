@@ -29,4 +29,13 @@ lvim.plugins = {
 			require("plugins.colorizer")
 		end,
 	},
+
+	{
+		"ThePrimeagen/harpoon",
+		config = function()
+			require("plugins.harpoon").config()
+		end,
+		event = "BufWinEnter",
+		requires = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+	},
 }
