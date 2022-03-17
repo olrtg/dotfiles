@@ -5,6 +5,13 @@ lvim.plugins = {
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
+	{ "nvim-telescope/telescope-fzy-native.nvim" },
+	-- {
+	-- 	"~/projects/open-source/telescope-luasnip.nvim",
+	-- 	config = function()
+	-- 		require("telescope").load_extension("snippets")
+	-- 	end,
+	-- },
 
 	{
 		"windwp/nvim-ts-autotag",
