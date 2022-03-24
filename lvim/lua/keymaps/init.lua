@@ -8,3 +8,10 @@ lvim.builtin.which_key.mappings["h"] = {
 	h = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Add file" },
 	u = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Toggle UI" },
 }
+
+-- Which-key: +Git
+lvim.builtin.which_key.mappings["W"] = {
+	name = "+Worktree",
+	s = { "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Switch/Delete" },
+	c = { "<cmd>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "Create" },
+}

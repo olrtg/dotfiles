@@ -1,11 +1,14 @@
 require("plugins.lualine").config()
 require("plugins.bufferline").config()
 
+require("telescope").load_extension("git_worktree")
+
 lvim.plugins = {
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
+	{ "ThePrimeagen/git-worktree.nvim" },
 	-- {
 	-- 	"~/projects/open-source/telescope-luasnip.nvim",
 	-- 	config = function()
@@ -25,6 +28,7 @@ lvim.plugins = {
 		"tpope/vim-surround",
 		keys = { "c", "d", "y", "S" },
 	},
+
 	{
 		"felipec/vim-sanegx",
 		event = "BufRead",
@@ -44,5 +48,33 @@ lvim.plugins = {
 		end,
 		event = "BufWinEnter",
 		requires = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
+	},
+
+	{
+		"nacro90/numb.nvim",
+		event = "BufRead",
+		config = function()
+			require("numb").setup({
+				show_numbers = true, -- Enable 'number' for the window while peeking
+				show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+			})
+		end,
+	},
+
+	{
+		"ethanholz/nvim-lastplace",
+		event = "BufRead",
+		config = function()
+			require("nvim-lastplace").setup({
+				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+				lastplace_ignore_filetype = {
+					"gitcommit",
+					"gitrebase",
+					"svn",
+					"hgcommit",
+				},
+				lastplace_open_folds = true,
+			})
+		end,
 	},
 }
