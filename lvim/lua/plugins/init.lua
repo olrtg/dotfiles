@@ -1,8 +1,6 @@
 require("plugins.lualine").config()
 require("plugins.bufferline").config()
 
-require("telescope").load_extension("git_worktree")
-
 lvim.plugins = {
 	{ "ellisonleao/gruvbox.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
@@ -78,3 +76,5 @@ lvim.plugins = {
 		end,
 	},
 }
+
+require("telescope").load_extension("git_worktree")
