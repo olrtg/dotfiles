@@ -1,11 +1,14 @@
 require("plugins.bufferline").config()
 
+require("telescope").load_extension("git_worktree")
+
 lvim.plugins = {
 	{ "shaunsingh/nord.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "ThePrimeagen/git-worktree.nvim" },
+	{ "tjdevries/cyclist.vim" },
 	-- {
 	-- 	"~/projects/open-source/telescope-luasnip.nvim",
 	-- 	config = function()
@@ -75,5 +78,3 @@ lvim.plugins = {
 		end,
 	},
 }
-
-require("telescope").load_extension("git_worktree")
