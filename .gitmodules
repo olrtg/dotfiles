@@ -2,7 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "kitty/gruvbox"]
-	path = kitty/gruvbox
-	url = https://github.com/wdomitrz/kitty-gruvbox-theme
-	ignore = dirty
+[submodule "kitty/nord"]
+	path = kitty/nord
+	url = https://github.com/connorholyday/nord-kitty

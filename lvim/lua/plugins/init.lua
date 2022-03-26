@@ -1,8 +1,7 @@
-require("plugins.lualine").config()
 require("plugins.bufferline").config()
 
 lvim.plugins = {
-	{ "ellisonleao/gruvbox.nvim" },
+	{ "shaunsingh/nord.nvim" },
 	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },

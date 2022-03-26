@@ -3,7 +3,7 @@ lvim.log.level = "warn"
 
 lvim.format_on_save = true
 
-lvim.colorscheme = "inspired-github"
+lvim.colorscheme = "nord"
 
 lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 
