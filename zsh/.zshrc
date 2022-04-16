@@ -1,3 +1,6 @@
+# Start tmux automatically
+if [ "$TMUX" = "" ]; then tmux; fi
+
 # Plugins
 
 source <(antibody init) # load antibody
