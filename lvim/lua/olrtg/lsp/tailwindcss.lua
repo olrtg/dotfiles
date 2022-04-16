@@ -2,7 +2,7 @@
 -- Activate LunarVim tailwindcss lsp configuration only
 -- if project seems to have a tailwindcss dependency
 --
-local utils = require("utils")
+local utils = require("olrtg.utils")
 
 local options = {
 	cmd = {

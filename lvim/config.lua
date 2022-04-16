@@ -1,14 +1,14 @@
 -- General and builtins configs
-require("options")
+require("olrtg.options")
 
 -- Plugin related configs
-require("plugins")
+require("olrtg.plugins")
 
 -- LSP, Linters and Formatters configs
-require("lsp")
+require("olrtg.lsp")
 
 -- Keymaps
-require("keymaps")
+require("olrtg.keymaps")
 
 function _G.P(v)
 	print(vim.inspect(v))

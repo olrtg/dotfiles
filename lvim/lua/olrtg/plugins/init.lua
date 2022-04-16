@@ -1,10 +1,7 @@
-require("plugins.bufferline").config()
-
-require("telescope").load_extension("git_worktree")
+require("olrtg.plugins.bufferline").config()
 
 lvim.plugins = {
 	{ "shaunsingh/nord.nvim" },
-	{ "mvpopuk/inspired-github.vim" },
 	{ "b0o/schemastore.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "ThePrimeagen/git-worktree.nvim" },
@@ -37,14 +34,22 @@ lvim.plugins = {
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("plugins.colorizer")
+			require("colorizer").setup({ "*" }, {
+				RGB = true, -- #RGB hex codes
+				RRGGBB = true, -- #RRGGBB hex codes
+				RRGGBBAA = true, -- #RRGGBBAA hex codes
+				rgb_fn = true, -- CSS rgb() and rgba() functions
+				hsl_fn = true, -- CSS hsl() and hsla() functions
+				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+			})
 		end,
 	},
 
 	{
 		"ThePrimeagen/harpoon",
 		config = function()
-			require("plugins.harpoon").config()
+			require("olrtg.plugins.harpoon").config()
 		end,
 		event = "BufWinEnter",
 		requires = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
@@ -78,3 +83,5 @@ lvim.plugins = {
 		end,
 	},
 }
+
+require("telescope").load_extension("git_worktree")

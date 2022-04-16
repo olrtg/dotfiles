@@ -1,4 +1,4 @@
-local utils = require("utils")
+local utils = require("olrtg.utils")
 -- Skip configuring emmet language server client if project
 -- does not look like a web project
 if not utils.is_web_project() then

@@ -1,21 +1,21 @@
 -- sumneko_lua
-require("lsp.lua")
+require("olrtg.lsp.lua")
 
 -- jsonls
-require("lsp.json")
+require("olrtg.lsp.json")
 
 -- emmet_ls
-require("lsp.emmet")
+require("olrtg.lsp.emmet")
 
 -- tailwindcss
-require("lsp.tailwindcss")
+require("olrtg.lsp.tailwindcss")
 
 -- bashls
-require("lsp.bash")
+require("olrtg.lsp.bash")
 
 lvim.lsp.automatic_servers_installation = false
 
-local utils = require("utils")
+local utils = require("olrtg.utils")
 local formatters = require("lvim.lsp.null-ls.formatters")
 local linters = require("lvim.lsp.null-ls.linters")
 
