@@ -9,11 +9,10 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.gitconfig: git/.gitconfig
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
     ~/.config/starship.toml: zsh/starship.toml
-    ~/.tmux/inspired_github.tmux.conf: tmux/inspired_github.tmux.conf
+    ~/.gitconfig: git/.gitconfig
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.zshrc: zsh/.zshrc
 

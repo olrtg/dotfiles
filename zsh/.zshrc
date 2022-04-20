@@ -1,10 +1,10 @@
-# Start tmux automatically
+# Tmux
 if [ "$TMUX" = "" ]; then tmux; fi
 
+# Antibody
+source <(antibody init)
+
 # Plugins
-
-source <(antibody init) # load antibody
-
 ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
 export ZSH
 
@@ -17,6 +17,8 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
 antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
 antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
+antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
+antibody bundle robbyrussell/oh-my-zsh path:plugins/tmuxinator
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle robbyrussell/oh-my-zsh path:plugins/z
 antibody bundle zsh-users/zsh-autosuggestions
