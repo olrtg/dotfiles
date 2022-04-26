@@ -46,6 +46,8 @@ alias cls="clear"
 alias ls="ls -lah"
 alias rs="source ~/.zshrc"
 alias lg="lazygit"
+alias rncls="rm -rf node_modules && rm -rf ios/Pods"
+alias rni="ni && npx pod-install"
 
 # Starship
 eval "$(starship init zsh)"
