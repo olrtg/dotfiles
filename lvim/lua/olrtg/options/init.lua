@@ -13,7 +13,7 @@ lvim.leader = "space"
 
 -- Builtins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
-lvim.builtin.dashboard.active = false
+lvim.builtin.alpha.active = false
 
 lvim.builtin.notify.active = true
 
