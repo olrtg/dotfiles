@@ -1,9 +1,6 @@
 -- sumneko_lua
 require("olrtg.lsp.lua")
 
--- jsonls
-require("olrtg.lsp.json")
-
 -- emmet_ls
 require("olrtg.lsp.emmet")
 

@@ -2,7 +2,6 @@ require("olrtg.plugins.bufferline").config()
 
 lvim.plugins = {
 	{ "shaunsingh/nord.nvim" },
-	{ "b0o/schemastore.nvim" },
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "ThePrimeagen/git-worktree.nvim" },
 	{ "tjdevries/cyclist.vim" },
