@@ -27,6 +27,7 @@ end
 -- Formatters
 local formatters_table = {
 	{ command = "stylua" },
+	{ command = "gofumpt" },
 	{
 		exe = "shfmt",
 		filetypes = {
