@@ -1,7 +1,21 @@
 #!/bin/sh
 
 # Node
-npm i -g pnpm @antfu/ni neovim typescript prettier eslint_d jsonlint markdownlint-cli write-good stylelint rustywind @angular/cli react-native fast-cli npm-check
+npm i -g pnpm @antfu/ni \
+	neovim \
+	typescript \
+	prettier \
+	eslint_d \
+	jsonlint \
+	markdownlint-cli \
+	write-good \
+	stylelint \
+	rustywind \
+	@angular/cli \
+	react-native \
+	fast-cli \
+	npm-check \
+	zx
 
 # Python
 pip3 pynvim
