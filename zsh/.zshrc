@@ -45,6 +45,7 @@ alias vim='$EDITOR'
 alias cls="clear"
 alias ls="ls -lahG"
 alias rs="source ~/.zshrc"
+alias ld="lazydocker"
 alias lg="lazygit"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
