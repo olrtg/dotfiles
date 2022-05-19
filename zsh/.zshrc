@@ -1,6 +1,3 @@
-# Tmux
-if [ "$TMUX" = "" ]; then tmux; fi
-
 # Antibody
 source <(antibody init)
 
