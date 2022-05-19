@@ -4,6 +4,9 @@ require("olrtg.options")
 -- Plugin related configs
 require("olrtg.plugins")
 
+-- Commands
+require("olrtg.commands")
+
 -- LSP, Linters and Formatters configs
 require("olrtg.lsp")
 
