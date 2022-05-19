@@ -1,3 +1,5 @@
+lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
+
 lvim.builtin.which_key.mappings["h"] = {
 	name = "+Harpoon",
 	a = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Navigate to file 1" },
