@@ -5,12 +5,12 @@ lvim.plugins = {
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
 	{ "ThePrimeagen/git-worktree.nvim" },
 	{ "tjdevries/cyclist.vim" },
-	-- {
-	-- 	"~/projects/open-source/telescope-luasnip.nvim",
-	-- 	config = function()
-	-- 		require("telescope").load_extension("snippets")
-	-- 	end,
-	-- },
+	{
+		"benfowler/telescope-luasnip.nvim",
+		config = function()
+			require("telescope").load_extension("luasnip")
+		end,
+	},
 
 	{
 		"windwp/nvim-ts-autotag",

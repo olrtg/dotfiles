@@ -32,3 +32,8 @@ lvim.builtin.which_key.mappings["S"] = {
 	l = { "<cmd>lua require('persistence').load({ last = true })<cr>", "Restore last session" },
 	Q = { "<cmd>lua require('persistence').stop()<cr>", "Quit without saving session" },
 }
+
+lvim.builtin.which_key.mappings["s"]["s"] = {
+	"<cmd>Telescope luasnip<cr>",
+	"Snippets",
+}
