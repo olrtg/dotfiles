@@ -98,6 +98,14 @@ lvim.plugins = {
 			})
 		end,
 	},
+
+	{
+		"folke/todo-comments.nvim",
+		event = "BufRead",
+		config = function()
+			require("todo-comments").setup()
+		end,
+	},
 }
 
 require("telescope").load_extension("git_worktree")
