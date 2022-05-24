@@ -6,6 +6,7 @@ tap "homebrew/core"
 brew "antibody"
 brew "cocoapods"
 brew "deno"
+brew "terminal-notifier"
 brew "fastlane"
 brew "folly"
 brew "fizz"
@@ -60,3 +61,5 @@ cask "visual-studio-code"
 cask "whatsapp"
 cask "zoom"
 cask "zulu11"
+mas "Tomito", id: 1526042938
+mas "Xcode", id: 497799835
