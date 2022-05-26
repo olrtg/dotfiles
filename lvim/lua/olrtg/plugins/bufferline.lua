@@ -1,6 +1,6 @@
-local Bufferline = {}
+local M = {}
 
-Bufferline.config = function()
+M.config = function()
 	if not lvim.builtin.bufferline.active then
 		return
 	end
@@ -52,4 +52,4 @@ Bufferline.config = function()
 	}
 end
 
-return Bufferline
+return M

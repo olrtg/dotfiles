@@ -1,7 +1,13 @@
-local Harpoon = {}
+local M = {}
 
-Harpoon.config = function()
-	require("harpoon").setup({
+M.config = function()
+	local status_ok, harpoon = pcall(require, "harpoon")
+
+	if not status_ok then
+		return
+	end
+
+	harpoon.setup({
 		global_settings = {
 			-- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
 			save_on_toggle = true,
@@ -21,4 +27,4 @@ Harpoon.config = function()
 	})
 end
 
-return Harpoon
+return M
