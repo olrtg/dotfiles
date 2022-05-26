@@ -40,10 +40,10 @@ path=(
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias cls="clear"
-alias ls="ls -lahG"
+alias ls="exa --oneline --color=always --icons --header --git --long --no-permissions --no-user"
 alias rs="source ~/.zshrc"
-alias ld="lazydocker"
-alias lg="lazygit"
+alias lzd="lazydocker"
+alias lzg="lazygit"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
