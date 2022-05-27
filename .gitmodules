@@ -2,6 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "kitty/nord"]
-	path = kitty/nord
-	url = https://github.com/connorholyday/nord-kitty
+[submodule "kitty/everforest-nvchad-kitty"]
+	path = kitty/everforest-nvchad-kitty
+	url = https://github.com/olrtg/everforest-nvchad-kitty
