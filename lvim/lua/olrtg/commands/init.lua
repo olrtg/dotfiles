@@ -16,3 +16,21 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 	desc = "Provide .env files",
 })
+
+-- Remove kitty padding
+local kitty = vim.api.nvim_create_augroup("kitty", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+	pattern = "*",
+	callback = function()
+		vim.api.nvim_command("silent! !kitty @ set-spacing padding=0")
+	end,
+	group = kitty
+})
+
+vim.api.nvim_create_autocmd("VimLeave", {
+	pattern = "*",
+	callback = function()
+		vim.api.nvim_command("silent! !kitty @ set-spacing padding=20")
+	end,
+	group = kitty
+})
