@@ -3,6 +3,9 @@ lvim.log.level = "warn"
 
 lvim.format_on_save = true
 
+vim.o.background = "dark"
+vim.g.everforest_background = "dark"
+vim.g.everforest_better_performance = 1
 lvim.colorscheme = "everforest"
 lvim.transparent_window = true
 
