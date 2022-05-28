@@ -72,15 +72,6 @@ lvim.plugins = {
 		end,
 	},
 
-	{
-		"abecodes/tabout.nvim",
-		wants = { "nvim-treesitter" },
-		after = { "nvim-cmp" },
-		config = function()
-			require("olrtg.plugins.tabout").config()
-		end,
-	},
-
 	-- Misc
 	{ "tjdevries/cyclist.vim" },
 
@@ -105,13 +96,4 @@ lvim.plugins = {
 			})
 		end,
 	},
-
-	-- {
-	-- 	"ThePrimeagen/refactoring.nvim",
-	-- 	ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
-	-- 	event = "BufRead",
-	-- 	config = function()
-	-- 		require("refactoring").setup({})
-	-- 	end,
-	-- },
 }
