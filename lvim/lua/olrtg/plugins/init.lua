@@ -1,17 +1,19 @@
-require("olrtg.plugins.bufferline").config()
-
 lvim.plugins = {
+	-- Themes
 	{ "sainnhe/everforest" },
+
+	-- Telescope
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
-	{ "ThePrimeagen/git-worktree.nvim" },
-	{ "tjdevries/cyclist.vim" },
+
 	{
 		"benfowler/telescope-luasnip.nvim",
+		after = "telescope.nvim",
 		config = function()
 			require("telescope").load_extension("luasnip")
 		end,
 	},
 
+	-- Treesitter
 	{
 		"windwp/nvim-ts-autotag",
 		event = "InsertEnter",
@@ -21,47 +23,44 @@ lvim.plugins = {
 	},
 
 	{
-		"tpope/vim-surround",
-		keys = { "c", "d", "y", "S" },
-	},
-
-	{
-		"felipec/vim-sanegx",
+		"folke/todo-comments.nvim",
 		event = "BufRead",
+		config = function()
+			require("todo-comments").setup()
+		end,
 	},
 
 	{
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup({ "*" }, {
-				RGB = true, -- #RGB hex codes
-				RRGGBB = true, -- #RRGGBB hex codes
-				RRGGBBAA = true, -- #RRGGBBAA hex codes
-				rgb_fn = true, -- CSS rgb() and rgba() functions
-				hsl_fn = true, -- CSS hsl() and hsla() functions
-				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-			})
+			require("colorizer").setup()
 		end,
 	},
 
+	-- Git
+	{
+		"ThePrimeagen/git-worktree.nvim",
+		after = "telescope.nvim",
+		config = function()
+			require("telescope").load_extension("git_worktree")
+		end,
+	},
+
+	-- Navigation
 	{
 		"ThePrimeagen/harpoon",
+		event = "BufWinEnter",
+		requires = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
 		config = function()
 			require("olrtg.plugins.harpoon").config()
 		end,
-		event = "BufWinEnter",
-		requires = { "nvim-lua/plenary.nvim", "nvim-lua/popup.nvim" },
 	},
 
 	{
 		"nacro90/numb.nvim",
 		event = "BufRead",
 		config = function()
-			require("numb").setup({
-				show_numbers = true, -- Enable 'number' for the window while peeking
-				show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-			})
+			require("olrtg.plugins.numb").config()
 		end,
 	},
 
@@ -69,22 +68,30 @@ lvim.plugins = {
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
 		config = function()
-			require("nvim-lastplace").setup({
-				lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-				lastplace_ignore_filetype = {
-					"gitcommit",
-					"gitrebase",
-					"svn",
-					"hgcommit",
-				},
-				lastplace_open_folds = true,
-			})
+			require("olrtg.plugins.lastplace")
 		end,
 	},
 
 	{
-		"folke/trouble.nvim",
-		cmd = "TroubleToggle",
+		"abecodes/tabout.nvim",
+		wants = { "nvim-treesitter" },
+		after = { "nvim-cmp" },
+		config = function()
+			require("olrtg.plugins.tabout").config()
+		end,
+	},
+
+	-- Misc
+	{ "tjdevries/cyclist.vim" },
+
+	{
+		"tpope/vim-surround",
+		keys = { "c", "d", "y", "S" },
+	},
+
+	{
+		"felipec/vim-sanegx",
+		event = "BufRead",
 	},
 
 	{
@@ -99,13 +106,12 @@ lvim.plugins = {
 		end,
 	},
 
-	{
-		"folke/todo-comments.nvim",
-		event = "BufRead",
-		config = function()
-			require("todo-comments").setup()
-		end,
-	},
+	-- {
+	-- 	"ThePrimeagen/refactoring.nvim",
+	-- 	ft = { "typescript", "javascript", "lua", "c", "cpp", "go", "python", "java", "php" },
+	-- 	event = "BufRead",
+	-- 	config = function()
+	-- 		require("refactoring").setup({})
+	-- 	end,
+	-- },
 }
-
-require("telescope").load_extension("git_worktree")
