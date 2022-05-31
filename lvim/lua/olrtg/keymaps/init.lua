@@ -47,3 +47,12 @@ lvim.builtin.which_key.mappings["S"] = {
 
 -- https://github.com/benfowler/telescope-luasnip.nvim
 lvim.builtin.which_key.mappings["s"]["s"] = { "<cmd>Telescope luasnip<cr>", "Snippets" }
+
+-- https://github.com/danymat/neogen
+lvim.builtin.which_key.mappings["n"] = {
+	name = "Annotations",
+	c = { "<cmd>lua require('neogen').generate({ type = 'class'})<CR>", "Class Documentation" },
+	f = { "<cmd>lua require('neogen').generate({ type = 'func'})<CR>", "Function Documentation" },
+	t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
+	F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
+}
