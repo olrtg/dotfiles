@@ -74,6 +74,8 @@ lvim.plugins = {
 
 	{ "mtdl9/vim-log-highlighting" },
 
+	{ "p00f/nvim-ts-rainbow" },
+
 	-- Git
 	{
 		"ThePrimeagen/git-worktree.nvim",
