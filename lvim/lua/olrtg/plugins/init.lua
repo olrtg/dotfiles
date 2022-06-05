@@ -72,6 +72,16 @@ lvim.plugins = {
 		tag = "*",
 	},
 
+	{
+		"tpope/vim-surround",
+		keys = { "c", "d", "y", "S" },
+	},
+
+	{
+		"felipec/vim-sanegx",
+		event = "BufRead",
+	},
+
 	{ "mtdl9/vim-log-highlighting" },
 
 	{ "p00f/nvim-ts-rainbow" },
@@ -111,18 +121,12 @@ lvim.plugins = {
 		end,
 	},
 
+	-- Docs
+	{ "milisims/nvim-luaref" },
+	{ "nanotee/luv-vimdocs" },
+
 	-- Misc
 	{ "tjdevries/cyclist.vim" },
-
-	{
-		"tpope/vim-surround",
-		keys = { "c", "d", "y", "S" },
-	},
-
-	{
-		"felipec/vim-sanegx",
-		event = "BufRead",
-	},
 
 	{
 		"folke/persistence.nvim",
