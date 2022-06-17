@@ -47,6 +47,10 @@ alias lzg="lazygit"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
+patchfont() {
+	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
+}
+
 # Starship
 eval "$(starship init zsh)"
 
