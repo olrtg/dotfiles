@@ -23,6 +23,22 @@ lvim.plugins = {
 		end,
 	},
 
+	-- { "github/copilot.vim" },
+
+	{
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("copilot").setup({
+					plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+				})
+			end, 100)
+		end,
+	},
+
+	{ "zbirenbaum/copilot-cmp", after = { "copilot.lua", "nvim-cmp" } },
+
 	-- Treesitter
 	{
 		"windwp/nvim-ts-autotag",
@@ -55,6 +71,20 @@ lvim.plugins = {
 		requires = "nvim-treesitter/nvim-treesitter",
 		tag = "*",
 	},
+
+	{
+		"tpope/vim-surround",
+		keys = { "c", "d", "y", "S" },
+	},
+
+	{
+		"felipec/vim-sanegx",
+		event = "BufRead",
+	},
+
+	{ "mtdl9/vim-log-highlighting" },
+
+	{ "p00f/nvim-ts-rainbow" },
 
 	-- Git
 	{
@@ -91,18 +121,12 @@ lvim.plugins = {
 		end,
 	},
 
+	-- Docs
+	{ "milisims/nvim-luaref" },
+	{ "nanotee/luv-vimdocs" },
+
 	-- Misc
 	{ "tjdevries/cyclist.vim" },
-
-	{
-		"tpope/vim-surround",
-		keys = { "c", "d", "y", "S" },
-	},
-
-	{
-		"felipec/vim-sanegx",
-		event = "BufRead",
-	},
 
 	{
 		"folke/persistence.nvim",
@@ -116,3 +140,5 @@ lvim.plugins = {
 		end,
 	},
 }
+
+table.insert(lvim.builtin.cmp.sources, { name = "copilot", group_index = 0 })
