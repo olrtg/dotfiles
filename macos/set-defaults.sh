@@ -15,9 +15,6 @@ sudo -v
 
 echo "> Keyboard"
 
-echo "  > Enabling key repetion for Visual Studio Code in favor of VSCodeVim"
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
-
 echo "  > Set a really fast key repeat"
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
