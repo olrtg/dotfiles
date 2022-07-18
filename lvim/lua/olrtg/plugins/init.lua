@@ -1,3 +1,5 @@
+require("olrtg.plugins.cmp_jira_source")
+
 lvim.plugins = {
 	-- Themes
 	{ "sainnhe/everforest" },
@@ -126,3 +128,5 @@ lvim.plugins = {
 }
 
 table.insert(lvim.builtin.cmp.sources, { name = "copilot", group_index = 0 })
+lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
+table.insert(lvim.builtin.cmp.sources, { name = "jira", group_index = 0 })
