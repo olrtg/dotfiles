@@ -18,6 +18,8 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmuxinator
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle robbyrussell/oh-my-zsh path:plugins/z
+antibody bundle jimeh/zsh-peco-history
+antibody bundle mroth/evalcache
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
@@ -46,16 +48,22 @@ alias lzd="lazydocker"
 alias lzg="lazygit"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 patchfont() {
 	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
 }
 
+# peco_move_to_project() {
+# 	path=ls -ad ~/code/*/* | rg -v \.git | sed 1d | awk '{print $(NF)}' | peco
+# 	cd $(path)
+# }
+
 # Starship
-eval "$(starship init zsh)"
+_evalcache starship init zsh
 
 # fnm
-eval "$(fnm env --use-on-cd)"
+_evalcache fnm env --use-on-cd
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
