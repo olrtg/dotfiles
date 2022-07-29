@@ -1,4 +1,11 @@
+lvim.builtin.which_key.vmappings["s"] = {
+	name = "Search/Replace",
+	s = { [["sy:let @/=@s<CR>cgn]], "Selected chars" },
+}
+
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
+lvim.builtin.which_key.mappings["gy"] = { "<cmd>lua require('gitlinker').get_buf_range_url('n')<cr>", "Gitlinker" }
+lvim.builtin.which_key.mappings["K"] = { "<cmd>edit ~/.config/kitty/kitty.conf<cr>", "Kitty conf" }
 
 -- https://github.com/ThePrimeagen/refactoring.nvim
 lvim.builtin.which_key.vmappings["r"] = {
