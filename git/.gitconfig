@@ -8,3 +8,5 @@
 [alias]
 	save = !git add -A && git commit -m \"SAVEPOINT\"
   undo = !git reset HEAD^ —-mixed
+[push]
+	autoSetupRemote = true
