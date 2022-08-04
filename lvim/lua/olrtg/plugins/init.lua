@@ -2,7 +2,7 @@ require("olrtg.plugins.cmp_jira_source")
 
 lvim.plugins = {
 	-- Themes
-	{ "sainnhe/everforest" },
+	{ "catppuccin/nvim", as = "catppuccin" },
 
 	-- Telescope
 	{ "nvim-telescope/telescope-fzy-native.nvim" },
