@@ -16,3 +16,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	end,
 	desc = "Provide .env files",
 })
+
+-- Auto install dependencies
+vim.api.nvim_create_autocmd("VimEnter", {
+	pattern = "*",
+	callback = function()
+		local deps_installed = vim.fn.isdirectory("node_modules") ~= 0
+
+		if require("olrtg.utils").is_web_project() and not deps_installed then
+			vim.api.nvim_command('TermExec cmd="ni" open=0')
+			vim.notify("Installing dependencies")
+		end
+	end,
+	desc = "Auto install node deps",
+})
