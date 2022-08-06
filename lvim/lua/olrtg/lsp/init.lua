@@ -47,7 +47,7 @@ local formatters_table = {
 
 if project_has_prettier_config() == true then
 	table.insert(formatters_table, {
-		command = "prettier",
+		command = "prettierd",
 		filetypes = {
 			"html",
 			"javascript",
@@ -63,7 +63,7 @@ if project_has_prettier_config() == true then
 	})
 else
 	table.insert(formatters_table, {
-		command = "prettier",
+		command = "prettierd",
 		extra_args = { "--no-semi", "--single-quote", "--trailing-comma=all", "--arrow-parens=avoid" },
 		filetypes = {
 			"html",
