@@ -18,8 +18,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmuxinator
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle robbyrussell/oh-my-zsh path:plugins/z
-antibody bundle jimeh/zsh-peco-history
-antibody bundle mroth/evalcache
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
@@ -29,6 +27,13 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored # expand alias
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
+
+# FZF Catppuccin
+export FZF_DEFAULT_OPTS="
+--color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284
+"
 
 path=(
 	${ANDROID_HOME}/tools/
@@ -54,16 +59,23 @@ patchfont() {
 	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
 }
 
-# peco_move_to_project() {
-# 	path=ls -ad ~/code/*/* | rg -v \.git | sed 1d | awk '{print $(NF)}' | peco
-# 	cd $(path)
-# }
+cd_to_projects() {
+	filter_params=""
+	if [ -n "$1" ]; then
+		filter_params="-q $1"
+	fi
+	repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
+	cd $repo_path
+}
+
+# Keybinds
+bindkey "^P" cd_to_projects
 
 # Starship
-_evalcache starship init zsh
+eval "$(starship init zsh)"
 
 # fnm
-_evalcache fnm env --use-on-cd
+eval "$(fnm env --use-on-cd)"
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
