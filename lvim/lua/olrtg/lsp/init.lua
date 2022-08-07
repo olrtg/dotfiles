@@ -17,7 +17,7 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 local linters = require("lvim.lsp.null-ls.linters")
 
 local project_has_prettier_config = function()
-	return (vim.fn.glob(".prettierrc*") ~= "" or utils.is_in_package_json("prettier"))
+	return (vim.fn.glob("{.,}prettier*") ~= "" or utils.is_in_package_json("prettier"))
 end
 
 local project_has_eslint_config = function()
