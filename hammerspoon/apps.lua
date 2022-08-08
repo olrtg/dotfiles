@@ -19,6 +19,8 @@ hs.hotkey.bind(config.hyper, "t", bindApp("Tomito"))
 hs.hotkey.bind(config.hyper, "\\", hs.spotify.playpause)
 hs.hotkey.bind(config.hyper, "[", hs.spotify.previous)
 hs.hotkey.bind(config.hyper, "]", hs.spotify.next)
+hs.hotkey.bind(config.hyper, "-", hs.spotify.volumeDown)
+hs.hotkey.bind(config.hyper, "=", hs.spotify.volumeUp)
 
 -- Reload shortcut
 hs.hotkey.bind(config.hyperCmd, "r", hs.reload)
