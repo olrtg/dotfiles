@@ -1,6 +1,3 @@
--- sumneko_lua
-require("olrtg.lsp.lua")
-
 -- emmet_ls
 require("olrtg.lsp.emmet")
 
