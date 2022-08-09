@@ -3,8 +3,7 @@ lvim.log.level = "warn"
 lvim.format_on_save = true
 -- lvim.format_on_save.timeout = 2000
 
-vim.g.catppuccin_flavour = "frappe"
-lvim.colorscheme = "catppuccin"
+lvim.colorscheme = "minimal"
 
 lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 
