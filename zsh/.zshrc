@@ -25,7 +25,7 @@ antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last mo
 zstyle ':completion:*' completer _expand_alias _complete _ignored # expand alias with tab
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export EDITOR=lvim
+export EDITOR=nvim
 export GIT_EDITOR="$EDITOR"
 
 # FZF Catppuccin
