@@ -2,6 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "kitty/minimal"]
-	path = kitty/minimal
-	url = git@github.com:Yazeed1s/minimal.nvim.git
+[submodule "kitty/everforest-nvchad-kitty"]
+	path = kitty/everforest-nvchad-kitty
+	url = git@github.com:olrtg/everforest-nvchad-kitty.git
