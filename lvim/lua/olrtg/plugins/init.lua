@@ -1,3 +1,4 @@
+-- require("olrtg.plugins.cmp_gh_source")
 require("olrtg.plugins.cmp_jira_source")
 
 lvim.plugins = {
@@ -22,6 +23,14 @@ lvim.plugins = {
 		requires = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			require("refactoring").setup({})
+		end,
+	},
+
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "BufRead",
+		config = function()
+			require("lsp_signature").on_attach()
 		end,
 	},
 
@@ -58,10 +67,7 @@ lvim.plugins = {
 		tag = "*",
 	},
 
-	{
-		"tpope/vim-surround",
-		keys = { "c", "d", "y", "S" },
-	},
+	{ "tpope/vim-surround" },
 
 	{
 		"felipec/vim-sanegx",
@@ -72,12 +78,32 @@ lvim.plugins = {
 
 	{ "p00f/nvim-ts-rainbow" },
 
+	{
+		"romgrk/nvim-treesitter-context",
+		config = function()
+			require("olrtg.plugins.ts_context").config()
+		end,
+	},
+
+	{
+		"nvim-treesitter/playground",
+		event = "BufRead",
+	},
+
 	-- Git
 	{
 		"ThePrimeagen/git-worktree.nvim",
 		after = "telescope.nvim",
 		config = function()
 			require("telescope").load_extension("git_worktree")
+		end,
+	},
+
+	{
+		"ruifm/gitlinker.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("gitlinker").setup()
 		end,
 	},
 
@@ -113,6 +139,7 @@ lvim.plugins = {
 
 	-- Misc
 	{ "tjdevries/cyclist.vim" },
+	{ "tpope/vim-repeat" },
 
 	{
 		"folke/persistence.nvim",
@@ -125,8 +152,18 @@ lvim.plugins = {
 			})
 		end,
 	},
+
+	-- My own plugins
+	{
+		"~/code/open-source/rename-hooks.nvim",
+		config = function()
+			require("rename-hooks").setup()
+		end,
+	},
 }
 
-table.insert(lvim.builtin.cmp.sources, { name = "copilot", group_index = 0 })
+-- lvim.builtin.cmp.formatting.source_names["gh"] = "(GitHub)"
+-- table.insert(lvim.builtin.cmp.sources, { name = "gh", group_index = 0 })
+
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
 table.insert(lvim.builtin.cmp.sources, { name = "jira", group_index = 0 })
