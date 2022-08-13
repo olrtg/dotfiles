@@ -29,7 +29,9 @@ utils.is_web_project = function()
 end
 
 utils.project_has_tailwindcss_dependency = function()
-  return (vim.fn.glob("tailwind*") ~= "" or utils.is_in_package_json("tailwindcss"))
+  return (vim.fn.glob("tailwind*")) ~= ""
+    or (vim.fn.glob("web/config/tailwind*")) ~= "" -- for redwood
+    or utils.is_in_package_json("tailwindcss")
 end
 
 return utils
