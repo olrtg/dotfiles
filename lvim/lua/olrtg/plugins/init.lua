@@ -88,6 +88,15 @@ lvim.plugins = {
     event = "BufRead",
   },
 
+  -- cmp
+  {
+    "petertriho/cmp-git",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("cmp_git").setup()
+    end,
+  },
+
   -- Git
   {
     "ThePrimeagen/git-worktree.nvim",
@@ -160,8 +169,8 @@ lvim.plugins = {
   },
 }
 
--- lvim.builtin.cmp.formatting.source_names["gh"] = "(GitHub)"
--- table.insert(lvim.builtin.cmp.sources, { name = "gh", group_index = 0 })
+lvim.builtin.cmp.formatting.source_names["git"] = "(Git)"
+table.insert(lvim.builtin.cmp.sources, 1, { name = "git" })
 
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
 table.insert(lvim.builtin.cmp.sources, { name = "jira", group_index = 0 })
