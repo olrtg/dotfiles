@@ -1,25 +1,25 @@
 local M = {}
 
 M.config = function()
-	local status_ok, lastplace = pcall(require, "nvim-lastplace")
+  local status_ok, lastplace = pcall(require, "nvim-lastplace")
 
-	if not status_ok then
-		return
-	end
+  if not status_ok then
+    return
+  end
 
-	-- https://github.com/ethanholz/nvim-lastplace#installation
-	local options = {
-		lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-		lastplace_ignore_filetype = {
-			"gitcommit",
-			"gitrebase",
-			"svn",
-			"hgcommit",
-		},
-		lastplace_open_folds = true,
-	}
+  -- https://github.com/ethanholz/nvim-lastplace#installation
+  local options = {
+    lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+    lastplace_ignore_filetype = {
+      "gitcommit",
+      "gitrebase",
+      "svn",
+      "hgcommit",
+    },
+    lastplace_open_folds = true,
+  }
 
-	lastplace.setup(options)
+  lastplace.setup(options)
 end
 
 return M

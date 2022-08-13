@@ -5,3 +5,6 @@
 [submodule "kitty/everforest-nvchad-kitty"]
 	path = kitty/everforest-nvchad-kitty
 	url = git@github.com:olrtg/everforest-nvchad-kitty.git
+[submodule "kitty/catpuccin"]
+	path = kitty/catpuccin
+	url = git@github.com:catppuccin/kitty.git

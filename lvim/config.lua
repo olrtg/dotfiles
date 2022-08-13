@@ -14,6 +14,6 @@ require("olrtg.lsp")
 require("olrtg.keymaps")
 
 function _G.P(v)
-	print(vim.inspect(v))
-	return v
+  print(vim.inspect(v))
+  return v
 end
