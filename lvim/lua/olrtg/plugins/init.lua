@@ -1,4 +1,3 @@
--- require("olrtg.plugins.cmp_gh_source")
 require("olrtg.plugins.cmp_jira_source")
 
 lvim.plugins = {
@@ -173,4 +172,4 @@ lvim.builtin.cmp.formatting.source_names["git"] = "(Git)"
 table.insert(lvim.builtin.cmp.sources, 1, { name = "git" })
 
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
-table.insert(lvim.builtin.cmp.sources, { name = "jira", group_index = 0 })
+table.insert(lvim.builtin.cmp.sources, 1, { name = "jira" })

@@ -28,8 +28,8 @@ source.complete = function(self, params, callback)
   end
 
   -- s = text before the current cursor position
+  local project = self._find_project(s)
   if project == nil then
-    local project = self._find_project(s)
     return
   end
 
