@@ -162,6 +162,7 @@ lvim.plugins = {
   -- My own plugins
   {
     "~/code/open-source/rename-hooks.nvim",
+    disable = true,
     config = function()
       require("rename-hooks").setup()
     end,
