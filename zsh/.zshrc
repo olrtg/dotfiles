@@ -56,7 +56,15 @@ alias rni="ni && npx pod-install"
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 patchfont() {
+  # Patch a normal font with nerdfont
+  # USAGE: patchfont <input_folder_path> <output_folder_path>
 	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
+}
+
+docker_connect() {
+  # Spawn a bash session inside a running container
+  # USAGE: docker_connect <container_name>
+  docker container exec -it "$1" /bin/bash
 }
 
 cd_to_projects() {
