@@ -4,7 +4,7 @@
 npm i -g pnpm @antfu/ni \
 	neovim \
 	typescript \
-	prettier \
+  @fsouza/prettierd \
 	eslint_d \
 	jsonlint \
 	markdownlint-cli \
