@@ -63,3 +63,20 @@ lvim.builtin.which_key.mappings["n"] = {
   t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
   F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
 }
+
+--
+lvim.keys.normal_mode["<F10>"] = function()
+  if vim.o.conceallevel > 0 then
+    vim.o.conceallevel = 0
+  else
+    vim.o.conceallevel = 2
+  end
+end
+
+lvim.keys.normal_mode["<F11>"] = function()
+  if vim.o.concealcursor == "n" then
+    vim.o.concealcursor = ""
+  else
+    vim.o.concealcursor = "n"
+  end
+end

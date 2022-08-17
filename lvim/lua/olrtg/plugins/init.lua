@@ -87,6 +87,8 @@ lvim.plugins = {
     event = "BufRead",
   },
 
+  { "nvim-treesitter/nvim-treesitter-textobjects", requires = "nvim-treesitter/nvim-treesitter" },
+
   -- cmp
   {
     "petertriho/cmp-git",
