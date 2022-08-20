@@ -4,7 +4,7 @@
 npm i -g pnpm @antfu/ni \
 	neovim \
 	typescript \
-  @fsouza/prettierd \
+	@fsouza/prettierd \
 	eslint_d \
 	jsonlint \
 	markdownlint-cli \
@@ -15,7 +15,7 @@ npm i -g pnpm @antfu/ni \
 	react-native \
 	fast-cli \
 	npm-check \
-	zx
+	yarn
 
 # Python
 pip3 pynvim
