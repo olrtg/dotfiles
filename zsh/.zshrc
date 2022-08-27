@@ -17,7 +17,6 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmuxinator
 antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
-antibody bundle robbyrussell/oh-my-zsh path:plugins/z
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
@@ -47,6 +46,7 @@ path=(
 # Aliases
 alias v='$EDITOR'
 alias vim='$EDITOR'
+alias cd="z"
 alias cls="clear"
 alias ls="exa --oneline --color=always --icons --header --git --long --no-permissions --no-user"
 alias rs="source ~/.zshrc"
@@ -85,6 +85,9 @@ eval "$(starship init zsh)"
 
 # fnm
 eval "$(fnm env --use-on-cd)"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
