@@ -1,3 +1,5 @@
+lvim.keys.normal_mode["<C-a>"] = "ggVG"
+
 lvim.builtin.which_key.vmappings["s"] = {
   name = "Search/Replace",
   s = { [["sy:let @/=@s<CR>cgn]], "Selected chars" },
