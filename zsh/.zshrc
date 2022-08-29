@@ -9,14 +9,13 @@ antibody bundle robbyrussell/oh-my-zsh
 antibody bundle robbyrussell/oh-my-zsh path:plugins/brew
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
 antibody bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
+antibody bundle robbyrussell/oh-my-zsh path:plugins/fzf
 antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
-antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
-antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
+antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
+antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
-antibody bundle robbyrussell/oh-my-zsh path:plugins/tmuxinator
-antibody bundle robbyrussell/oh-my-zsh path:plugins/vscode
 antibody bundle zsh-users/zsh-autosuggestions
 antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
