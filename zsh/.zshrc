@@ -68,15 +68,12 @@ docker_connect() {
 }
 
 cd_to_projects() {
-	filter_params=""
-	if [ -n "$1" ]; then
-		filter_params="-q $1"
-	fi
-	repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
-	cd $repo_path
+	# repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
+	cd $(find ~/code -typed d -maxdepth 1 | sort | fzf)
 }
 
 # Keybinds
+zle -N cd_to_projects # creating widget before
 bindkey "^P" cd_to_projects
 
 # Starship
