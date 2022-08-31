@@ -1,4 +1,6 @@
 lvim.keys.normal_mode["<C-a>"] = "ggVG"
+lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
+lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.vmappings["s"] = {
   name = "Search/Replace",
