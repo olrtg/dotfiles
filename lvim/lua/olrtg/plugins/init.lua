@@ -141,6 +141,23 @@ lvim.plugins = {
     end,
   },
 
+  -- Copilot
+  { "github/copilot.vim", disable = false }, -- only for setup
+
+  {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup({
+          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+        })
+      end, 100)
+    end,
+  },
+
+  { "zbirenbaum/copilot-cmp", after = { "copilot.lua", "nvim-cmp" } },
+
   -- Docs
   { "milisims/nvim-luaref" },
   { "nanotee/luv-vimdocs" },
@@ -176,3 +193,6 @@ table.insert(lvim.builtin.cmp.sources, 1, { name = "git" })
 
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
 table.insert(lvim.builtin.cmp.sources, 1, { name = "jira" })
+
+lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
+table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })
