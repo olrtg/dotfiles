@@ -54,6 +54,7 @@ alias lzg="lazygit"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+alias nc='npm-check -u'
 
 patchfont() {
 	# Patch a normal font with nerdfont
