@@ -1,9 +1,6 @@
 -- emmet_ls
 require("olrtg.lsp.emmet")
 
--- tailwindcss
-require("olrtg.lsp.tailwindcss")
-
 -- bashls
 require("olrtg.lsp.bash")
 
