@@ -10,8 +10,6 @@ lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 
 vim.opt.relativenumber = true
 
-vim.opt.cmdheight = 1
-
 lvim.leader = "space"
 
 -- Builtins
