@@ -76,13 +76,6 @@ lvim.plugins = {
   { "mtdl9/vim-log-highlighting" },
 
   {
-    "romgrk/nvim-treesitter-context",
-    config = function()
-      require("olrtg.plugins.ts_context").config()
-    end,
-  },
-
-  {
     "nvim-treesitter/playground",
     event = "BufRead",
   },
