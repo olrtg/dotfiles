@@ -150,14 +150,6 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
 
   {
-    "nvim-neorg/neorg",
-    config = function()
-      require("olrtg.plugins.neorg").config()
-    end,
-    requires = "nvim-lua/plenary.nvim",
-  },
-
-  {
     "folke/persistence.nvim",
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     module = "persistence",
@@ -185,5 +177,3 @@ table.insert(lvim.builtin.cmp.sources, 1, { name = "git" })
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
 table.insert(lvim.builtin.cmp.sources, 1, { name = "jira" })
 
-lvim.builtin.cmp.formatting.source_names["neorg"] = "(Neorg)"
-table.insert(lvim.builtin.cmp.sources, 1, { name = "neorg" })
