@@ -49,12 +49,18 @@ alias cd="z"
 alias cls="clear"
 alias ls="exa --oneline --color=always --icons --header --git --long --no-permissions --no-user"
 alias rs="source ~/.zshrc"
+
 alias lzd="lazydocker"
 alias lzg="lazygit"
+
+alias s="nr start"
+alias d="nr dev"
+alias b="nr build"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
-alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 alias nc='npm-check -u'
+
+alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
 patchfont() {
 	# Patch a normal font with nerdfont
