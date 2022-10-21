@@ -89,7 +89,7 @@ local linters_table = {
       "zsh",
     },
   },
-  { exe = "markdownlint" },
+  { exe = "markdownlint", extra_args = { "--disable", "MD013" } },
   { exe = "write-good" },
   {
     exe = "stylelint",
