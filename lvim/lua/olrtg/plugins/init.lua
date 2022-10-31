@@ -2,7 +2,7 @@ require("olrtg.plugins.cmp_jira_source")
 
 lvim.plugins = {
   -- Themes
-  { "catppuccin/nvim", as = "catppuccin" },
+  { "shaunsingh/nord.nvim" },
 
   -- Telescope
   { "nvim-telescope/telescope-fzy-native.nvim" },
@@ -86,6 +86,13 @@ lvim.plugins = {
     "axelvc/template-string.nvim",
     config = function()
       require("template-string").setup()
+    end,
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    config = function()
+      require("olrtg.plugins.headlines").config()
     end,
   },
 
@@ -176,4 +183,3 @@ table.insert(lvim.builtin.cmp.sources, 1, { name = "git" })
 
 lvim.builtin.cmp.formatting.source_names["jira"] = "(Jira)"
 table.insert(lvim.builtin.cmp.sources, 1, { name = "jira" })
-

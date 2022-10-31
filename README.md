@@ -21,4 +21,4 @@ make install
 
 ### Other Tasks
 
-*[See Makefile](./Makefile)*
+_[See Makefile](./Makefile)_
