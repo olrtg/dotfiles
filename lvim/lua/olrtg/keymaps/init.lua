@@ -5,32 +5,18 @@ lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.vmappings["s"] = {
-  name = "Search/Replace",
-  s = { [["sy:let @/=@s<CR>cgn]], "Selected chars" },
+  [["sy:let @/=@s<CR>cgn]],
+  "Search/Replace",
+}
+
+lvim.builtin.which_key.vmappings["l"] = {
+  name = "LSP",
+  a = { "<Esc><cmd>lua vim.lsp.buf.range_code_action()<cr>", "Code Action" },
 }
 
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
 lvim.builtin.which_key.mappings["gy"] = { "<cmd>lua require('gitlinker').get_buf_range_url('n')<cr>", "Gitlinker" }
 lvim.builtin.which_key.mappings["K"] = { "<cmd>edit ~/.config/kitty/kitty.conf<cr>", "Kitty conf" }
-
--- https://github.com/ThePrimeagen/refactoring.nvim
-lvim.builtin.which_key.vmappings["r"] = {
-  name = "Refactor",
-  e = { "<Esc><cmd>lua require('refactoring').refactor('Extract Function')<cr>", "Extract function" },
-  f = {
-    "<Esc><cmd>lua require('refactoring').refactor('Extract Function To File')<cr>",
-    "Extract function to file",
-  },
-  v = { "<Esc><cmd>lua require('refactoring').refactor('Extract Variable')<cr>", "Extract variable" },
-  m = { "<Esc><cmd>lua require('refactoring').refactor('Inline Variable')<cr>", "Inline variable" },
-}
-
-lvim.builtin.which_key.mappings["r"] = {
-  name = "Refactor",
-  b = { "<cmd>lua require('refactoring').refactor('Extract Block')<cr>", "Extract block" },
-  f = { "<cmd>lua require('refactoring').refactor('Extract Block To File')<cr>", "Extract block to file" },
-  i = { "<cmd>lua require('refactoring').refactor('Inline Variable')<cr>", "Inline variable" },
-}
 
 -- https://github.com/ThePrimeagen/harpoon
 lvim.builtin.which_key.mappings["h"] = {
@@ -69,20 +55,3 @@ lvim.builtin.which_key.mappings["a"] = {
   t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
   F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
 }
-
---
-lvim.keys.normal_mode["<F10>"] = function()
-  if vim.o.conceallevel > 0 then
-    vim.o.conceallevel = 0
-  else
-    vim.o.conceallevel = 2
-  end
-end
-
-lvim.keys.normal_mode["<F11>"] = function()
-  if vim.o.concealcursor == "n" then
-    vim.o.concealcursor = ""
-  else
-    vim.o.concealcursor = "n"
-  end
-end

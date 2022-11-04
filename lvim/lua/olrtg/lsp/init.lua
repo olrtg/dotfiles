@@ -7,6 +7,7 @@ require("olrtg.lsp.bash")
 lvim.lsp.automatic_servers_installation = false
 
 local utils = require("olrtg.utils")
+local code_actions = require("lvim.lsp.null-ls.code_actions")
 local formatters = require("lvim.lsp.null-ls.formatters")
 local linters = require("lvim.lsp.null-ls.linters")
 
@@ -23,7 +24,7 @@ local formatters_table = {
   { command = "stylua" },
   { command = "gofumpt" },
   {
-    exe = "shfmt",
+    command = "shfmt",
     filetypes = {
       "sh",
       "shell",
@@ -32,7 +33,7 @@ local formatters_table = {
     },
   },
   {
-    exe = "markdownlint",
+    command = "markdownlint",
     filetype = {
       "markdown",
     },
@@ -89,10 +90,10 @@ local linters_table = {
       "zsh",
     },
   },
-  { exe = "markdownlint", extra_args = { "--disable", "MD013" } },
-  { exe = "write-good" },
+  { command = "markdownlint", extra_args = { "--disable", "MD013" } },
+  { command = "write-good" },
   {
-    exe = "stylelint",
+    command = "stylelint",
     filetypes = {
       "css",
       "scss",
@@ -108,6 +109,12 @@ else
   table.insert(linters_table, { command = "tsc", filetypes = { "typescript" } })
 end
 
+local code_actions_table = {
+  { command = "eslint_d" },
+  { command = "refactoring" },
+}
+
+code_actions.setup(code_actions_table)
 formatters.setup(formatters_table)
 linters.setup(linters_table)
 
