@@ -4,6 +4,7 @@ lvim.format_on_save = true
 -- lvim.format_on_save.timeout = 2000
 
 lvim.colorscheme = "nord"
+vim.g.nord_borders = true
 
 lvim.lsp.diagnostics.virtual_text = false -- disable inline diagnostics
 
