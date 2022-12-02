@@ -97,7 +97,6 @@ lvim.plugins = {
   { "shaunsingh/nord.nvim" },
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
-  { "github/copilot.vim" },
   { "felipec/vim-sanegx", event = "BufRead" },
   { "nvim-treesitter/playground", event = "BufRead" },
 
@@ -162,6 +161,29 @@ lvim.plugins = {
     end,
   },
 
+  -- Copilot
+  { "github/copilot.vim", disable = true }, -- only for setup
+
+  {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require("copilot").setup({
+          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+        })
+      end, 800)
+    end,
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua", "nvim-cmp" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+
   -- My own plugins
   {
     "~/code/nvim-rename-state",
@@ -185,6 +207,15 @@ lvim.builtin.which_key.mappings["gy"] = { "<cmd>lua require('gitlinker').get_buf
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
 lvim.builtin.which_key.vmappings["l"] =
   { name = "LSP", a = { "<Esc><cmd>lua vim.lsp.buf.range_code_action()<cr>", "Code Action" } }
+
+lvim.builtin.which_key.vmappings["m"] = {
+  name = "Markdown",
+  b = { 'c**<C-r>"**<esc>', "Bold" },
+  c = { 'c```<cr><C-r>"```<esc>', "Code Block" },
+  e = { 'c`<C-r>"`<esc>', "Inline Code" },
+  i = { 'c_<C-r>"_<esc>', "Italic" },
+  s = { 'c~<C-r>"~<esc>', "Strike-through" },
+}
 
 -- Load autocommands
 require("user.autocmds")
