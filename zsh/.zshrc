@@ -14,6 +14,7 @@ antibody bundle robbyrussell/oh-my-zsh path:plugins/git
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
 antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
 antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
+antibody bundle robbyrussell/oh-my-zsh path:plugins/rbenv
 antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
 antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
 antibody bundle zsh-users/zsh-autosuggestions
@@ -38,7 +39,7 @@ export FZF_DEFAULT_OPTS="
 export BAT_THEME="Nord"
 
 path=(
-	${ANDROID_HOME}/tools/
+	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
 	$(go env GOPATH)/bin
