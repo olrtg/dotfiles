@@ -18,6 +18,7 @@ lvim.format_on_save.timeout = 2000
 lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
+lvim.builtin.nvimtree.setup.view.width = 40
 
 -- Treesitter
 lvim.builtin.treesitter.ensure_installed = {
