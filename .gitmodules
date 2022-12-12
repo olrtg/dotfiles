@@ -2,6 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "kitty/nord"]
-	path = kitty/nord
-	url = git@github.com:connorholyday/nord-kitty.git
+[submodule "kitty/tokio-night"]
+	path = kitty/tokio-night
+	url = git@github.com:davidmathers/tokyo-night-kitty-theme.git

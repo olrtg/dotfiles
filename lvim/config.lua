@@ -10,9 +10,6 @@ local project_has_eslint_config = function()
 end
 
 -- Lvim config
-lvim.colorscheme = "nord"
-vim.g.nord_borders = true
-
 lvim.format_on_save.enabled = true
 lvim.format_on_save.timeout = 2000
 lvim.lsp.diagnostics.virtual_text = false
@@ -95,7 +92,6 @@ code_actions.setup(code_actions_table)
 
 -- Plugins
 lvim.plugins = {
-  { "shaunsingh/nord.nvim" },
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
   { "felipec/vim-sanegx", event = "BufRead" },
