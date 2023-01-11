@@ -42,6 +42,9 @@ path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
+	${HOME}/.local/share/fnm
+	${HOME}/.cargo/env
+	${HOME}/.cargo/bin
 	$(go env GOPATH)/bin
 	$path
 )
@@ -51,7 +54,7 @@ alias v='$EDITOR'
 alias vim='$EDITOR'
 alias cd="z"
 alias cls="clear"
-alias ls="exa --oneline --color=always --icons --header --git --long --no-permissions --no-user"
+alias ls="exa --oneline --color=always --icons --header --long --no-permissions --no-user"
 alias rs="source ~/.zshrc"
 
 alias lzd="lazydocker"
@@ -66,19 +69,19 @@ alias nc='npm-check -u'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
-patchfont() {
+function patchfont() {
 	# Patch a normal font with nerdfont
 	# USAGE: patchfont <input_folder_path> <output_folder_path>
 	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
 }
 
-docker_connect() {
+function docker_connect() {
 	# Spawn a bash session inside a running container
 	# USAGE: docker_connect <container_name>
 	docker container exec -it "$1" /bin/bash
 }
 
-cd_to_projects() {
+function cd_to_projects() {
 	# repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
 	cd $(find ~/code -typed d -maxdepth 1 | sort | fzf)
 }
