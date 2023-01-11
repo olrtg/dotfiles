@@ -161,7 +161,7 @@ lvim.plugins = {
 
   {
     "ruifm/gitlinker.nvim",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("gitlinker").setup()
     end,
@@ -169,7 +169,7 @@ lvim.plugins = {
 
   {
     "petertriho/cmp-git",
-    requires = "nvim-lua/plenary.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("cmp_git").setup()
     end,
@@ -193,7 +193,7 @@ lvim.plugins = {
   {
     "ThePrimeagen/refactoring.nvim",
     event = "BufRead",
-    requires = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("refactoring").setup({})
     end,
@@ -207,7 +207,7 @@ lvim.plugins = {
   },
 
   -- Copilot
-  { "github/copilot.vim", disable = true }, -- only for setup
+  { "github/copilot.vim", enabled = false }, -- only for setup
 
   {
     "zbirenbaum/copilot.lua",
@@ -231,8 +231,8 @@ lvim.plugins = {
 
   -- My own plugins
   {
-    "~/code/nvim-rename-state",
-    -- disable = true,
+    dir = "~/code/nvim-rename-state",
+    -- enabled = false,
     config = function()
       require("nvim-rename-state").setup()
     end,

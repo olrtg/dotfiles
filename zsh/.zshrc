@@ -1,24 +1,24 @@
-# Antibody
-source <(antibody init)
+# Antidote
+source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+antidote load
 
 # Plugins
-ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
-export ZSH
+export ZSH="$(antidote home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
 
-antibody bundle robbyrussell/oh-my-zsh
-antibody bundle robbyrussell/oh-my-zsh path:plugins/brew
-antibody bundle robbyrussell/oh-my-zsh path:plugins/docker
-antibody bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
-antibody bundle robbyrussell/oh-my-zsh path:plugins/fzf
-antibody bundle robbyrussell/oh-my-zsh path:plugins/git
-antibody bundle robbyrussell/oh-my-zsh path:plugins/ionic
-antibody bundle robbyrussell/oh-my-zsh path:plugins/ng
-antibody bundle robbyrussell/oh-my-zsh path:plugins/npm
-antibody bundle robbyrussell/oh-my-zsh path:plugins/rbenv
-antibody bundle robbyrussell/oh-my-zsh path:plugins/react-native
-antibody bundle robbyrussell/oh-my-zsh path:plugins/tmux
-antibody bundle zsh-users/zsh-autosuggestions
-antibody bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
+antidote bundle robbyrussell/oh-my-zsh
+antidote bundle robbyrussell/oh-my-zsh path:plugins/brew
+antidote bundle robbyrussell/oh-my-zsh path:plugins/docker
+antidote bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
+antidote bundle robbyrussell/oh-my-zsh path:plugins/fzf
+antidote bundle robbyrussell/oh-my-zsh path:plugins/git
+antidote bundle robbyrussell/oh-my-zsh path:plugins/ionic
+antidote bundle robbyrussell/oh-my-zsh path:plugins/ng
+antidote bundle robbyrussell/oh-my-zsh path:plugins/npm
+antidote bundle robbyrussell/oh-my-zsh path:plugins/rbenv
+antidote bundle robbyrussell/oh-my-zsh path:plugins/react-native
+antidote bundle robbyrussell/oh-my-zsh path:plugins/tmux
+antidote bundle zsh-users/zsh-autosuggestions
+antidote bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
 
 # Configuration
 zstyle ':completion:*:*:docker:*' option-stacking yes
