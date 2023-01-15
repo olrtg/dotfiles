@@ -1,28 +1,12 @@
-# Antidote
-source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-antidote load
-
 # Plugins
-export ZSH="$(antidote home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh" # setup required env var for oh-my-zsh plugins
-
-antidote bundle robbyrussell/oh-my-zsh
-antidote bundle robbyrussell/oh-my-zsh path:plugins/brew
-antidote bundle robbyrussell/oh-my-zsh path:plugins/docker
-antidote bundle robbyrussell/oh-my-zsh path:plugins/docker-compose
-antidote bundle robbyrussell/oh-my-zsh path:plugins/fzf
-antidote bundle robbyrussell/oh-my-zsh path:plugins/git
-antidote bundle robbyrussell/oh-my-zsh path:plugins/ionic
-antidote bundle robbyrussell/oh-my-zsh path:plugins/ng
-antidote bundle robbyrussell/oh-my-zsh path:plugins/npm
-antidote bundle robbyrussell/oh-my-zsh path:plugins/rbenv
-antidote bundle robbyrussell/oh-my-zsh path:plugins/react-native
-antidote bundle robbyrussell/oh-my-zsh path:plugins/tmux
-antidote bundle zsh-users/zsh-autosuggestions
-antidote bundle zsh-users/zsh-syntax-highlighting # this needs to be the last module
-
-# Configuration
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
+plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/fnm"
+plug "wintermi/zsh-rust"
+plug "wintermi/zsh-golang"
+plug "zap-zsh/zap-prompt"
+plug "zap-zsh/exa"
+plug "Aloxaf/fzf-tab"
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export EDITOR=lvim
@@ -30,21 +14,19 @@ export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # FZF Nord
-export FZF_DEFAULT_OPTS="
---color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
---color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
-"
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
+	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+	--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+	--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
+	--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
-# bat Nord
-export BAT_THEME="Nord"
+export BAT_THEME="base16"
 
 path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
 	${HOME}/.local/share/fnm
-	${HOME}/.cargo/env
-	${HOME}/.cargo/bin
 	$(go env GOPATH)/bin
 	$path
 )
@@ -52,9 +34,7 @@ path=(
 # Aliases
 alias v='$EDITOR'
 alias vim='$EDITOR'
-alias cd="z"
 alias cls="clear"
-alias ls="exa --oneline --color=always --icons --header --long --no-permissions --no-user"
 alias rs="source ~/.zshrc"
 
 alias lzd="lazydocker"
@@ -90,14 +70,7 @@ function cd_to_projects() {
 zle -N cd_to_projects # creating widget before
 bindkey "^P" cd_to_projects
 
-# Starship
-eval "$(starship init zsh)"
-
-# fnm
-eval "$(fnm env --use-on-cd)"
-
-# zoxide
-eval "$(zoxide init zsh)"
-
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
