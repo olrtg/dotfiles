@@ -23,6 +23,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "css",
   "html",
+  "java",
   "javascript",
   "json",
   "lua",
@@ -203,6 +204,13 @@ lvim.plugins = {
     "axelvc/template-string.nvim",
     config = function()
       require("template-string").setup()
+    end,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn["mkdp#util#install"]()
     end,
   },
 
