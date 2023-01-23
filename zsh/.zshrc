@@ -1,3 +1,6 @@
+# Load Zap
+[ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+
 # Plugins
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
@@ -26,16 +29,14 @@ path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
-	${HOME}/.local/share/fnm
-	$(go env GOPATH)/bin
 	$path
 )
 
 # Aliases
 alias v='$EDITOR'
-alias vim='$EDITOR'
-alias cls="clear"
-alias rs="source ~/.zshrc"
+alias c="clear"
+alias r="source ~/.zshrc"
+alias x="exit"
 
 alias lzd="lazydocker"
 alias lzg="lazygit"
@@ -72,5 +73,3 @@ bindkey "^P" cd_to_projects
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
-
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
