@@ -63,8 +63,7 @@ function docker_connect() {
 }
 
 function cd_to_projects() {
-	# repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
-	cd $(find ~/code -typed d -maxdepth 1 | sort | fzf)
+	cd $(find ~/code -maxdepth 1 -type d | fzf)
 }
 
 # Keybinds
