@@ -249,9 +249,6 @@ lvim.plugins = {
   {
     dir = "~/code/nvim-rename-state",
     -- enabled = false,
-    config = function()
-      require("nvim-rename-state").setup()
-    end,
   },
 }
 
