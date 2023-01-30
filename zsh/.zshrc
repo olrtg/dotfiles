@@ -44,8 +44,12 @@ alias lzg="lazygit"
 alias s="nr start"
 alias d="nr dev"
 alias b="nr build"
+
+alias rnand="npx react-native run-android"
+alias rnios="npx react-native run-ios"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
+
 alias nc='npm-check -u'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
@@ -63,8 +67,7 @@ function docker_connect() {
 }
 
 function cd_to_projects() {
-	# repo_path=$(find ~/code -name .git -type d -prune -maxdepth 3 | sed 's/\/.git$//' | sort | fzf $filter_params --select-1)
-	cd $(find ~/code -typed d -maxdepth 1 | sort | fzf)
+	cd $(find ~/code -maxdepth 1 -type d | fzf)
 }
 
 # Keybinds
