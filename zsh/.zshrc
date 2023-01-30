@@ -44,8 +44,12 @@ alias lzg="lazygit"
 alias s="nr start"
 alias d="nr dev"
 alias b="nr build"
+
+alias rnand="npx react-native run-android"
+alias rnios="npx react-native run-ios"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
+
 alias nc='npm-check -u'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
