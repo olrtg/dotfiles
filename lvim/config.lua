@@ -83,7 +83,7 @@ lvim.builtin.treesitter.textobjects = {
 }
 
 -- LSPs
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver", "dartls" })
 
 require("lvim.lsp.manager").setup("emmet_ls")
 
@@ -150,6 +150,19 @@ lvim.plugins = {
     "jose-elias-alvarez/typescript.nvim",
     config = function()
       require("user.plugins").typescript_setup()
+    end,
+  },
+
+  {
+    "akinsho/flutter-tools.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = function()
+      require("flutter-tools").setup({
+        lsp = {
+          capabilities = require("lvim.lsp").common_capabilities,
+          on_attach = require("lvim.lsp").common_on_attach,
+        },
+      })
     end,
   },
 
