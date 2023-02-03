@@ -66,13 +66,5 @@ function docker_connect() {
 	docker container exec -it "$1" /bin/bash
 }
 
-function cd_to_projects() {
-	cd $(find ~/code -maxdepth 1 -type d | fzf)
-}
-
-# Keybinds
-zle -N cd_to_projects # creating widget before
-bindkey "^P" cd_to_projects
-
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"

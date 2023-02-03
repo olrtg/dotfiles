@@ -9,7 +9,7 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    /usr/local/bin/tt: bin/tt
+    /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
     /usr/local/bin/lt: bin/lt
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
