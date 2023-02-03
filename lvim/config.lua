@@ -157,12 +157,8 @@ lvim.plugins = {
     "akinsho/flutter-tools.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("flutter-tools").setup({
-        lsp = {
-          capabilities = require("lvim.lsp").common_capabilities,
-          on_attach = require("lvim.lsp").common_on_attach,
-        },
-      })
+      require("user.plugins").flutter_tools_setup()
+      require("telescope").load_extension("flutter")
     end,
   },
 
