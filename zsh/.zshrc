@@ -7,11 +7,17 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zap-zsh/fnm"
 plug "wintermi/zsh-rust"
 plug "wintermi/zsh-golang"
+plug "wintermi/zsh-brew"
 plug "zap-zsh/zap-prompt"
 plug "zap-zsh/exa"
 plug "Aloxaf/fzf-tab"
 
-export ANDROID_HOME="$HOME/Library/Android/sdk"
+if [[ `uname` == "Darwin" ]]; then
+  export ANDROID_HOME="$HOME/Library/Android/Sdk"
+else
+  export ANDROID_HOME="$HOME/Android/Sdk"
+fi
+
 export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
