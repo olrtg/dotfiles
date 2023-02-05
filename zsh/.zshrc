@@ -11,6 +11,10 @@ plug "wintermi/zsh-brew"
 plug "zap-zsh/zap-prompt"
 plug "zap-zsh/exa"
 plug "Aloxaf/fzf-tab"
+plug "olrtg/zsh-fvm"
+
+# Plugins in development
+# plug ~/code/zsh-fvm/zsh-fvm.plugin.zsh
 
 if [[ `uname` == "Darwin" ]]; then
   export ANDROID_HOME="$HOME/Library/Android/Sdk"
