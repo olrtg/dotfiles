@@ -29,6 +29,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "lua",
   "markdown",
   "prisma",
+  "svelte",
   "toml",
   "tsx",
   "typescript",
@@ -92,6 +93,7 @@ local formatters = require("lvim.lsp.null-ls.formatters")
 local formatters_table = {
   { command = "shfmt" },
   { command = "stylua" },
+  { command = "black" },
 }
 
 if project_has_prettier_config() == true then
@@ -116,6 +118,7 @@ local linters_table = {
   { command = "shellcheck" },
   { command = "stylelint" },
   { command = "tsc" },
+  { command = "flake8" },
 }
 
 -- Code Actions
@@ -142,6 +145,7 @@ code_actions.setup(code_actions_table)
 lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
+  { "folke/lsp-colors.nvim" },
   { "felipec/vim-sanegx", event = "BufRead" },
   { "nvim-treesitter/playground", event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
