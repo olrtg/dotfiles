@@ -248,6 +248,7 @@ lvim.plugins = {
         })
       end, 800)
     end,
+    enabled = false,
   },
 
   {
@@ -256,6 +257,7 @@ lvim.plugins = {
     config = function()
       require("copilot_cmp").setup()
     end,
+    enabled = false,
   },
 
   -- My own plugins
