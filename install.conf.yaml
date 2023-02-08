@@ -12,6 +12,7 @@
     /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
     /usr/local/bin/lt: bin/lt
     ~/.config/kitty: kitty
+    ~/.config/nvim: nvim
     ~/.config/lvim: lvim
     ~/.config/starship.toml: zsh/starship.toml
     ~/.gitconfig: git/.gitconfig
