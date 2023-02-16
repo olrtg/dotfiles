@@ -14,6 +14,15 @@ M.typescript_setup = function()
       capabilities = require("lvim.lsp").common_capabilities(),
     },
   })
+
+  local ok, null_ls = pcall(require, "null-ls")
+
+  if not ok then
+    return
+  end
+
+  local code_actions = require("typescript.extensions.null-ls.code-actions")
+  null_ls.register(code_actions)
 end
 
 M.mason_installer_setup = function()

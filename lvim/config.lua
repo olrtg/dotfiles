@@ -105,7 +105,9 @@ else
   })
 end
 
-if utils.project_has_tailwindcss_dependency() == true then
+if
+  utils.project_has_tailwindcss_dependency() == true and not utils.is_in_package_json("prettier-plugin-tailwindcss")
+then
   table.insert(formatters_table, { command = "rustywind" })
 end
 
@@ -113,7 +115,7 @@ end
 local linters = require("lvim.lsp.null-ls.linters")
 local linters_table = {
   { command = "hadolint" },
-  { command = "markdownlint", extra_args = { "--disable", "MD013" } },
+  { command = "markdownlint", extra_args = { "--disable", "MD013", "MD041" } },
   { command = "proselint" },
   { command = "shellcheck" },
   { command = "stylelint" },
@@ -236,7 +238,7 @@ lvim.plugins = {
   },
 
   -- Copilot
-  { "github/copilot.vim", enabled = false }, -- only for setup
+  { "github/copilot.vim", enabled = true },
 
   {
     "zbirenbaum/copilot.lua",
