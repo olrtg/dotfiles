@@ -149,7 +149,6 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "folke/lsp-colors.nvim" },
   { "felipec/vim-sanegx", event = "BufRead" },
-  { "nvim-treesitter/playground", event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
 
   {
@@ -176,10 +175,20 @@ lvim.plugins = {
   },
 
   {
+    "nvim-treesitter/playground",
+    event = "BufRead",
+    config = function()
+      lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
+    end,
+  },
+
+  {
     "ruifm/gitlinker.nvim",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("gitlinker").setup()
+      lvim.builtin.which_key.mappings["gy"] =
+        { "<cmd>lua require('gitlinker').get_buf_range_url('n')<cr>", "Gitlinker" }
     end,
   },
 
@@ -237,6 +246,44 @@ lvim.plugins = {
     end,
   },
 
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("neogen").setup()
+      lvim.builtin.which_key.mappings["n"] = {
+        name = "Neogen",
+        c = { "<cmd>lua require('neogen').generate({ type = 'class'})<CR>", "Class Documentation" },
+        f = { "<cmd>lua require('neogen').generate({ type = 'func'})<CR>", "Function Documentation" },
+        t = { "<cmd>lua require('neogen').generate({ type = 'type'})<CR>", "Type Documentation" },
+        F = { "<cmd>lua require('neogen').generate({ type = 'file'})<CR>", "File Documentation" },
+      }
+    end,
+  },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    config = function()
+      require("persistence").setup()
+    end,
+  },
+
+  {
+    "ray-x/lsp_signature.nvim",
+    event = { "BufRead", "BufNew" },
+    config = function()
+      require("user.plugins").lsp_signature_setup()
+    end,
+  },
+
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+
   -- Copilot
   { "github/copilot.vim", enabled = true },
 
@@ -277,7 +324,7 @@ lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
-lvim.builtin.which_key.mappings["gy"] = { "<cmd>lua require('gitlinker').get_buf_range_url('n')<cr>", "Gitlinker" }
+lvim.builtin.which_key.mappings["S"] = { '<cmd>lua require("persistence").load()<cr>', "Last session" }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
 lvim.builtin.which_key.vmappings["l"] =
