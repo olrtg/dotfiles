@@ -29,6 +29,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "lua",
   "markdown",
   "prisma",
+  "ruby",
   "svelte",
   "toml",
   "tsx",
