@@ -51,6 +51,9 @@ alias x="exit"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
+alias gl="git pull"
+alias gs="git switch"
+
 alias s="nr start"
 alias d="nr dev"
 alias b="nr build"
