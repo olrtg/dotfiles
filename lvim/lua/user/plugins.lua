@@ -48,6 +48,7 @@ M.mason_installer_setup = function()
       "prisma-language-server",
       "proselint",
       "pyright",
+      "rustywind",
       "shellcheck",
       "shfmt",
       "stylelint-lsp",

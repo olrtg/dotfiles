@@ -16,6 +16,7 @@ lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.view.width = 40
+lvim.builtin.alpha.active = false
 
 -- Treesitter
 lvim.builtin.treesitter.ensure_installed = {
@@ -107,7 +108,8 @@ else
 end
 
 if
-  utils.project_has_tailwindcss_dependency() == true and not utils.is_in_package_json("prettier-plugin-tailwindcss")
+  utils.project_has_tailwindcss_dependency() == true
+  and utils.is_in_package_json("prettier-plugin-tailwindcss") == false
 then
   table.insert(formatters_table, { command = "rustywind" })
 end
