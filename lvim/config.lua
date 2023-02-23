@@ -150,6 +150,7 @@ code_actions.setup(code_actions_table)
 lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
+  { "tpope/vim-abolish" },
   { "folke/lsp-colors.nvim" },
   { "felipec/vim-sanegx", event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
