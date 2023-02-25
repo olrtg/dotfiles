@@ -327,6 +327,7 @@ lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
 lvim.builtin.which_key.mappings["S"] = { '<cmd>lua require("persistence").load()<cr>', "Last session" }
+lvim.builtin.which_key.mappings["F"] = { "<cmd>Telescope flutter commands<cr>", "Flutter" }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
 lvim.builtin.which_key.vmappings["l"] =
