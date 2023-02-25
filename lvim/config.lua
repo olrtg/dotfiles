@@ -289,7 +289,7 @@ lvim.plugins = {
   },
 
   -- Copilot
-  { "github/copilot.vim", enabled = true },
+  { "github/copilot.vim", enabled = false },
 
   {
     "zbirenbaum/copilot.lua",
@@ -297,11 +297,10 @@ lvim.plugins = {
     config = function()
       vim.defer_fn(function()
         require("copilot").setup({
-          plugin_manager_path = get_runtime_dir() .. "/site/pack/packer",
+          plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
         })
       end, 800)
     end,
-    enabled = false,
   },
 
   {
@@ -310,7 +309,6 @@ lvim.plugins = {
     config = function()
       require("copilot_cmp").setup()
     end,
-    enabled = false,
   },
 
   -- My own plugins
