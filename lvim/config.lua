@@ -274,14 +274,6 @@ lvim.plugins = {
   },
 
   {
-    "ray-x/lsp_signature.nvim",
-    event = { "BufRead", "BufNew" },
-    config = function()
-      require("user.plugins").lsp_signature_setup()
-    end,
-  },
-
-  {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
@@ -289,7 +281,7 @@ lvim.plugins = {
   },
 
   -- Copilot
-  { "github/copilot.vim", enabled = false },
+  { "github/copilot.vim", enabled = false }, -- only for initial setup
 
   {
     "zbirenbaum/copilot.lua",
@@ -314,6 +306,15 @@ lvim.plugins = {
   -- My own plugins
   {
     dir = "~/code/nvim-rename-state",
+    -- enabled = false,
+  },
+
+  {
+    dir = "~/code/nvim-i18n",
+    dependencies = "MunifTanjim/nui.nvim",
+    config = function()
+      require("nvim-i18n").setup()
+    end,
     -- enabled = false,
   },
 }
