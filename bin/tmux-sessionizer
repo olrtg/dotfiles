@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/code -mindepth 1 -maxdepth 1 -type d | fzf)
+	list="${HOME}/code\n$(find ~/code -mindepth 1 -maxdepth 1 -type d)"
+	selected=$(echo -e "$list" | fzf)
 fi
 
 if [[ -z $selected ]]; then
