@@ -26,7 +26,7 @@ export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# FZF Nord
+# FZF Tokionight
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
 	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
 	--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
