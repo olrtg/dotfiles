@@ -83,4 +83,23 @@ M.flutter_tools_setup = function()
   })
 end
 
+M.copilot_setup = function()
+  vim.defer_fn(function()
+    require("copilot").setup({
+      plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<M-Enter>",
+          accept_line = "<M-l>",
+          accept_word = "<M-w>",
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<M-c>",
+        },
+      },
+    })
+  end, 800)
+end
+
 return M
