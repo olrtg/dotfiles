@@ -168,6 +168,22 @@ lvim.plugins = {
     config = function()
       require("user.plugins").flutter_tools_setup()
       require("telescope").load_extension("flutter")
+
+      lvim.builtin.which_key.mappings["F"] = {
+        name = "Flutter",
+        c = { "<cmd>FlutterCopyProfilerUrl<cr>", "Copy Profiler Url" },
+        d = { "<cmd>FlutterDevices<cr>", "Devices" },
+        D = { "<cmd>FlutterDevTools<cr>", "Dev Tools" },
+        e = { "<cmd>FlutterEmulators<cr>", "Emulators" },
+        h = { "<cmd>FlutterReload<cr>", "Reload" },
+        H = { "<cmd>FlutterRestart<cr>", "Restart" },
+        l = { "<cmd>FlutterLogClear<cr>", "Log Clear" },
+        o = { "<cmd>FlutterOutlineToggle<cr>", "Outline" },
+        p = { "<cmd>FlutterPubGet<cr>", "Pub Get" },
+        q = { "<cmd>FlutterQuit<cr>", "Quit" },
+        r = { "<cmd>FlutterRun<cr>", "Run" },
+        v = { "<cmd>FlutterVisualDebug<cr>", "Visual Debug" },
+      }
     end,
   },
 
@@ -316,7 +332,6 @@ lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
 lvim.builtin.which_key.mappings["S"] = { '<cmd>lua require("persistence").load()<cr>', "Last session" }
-lvim.builtin.which_key.mappings["F"] = { "<cmd>Telescope flutter commands<cr>", "Flutter" }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
 lvim.builtin.which_key.vmappings["l"] =
