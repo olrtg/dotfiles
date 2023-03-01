@@ -74,6 +74,9 @@ M.flutter_tools_setup = function()
     debugger = {
       enabled = true,
       run_via_dap = true,
+      -- if empty, dap will not stop on any exceptions, otherwise it will stop on those specified
+      -- see |:help dap.set_exception_breakpoints()| for more info
+      exception_breakpoints = {},
       register_configurations = function(_)
         require("dap").configurations.dart = {}
         require("dap.ext.vscode").load_launchjs()
