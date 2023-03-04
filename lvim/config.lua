@@ -10,8 +10,7 @@ local project_has_eslint_config = function()
 end
 
 -- Lvim config
-lvim.format_on_save.enabled = true
-lvim.format_on_save.timeout = 5000
+lvim.format_on_save.enabled = false
 lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
@@ -22,6 +21,8 @@ lvim.builtin.alpha.active = false
 lvim.builtin.treesitter.ensure_installed = {
   "astro",
   "bash",
+  "c",
+  "cpp",
   "css",
   "html",
   "java",
@@ -152,6 +153,8 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "tpope/vim-abolish" },
   { "folke/lsp-colors.nvim" },
+  { "imsnif/kdl.vim" },
+  { "fladson/vim-kitty" },
   { "felipec/vim-sanegx", event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
 
@@ -293,6 +296,13 @@ lvim.plugins = {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
+    end,
+  },
+
+  {
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup()
     end,
   },
 
