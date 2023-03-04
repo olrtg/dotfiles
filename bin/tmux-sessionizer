@@ -1,26 +1,27 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-	selected=$1
-else
-	list="${HOME}/code\n$(find ~/code -mindepth 1 -maxdepth 1 -type d)"
-	selected=$(echo -e "$list" | fzf)
-fi
+PATHS=$(find ~/code -maxdepth 1 -type d)
 
-if [[ -z $selected ]]; then
+# use fzf to select a folder
+SELECTED=$(echo -e "$PATHS" | fzf)
+
+# if no folder was selected, exit
+if [[ -z $SELECTED ]]; then
 	exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
+# grab the name of the selected folder and replace the spaces with underscores
+SESSION_NAME=$(basename "$SELECTED" | tr . _)
 
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -s "$selected_name" -c "$selected"
+TMUX_RUNNING=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
+	tmux new-session -s "$SESSION_NAME" -c "$SELECTED"
 	exit 0
 fi
 
-if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-	tmux new-session -ds "$selected_name" -c "$selected"
+if ! tmux has-session -t="$SESSION_NAME" 2>/dev/null; then
+	tmux new-session -ds "$SESSION_NAME" -c "$SELECTED"
 fi
 
-tmux switch-client -t "$selected_name"
+tmux switch-client -t "$SESSION_NAME"
