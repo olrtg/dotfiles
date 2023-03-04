@@ -1,16 +1,20 @@
+# !/usr/bin/env zsh
+
 # Load Zap
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # Plugins
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "zap-zsh/fnm"
-plug "wintermi/zsh-rust"
-plug "wintermi/zsh-golang"
-plug "wintermi/zsh-brew"
-plug "zap-zsh/zap-prompt"
-plug "zap-zsh/exa"
 plug "Aloxaf/fzf-tab"
+plug "wintermi/zsh-brew"
+plug "wintermi/zsh-golang"
+plug "wintermi/zsh-rust"
+plug "zap-zsh/exa"
+plug "zap-zsh/fnm"
+plug "zap-zsh/fzf"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "zsh-users/zsh-autosuggestions"
+
 plug "olrtg/zsh-fvm"
 
 # Plugins in development
@@ -25,6 +29,8 @@ fi
 export EDITOR=lvim
 export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export HISTFILE=~/.zsh_history
+export SAVEHIST=1000000
 
 # FZF Tokionight
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
@@ -57,6 +63,7 @@ alias gs="git switch"
 alias s="nr start"
 alias d="nr dev"
 alias b="nr build"
+alias t="nr test"
 
 alias rnand="npx react-native run-android"
 alias rnios="npx react-native run-ios"
@@ -78,6 +85,14 @@ function docker_connect() {
 	# USAGE: docker_connect <container_name>
 	docker container exec -it "$1" /bin/bash
 }
+
+# https://zsh.sourceforge.io/Doc/Release/Options.html#History
+setopt inc_append_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+
+# starship
+eval "$(starship init zsh)"
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
