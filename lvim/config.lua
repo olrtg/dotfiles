@@ -329,7 +329,7 @@ lvim.plugins = {
     config = function()
       require("nvim-i18n").setup()
     end,
-    -- enabled = false,
+    enabled = false,
   },
 }
 
