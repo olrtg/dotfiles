@@ -57,6 +57,7 @@ M.mason_installer_setup = function()
       "taplo",
       "typescript-language-server",
       "vim-language-server",
+      "vue-language-server",
       "yaml-language-server",
     },
   })
