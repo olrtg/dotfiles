@@ -1,15 +1,6 @@
--- Some local utils beforehand
-local utils = require("user.utils")
-
-local project_has_prettier_config = function()
-  return (vim.fn.glob("{.,}prettier*") ~= "" or utils.is_in_package_json("prettier"))
-end
-
-local project_has_eslint_config = function()
-  return (vim.fn.glob(".eslintrc*") ~= "" or utils.is_in_package_json("eslint"))
-end
-
--- Lvim config
+--
+-- LunarVim
+--
 lvim.format_on_save.enabled = false
 lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
@@ -17,139 +8,9 @@ lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.alpha.active = false
 
--- Treesitter
-lvim.builtin.treesitter.ensure_installed = {
-  "astro",
-  "bash",
-  "c",
-  "cpp",
-  "css",
-  "html",
-  "java",
-  "javascript",
-  "json",
-  "lua",
-  "markdown",
-  "prisma",
-  "query",
-  "ruby",
-  "svelte",
-  "toml",
-  "tsx",
-  "typescript",
-  "vue",
-  "yaml",
-}
-
-lvim.builtin.treesitter.textobjects = {
-  select = {
-    enable = true,
-    lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-    keymaps = {
-      -- You can use the capture groups defined in textobjects.scm
-      ["aa"] = "@parameter.outer",
-      ["ia"] = "@parameter.inner",
-      ["af"] = "@function.outer",
-      ["if"] = "@function.inner",
-      ["ac"] = "@conditional.outer",
-      ["ic"] = "@conditional.inner",
-      ["aC"] = "@class.outer",
-      ["iC"] = "@class.inner",
-    },
-  },
-  move = {
-    enable = true,
-    set_jumps = true, -- whether to set jumps in the jumplist
-    goto_next_start = {
-      ["]m"] = "@function.outer",
-      ["]]"] = "@class.outer",
-    },
-    goto_next_end = {
-      ["]M"] = "@function.outer",
-      ["]["] = "@class.outer",
-    },
-    goto_previous_start = {
-      ["[m"] = "@function.outer",
-      ["[["] = "@class.outer",
-    },
-    goto_previous_end = {
-      ["[M"] = "@function.outer",
-      ["[]"] = "@class.outer",
-    },
-  },
-  swap = {
-    enable = true,
-    swap_next = {
-      ["<leader>a"] = "@parameter.inner",
-    },
-    swap_previous = {
-      ["<leader>A"] = "@parameter.inner",
-    },
-  },
-}
-
--- LSPs
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver", "dartls" })
-
-require("lvim.lsp.manager").setup("emmet_ls")
-
--- Formatters
-local formatters = require("lvim.lsp.null-ls.formatters")
-local formatters_table = {
-  { command = "shfmt" },
-  { command = "stylua" },
-  { command = "black" },
-}
-
-if project_has_prettier_config() == true then
-  table.insert(formatters_table, { command = "prettierd" })
-else
-  table.insert(formatters_table, {
-    command = "prettierd",
-    extra_args = { "--no-semi", "--single-quote", "--trailing-comma=all", "--arrow-parens=avoid" },
-  })
-end
-
-if
-  utils.project_has_tailwindcss_dependency() == true
-  and utils.is_in_package_json("prettier-plugin-tailwindcss") == false
-then
-  table.insert(formatters_table, { command = "rustywind" })
-end
-
--- Linters
-local linters = require("lvim.lsp.null-ls.linters")
-local linters_table = {
-  { command = "hadolint" },
-  { command = "markdownlint", extra_args = { "--disable", "MD013", "MD041" } },
-  { command = "proselint" },
-  { command = "shellcheck" },
-  { command = "stylelint" },
-  { command = "tsc" },
-  { command = "flake8" },
-}
-
--- Code Actions
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-local code_actions_table = {
-  { command = "proselint" },
-  { command = "refactoring" },
-  { command = "shellcheck" },
-}
-
--- Loading eslint conditionally
-if project_has_eslint_config() == true then
-  table.insert(formatters_table, { command = "eslint_d" })
-  table.insert(linters_table, { command = "eslint_d" })
-  table.insert(code_actions_table, { command = "eslint_d" })
-end
-
--- Final setup
-formatters.setup(formatters_table)
-linters.setup(linters_table)
-code_actions.setup(code_actions_table)
-
+--
 -- Plugins
+--
 lvim.plugins = {
   { "tpope/vim-surround" },
   { "tpope/vim-repeat" },
@@ -158,54 +19,6 @@ lvim.plugins = {
   { "imsnif/kdl.vim" },
   { "fladson/vim-kitty" },
   { "felipec/vim-sanegx", event = "BufRead" },
-  { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
-
-  {
-    "jose-elias-alvarez/typescript.nvim",
-    config = function()
-      require("user.plugins").typescript_setup()
-    end,
-  },
-
-  {
-    "akinsho/flutter-tools.nvim",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("user.plugins").flutter_tools_setup()
-      require("telescope").load_extension("flutter")
-
-      lvim.builtin.which_key.mappings["F"] = {
-        name = "Flutter",
-        c = { "<cmd>FlutterCopyProfilerUrl<cr>", "Copy Profiler Url" },
-        d = { "<cmd>FlutterDevices<cr>", "Devices" },
-        D = { "<cmd>FlutterDevTools<cr>", "Dev Tools" },
-        e = { "<cmd>FlutterEmulators<cr>", "Emulators" },
-        h = { "<cmd>FlutterReload<cr>", "Reload" },
-        H = { "<cmd>FlutterRestart<cr>", "Restart" },
-        l = { "<cmd>FlutterLogClear<cr>", "Log Clear" },
-        o = { "<cmd>FlutterOutlineToggle<cr>", "Outline" },
-        p = { "<cmd>FlutterPubGet<cr>", "Pub Get" },
-        q = { "<cmd>FlutterQuit<cr>", "Quit" },
-        r = { "<cmd>FlutterRun<cr>", "Run" },
-        v = { "<cmd>FlutterVisualDebug<cr>", "Visual Debug" },
-      }
-    end,
-  },
-
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    config = function()
-      require("user.plugins").mason_installer_setup()
-    end,
-  },
-
-  {
-    "nvim-treesitter/playground",
-    event = "BufRead",
-    config = function()
-      lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
-    end,
-  },
 
   {
     "ruifm/gitlinker.nvim",
@@ -234,32 +47,9 @@ lvim.plugins = {
   },
 
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-
-  {
-    "ThePrimeagen/refactoring.nvim",
-    event = "BufRead",
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("refactoring").setup({})
-    end,
-  },
-
-  {
     "axelvc/template-string.nvim",
     config = function()
       require("template-string").setup()
-    end,
-  },
-
-  {
-    "iamcco/markdown-preview.nvim",
-    build = function()
-      vim.fn["mkdp#util#install"]()
     end,
   },
 
@@ -287,14 +77,6 @@ lvim.plugins = {
   },
 
   {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    config = function()
-      require("persistence").setup()
-    end,
-  },
-
-  {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
@@ -308,23 +90,7 @@ lvim.plugins = {
     end,
   },
 
-  -- Copilot
-  { "github/copilot.vim", enabled = false }, -- only for initial setup
-
-  {
-    "zbirenbaum/copilot.lua",
-    event = { "VimEnter" },
-    config = function()
-      require("user.plugins").copilot_setup()
-    end,
-  },
-
   -- My own plugins
-  {
-    dir = "~/code/nvim-rename-state",
-    -- enabled = false,
-  },
-
   {
     dir = "~/code/nvim-i18n",
     dependencies = "MunifTanjim/nui.nvim",
@@ -335,7 +101,9 @@ lvim.plugins = {
   },
 }
 
--- Keybinds
+--
+-- Keybindings
+--
 vim.keymap.set("i", "jk", "<ESC>", { silent = true })
 
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
@@ -343,20 +111,28 @@ lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
-lvim.builtin.which_key.mappings["S"] = { '<cmd>lua require("persistence").load()<cr>', "Last session" }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
 lvim.builtin.which_key.vmappings["l"] =
   { name = "LSP", a = { "<Esc><cmd>lua vim.lsp.buf.range_code_action()<cr>", "Code Action" } }
 
-lvim.builtin.which_key.vmappings["m"] = {
-  name = "Markdown",
-  b = { 'c**<C-r>"**<esc>', "Bold" },
-  c = { 'c```<cr><C-r>"```<esc>', "Code Block" },
-  e = { 'c`<C-r>"`<esc>', "Inline Code" },
-  i = { 'c_<C-r>"_<esc>', "Italic" },
-  s = { 'c~<C-r>"~<esc>', "Strike-through" },
-}
+--
+-- Modules
+--
+require("user.autocommands")
 
--- Load autocommands
-require("user.autocmds")
+require("user.languages.docker")
+require("user.languages.flutter")
+require("user.languages.lua")
+require("user.languages.markdown")
+require("user.languages.python")
+require("user.languages.shell")
+require("user.languages.web")
+
+require("user.tooling.eslint")
+require("user.tooling.prettier")
+
+require("user.plugins.copilot")
+require("user.plugins.mason")
+require("user.plugins.persistence")
+require("user.plugins.treesitter")
