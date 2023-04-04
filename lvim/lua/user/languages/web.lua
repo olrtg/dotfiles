@@ -111,4 +111,4 @@ formatters.setup({ { command = "rustywind" } })
 -- Linters
 --
 local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({ { command = "tsc" }, { command = "stylelint" } })
+linters.setup({ { command = "stylelint" } })

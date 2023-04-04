@@ -18,6 +18,12 @@ lvim.plugins = {
   { "folke/lsp-colors.nvim" },
   { "imsnif/kdl.vim" },
   { "felipec/vim-sanegx", event = "BufRead" },
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require("fidget").setup({})
+    end,
+  },
 
   {
     "ruifm/gitlinker.nvim",
