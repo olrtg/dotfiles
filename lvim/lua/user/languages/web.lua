@@ -1,3 +1,5 @@
+-- NOTE: This is a config file for web related languages like js/ts/html/css and others.
+
 --
 -- Override server
 --

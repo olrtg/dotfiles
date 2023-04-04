@@ -19,10 +19,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "c",
   "cpp",
   "java",
-  "json",
   "ruby",
-  "toml",
-  "yaml",
 }
 
 --

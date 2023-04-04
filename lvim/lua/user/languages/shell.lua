@@ -1,3 +1,5 @@
+-- NOTE: This is a config file for shell related languages like shell/bash/zsh and others.
+
 --
 -- Mason
 --

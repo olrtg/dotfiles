@@ -17,7 +17,6 @@ lvim.plugins = {
   { "tpope/vim-abolish" },
   { "folke/lsp-colors.nvim" },
   { "imsnif/kdl.vim" },
-  { "fladson/vim-kitty" },
   { "felipec/vim-sanegx", event = "BufRead" },
 
   {
@@ -90,7 +89,6 @@ lvim.plugins = {
     end,
   },
 
-  -- My own plugins
   {
     dir = "~/code/nvim-i18n",
     dependencies = "MunifTanjim/nui.nvim",
@@ -126,6 +124,7 @@ require("user.languages.flutter")
 require("user.languages.lua")
 require("user.languages.markdown")
 require("user.languages.python")
+require("user.languages.serialized")
 require("user.languages.shell")
 require("user.languages.web")
 
