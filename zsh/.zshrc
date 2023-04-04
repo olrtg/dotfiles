@@ -59,6 +59,7 @@ alias lzg="lazygit"
 
 alias gl="git pull"
 alias gs="git switch"
+alias gss="git status -s"
 
 alias s="nr start"
 alias d="nr dev"
@@ -74,10 +75,14 @@ alias nc='npm-check -u'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+alias dcdv="docker compose down -v"
+
 function patchfont() {
 	# Patch a normal font with nerdfont
 	# USAGE: patchfont <input_folder_path> <output_folder_path>
-	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
+	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher 
 }
 
 function docker_connect() {
