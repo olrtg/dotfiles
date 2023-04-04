@@ -19,6 +19,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "c",
   "cpp",
   "java",
+  "query", -- for .scheme files (used by treesitter highlighter)
   "ruby",
 }
 

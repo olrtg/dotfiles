@@ -111,8 +111,7 @@ lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 lvim.builtin.which_key.mappings["/"] = { '<cmd>let @/=""<cr>', "No Highlight" }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
-lvim.builtin.which_key.vmappings["l"] =
-  { name = "LSP", a = { "<Esc><cmd>lua vim.lsp.buf.range_code_action()<cr>", "Code Action" } }
+lvim.builtin.which_key.vmappings["l"] = { name = "LSP", a = { vim.lsp.buf.code_action, "Code Action" } }
 
 --
 -- Modules
@@ -134,4 +133,5 @@ require("user.tooling.prettier")
 require("user.plugins.copilot")
 require("user.plugins.mason")
 require("user.plugins.persistence")
+require("user.plugins.refactoring")
 require("user.plugins.treesitter")
