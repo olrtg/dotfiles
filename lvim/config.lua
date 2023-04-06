@@ -84,13 +84,6 @@ lvim.plugins = {
   },
 
   {
-    "ggandor/leap.nvim",
-    config = function()
-      require("leap").add_default_mappings()
-    end,
-  },
-
-  {
     "simrat39/symbols-outline.nvim",
     config = function()
       require("symbols-outline").setup()
@@ -138,6 +131,7 @@ require("user.languages.web")
 require("user.tooling.eslint")
 require("user.tooling.prettier")
 
+require("user.plugins.colorizer")
 require("user.plugins.copilot")
 require("user.plugins.mason")
 require("user.plugins.persistence")
