@@ -1,34 +1,20 @@
---
--- Override server
---
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "dartls" })
+local api = require("user.utils.api")
 
---
--- Plugins
---
-vim.list_extend(lvim.plugins, {
+api.override_servers({ "dartls" })
+
+api.install_plugins({
   {
     "akinsho/flutter-tools.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
 })
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "dart" })
+api.install_parsers({ "dart" })
 
 --
 -- flutter-tools.nvim
 --
-local ok, flutter = pcall(require, "flutter-tools")
-
-if not ok then
-  vim.notify("flutter-tools.nvim not found!", vim.log.levels.WARN)
-  return
-end
-
-flutter.setup({
+api.setup_plugin("flutter-tools", {
   fvm = true,
   flutter_path = os.getenv("HOME") .. "/fvm/default/bin/flutter",
   lsp = {
@@ -49,14 +35,8 @@ flutter.setup({
   dev_log = { enabled = false },
 })
 
---
--- Telescope
---
 require("telescope").load_extension("flutter")
 
---
--- Keybindings
---
 lvim.builtin.which_key.mappings["F"] = {
   name = "Flutter",
   c = { "<cmd>FlutterCopyProfilerUrl<cr>", "Copy Profiler Url" },

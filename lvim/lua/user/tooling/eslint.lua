@@ -1,12 +1,7 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "eslint_d" })
-
---
--- eslint_d
---
+local api = require("user.utils.api")
 local utils = require("user.utils.functions")
+
+api.install_tools({ "eslint_d" })
 
 local project_has_eslint_config = function()
   return (vim.fn.glob(".eslintrc*") ~= "" or utils.is_in_package_json("eslint"))
@@ -16,10 +11,14 @@ if not project_has_eslint_config() then
   return
 end
 
-local formatters = require("lvim.lsp.null-ls.formatters")
-local linters = require("lvim.lsp.null-ls.linters")
-local code_actions = require("lvim.lsp.null-ls.code_actions")
+api.setup_formatters({
+  { command = "eslint_d" },
+})
 
-formatters.setup({ { command = "eslint_d" } })
-linters.setup({ { command = "eslint_d" } })
-code_actions.setup({ { command = "eslint_d" } })
+api.setup_linters({
+  { command = "eslint_d" },
+})
+
+api.setup_code_actions({
+  { command = "eslint_d" },
+})

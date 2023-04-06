@@ -1,14 +1,10 @@
 -- NOTE: This is a config file for web related languages like js/ts/html/css and others.
 
---
--- Override server
---
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "tsserver" })
+local api = require("user.utils.api")
 
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, {
+api.override_servers({ "tsserver" })
+
+api.install_tools({
   "astro-language-server",
   "css-lsp",
   "emmet-ls",
@@ -21,10 +17,7 @@ vim.list_extend(require("user.utils.states").mason_ensure_installed, {
   "vue-language-server",
 })
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, {
+api.install_parsers({
   "astro",
   "css",
   "html",
@@ -36,10 +29,7 @@ vim.list_extend(lvim.builtin.treesitter.ensure_installed, {
   "vue",
 })
 
---
--- Plugins
---
-vim.list_extend(lvim.plugins, {
+api.install_plugins({
   { "jose-elias-alvarez/typescript.nvim" },
   { "windwp/nvim-ts-autotag" },
   {
@@ -51,36 +41,22 @@ vim.list_extend(lvim.plugins, {
 --
 -- typescript.nvim
 --
-local ok_typescript, typescript = pcall(require, "typescript")
-
-if ok_typescript then
-  -- https://github.com/jose-elias-alvarez/typescript.nvim#setup
-  -- https://github.com/ChristianChiarulli/lvim/blob/master/lua/user/lsp/languages/js-ts.lua
-  typescript.setup({
-    debug = false,
-    go_to_source_definition = {
-      fallback = true,
-    },
-    server = {
-      on_attach = require("lvim.lsp").common_on_attach,
-      on_init = require("lvim.lsp").common_on_init,
-      capabilities = require("lvim.lsp").common_capabilities(),
-    },
-  })
-else
-  vim.notify("typescript.nvim not found!", vim.log.levels.WARN)
-end
+api.setup_plugin("typescript", {
+  debug = false,
+  go_to_source_definition = {
+    fallback = true,
+  },
+  server = {
+    on_attach = require("lvim.lsp").common_on_attach,
+    on_init = require("lvim.lsp").common_on_init,
+    capabilities = require("lvim.lsp").common_capabilities(),
+  },
+})
 
 --
 -- nvim-ts-autotag
 --
-local ok_autotag, autotag = pcall(require, "nvim-ts-autotag")
-
-if ok_autotag then
-  autotag.setup()
-else
-  vim.notify("nvim-ts-autotag not found!", vim.log.levels.WARN)
-end
+api.setup_plugin("nvim-ts-autotag")
 
 --
 -- Emmet
@@ -99,16 +75,16 @@ local project_has_tailwindcss_dependency = function()
     or utils.is_in_package_json("tailwindcss")
 end
 
-local formatters = require("lvim.lsp.null-ls.formatters")
-
-if not project_has_tailwindcss_dependency() and utils.is_in_package_json("prettier-plugin-tailwindcss") then
+if project_has_tailwindcss_dependency() and not utils.is_in_package_json("prettier-plugin-tailwindcss") then
+  api.setup_formatters({
+    { command = "rustywind" },
+  })
   return
 end
-
-formatters.setup({ { command = "rustywind" } })
 
 --
 -- Linters
 --
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({ { command = "stylelint" } })
+api.setup_linters({
+  { command = "stylelint" },
+})

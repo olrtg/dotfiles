@@ -1,35 +1,19 @@
 -- NOTE: This is a config file for shell related languages like shell/bash/zsh and others.
 
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "bash-language-server", "shellcheck", "shfmt" })
+local api = require("user.utils.api")
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "bash" })
+api.install_tools({ "bash-language-server", "shellcheck", "shfmt" })
 
---
--- Formatters
---
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({
+api.install_parsers({ "bash" })
+
+api.setup_formatters({
   { command = "shfmt" },
 })
 
---
--- Linters
---
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({
+api.setup_linters({
   { command = "shellcheck" },
 })
 
---
--- Code Actions
---
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-code_actions.setup({
+api.setup_code_actions({
   { command = "shellcheck" },
 })

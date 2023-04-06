@@ -7,6 +7,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.alpha.active = false
+lvim.colorscheme = "tokyonight"
 
 --
 -- Plugins
@@ -18,6 +19,7 @@ lvim.plugins = {
   { "folke/lsp-colors.nvim" },
   { "imsnif/kdl.vim" },
   { "felipec/vim-sanegx", event = "BufRead" },
+  { "folke/tokyonight.nvim" },
   {
     "j-hui/fidget.nvim",
     config = function()

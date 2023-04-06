@@ -1,7 +1,6 @@
---
--- Plugins
---
-vim.list_extend(lvim.plugins, {
+local api = require("user.utils.api")
+
+api.install_plugins({
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
   {
     "nvim-treesitter/playground",
@@ -12,16 +11,13 @@ vim.list_extend(lvim.plugins, {
   },
 })
 
---
--- Treesitter
---
-lvim.builtin.treesitter.ensure_installed = {
+api.install_parsers({
   "c",
   "cpp",
   "java",
   "query", -- for .scheme files (used by treesitter highlighter)
   "ruby",
-}
+})
 
 --
 -- nvim-treesitter-textobjects

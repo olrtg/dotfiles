@@ -1,17 +1,10 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "markdownlint", "proselint" })
+local api = require("user.utils.api")
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "markdown" })
+api.install_tools({ "markdownlint", "proselint" })
 
---
--- Plugins
---
-vim.list_extend(lvim.plugins, {
+api.install_parsers({ "markdown" })
+
+api.install_plugins({
   {
     "iamcco/markdown-preview.nvim",
     build = function()
@@ -20,12 +13,7 @@ vim.list_extend(lvim.plugins, {
   },
 })
 
---
--- Linters
---
-local linters = require("lvim.lsp.null-ls.linters")
-
-linters.setup({
+api.setup_linters({
   {
     command = "markdownlint",
     extra_args = {
@@ -39,18 +27,10 @@ linters.setup({
   { command = "proselint" },
 })
 
---
--- Code Actions
---
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-
-code_actions.setup({
+api.setup_code_actions({
   { command = "proselint" },
 })
 
---
--- Keybindings
---
 lvim.builtin.which_key.vmappings["m"] = {
   name = "Markdown",
   b = { 'c**<C-r>"**<esc>', "Bold" },

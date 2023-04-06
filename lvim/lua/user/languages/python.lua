@@ -1,27 +1,13 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "black", "flake8", "pyright" })
+local api = require("user.utils.api")
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "python" })
+api.install_tools({ "black", "flake8", "pyright" })
 
---
--- Formatters
---
-local formatters = require("lvim.lsp.null-ls.formatters")
+api.install_parsers({ "python" })
 
-formatters.setup({
+api.setup_formatters({
   { command = "black" },
 })
 
---
--- Linters
---
-local linters = require("lvim.lsp.null-ls.linters")
-
-linters.setup({
+api.setup_linters({
   { command = "flake8" },
 })

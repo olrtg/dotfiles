@@ -1,21 +1,14 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "prettierd" })
-
---
--- prettierd
---
+local api = require("user.utils.api")
 local utils = require("user.utils.functions")
+
+api.install_tools({ "prettierd" })
 
 local project_has_prettier_config = function()
   return (vim.fn.glob("{.,}prettier*") ~= "" or utils.is_in_package_json("prettier"))
 end
 
-local formatters = require("lvim.lsp.null-ls.formatters")
-
 if not project_has_prettier_config() then
-  formatters.setup({
+  api.setup_formatters({
     {
       command = "prettierd",
       extra_args = { "--no-semi", "--single-quote", "--trailing-comma=all", "--arrow-parens=avoid" },
@@ -25,4 +18,4 @@ if not project_has_prettier_config() then
   return
 end
 
-formatters.setup({ { command = "prettierd" } })
+api.setup_formatters({ { command = "prettierd" } })

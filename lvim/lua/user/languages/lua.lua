@@ -1,16 +1,9 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "lua-language-server", "stylua" })
+local api = require("user.utils.api")
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "lua" })
+api.install_tools({ "lua-language-server", "stylua" })
 
---
--- Formatters
---
-local formatters = require("lvim.lsp.null-ls.formatters")
+api.install_parsers({ "lua" })
 
-formatters.setup({ { command = "stylua" } })
+api.setup_formatters({
+  { command = "stylua" },
+})

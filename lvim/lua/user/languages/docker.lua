@@ -1,18 +1,9 @@
---
--- Mason
---
-vim.list_extend(require("user.utils.states").mason_ensure_installed, { "dockerfile-language-server", "hadolint" })
+local api = require("user.utils.api")
 
---
--- Treesitter
---
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, { "dockerfile" })
+api.install_tools({ "dockerfile-language-server", "hadolint" })
 
---
--- Linters
---
-local linters = require("lvim.lsp.null-ls.linters")
+api.install_parsers({ "dockerfile" })
 
-linters.setup({
+api.setup_linters({
   { command = "hadolint" },
 })
