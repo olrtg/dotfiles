@@ -6,6 +6,6 @@ api.install_plugins({
   { "fladson/vim-kitty" }, -- for kitty's config files
 })
 
-api.install_tools({ "editorconfig-checker", "json-lsp", "jsonlint", "taplo", "yaml-language-server" })
+api.install_tools({ "json-lsp", "jsonlint", "taplo", "yaml-language-server" })
 
 api.install_parsers({ "json", "toml", "yaml" })
