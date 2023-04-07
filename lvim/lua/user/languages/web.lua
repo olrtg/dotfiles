@@ -61,8 +61,21 @@ api.setup_plugin("nvim-ts-autotag")
 --
 -- Emmet
 --
--- TODO: extend this to work with astro and vue files
-require("lvim.lsp.manager").setup("emmet_ls")
+require("lvim.lsp.manager").setup("emmet_ls", {
+  filetypes = {
+    "astro",
+    "css",
+    "eruby",
+    "html",
+    "javascriptreact",
+    "less",
+    "sass",
+    "scss",
+    "svelte",
+    "typescriptreact",
+    "vue",
+  },
+})
 
 --
 -- Tailwind CSS Formatter
