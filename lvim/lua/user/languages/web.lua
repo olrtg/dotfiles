@@ -75,6 +75,15 @@ require("lvim.lsp.manager").setup("emmet_ls", {
     "typescriptreact",
     "vue",
   },
+
+  -- NOTE: For SolidJS (className -> class)
+  -- init_options = {
+  --   jsx = {
+  --     options = {
+  --       ["markup.attributes"] = { className = "class" },
+  --     },
+  --   },
+  -- },
 })
 
 --
