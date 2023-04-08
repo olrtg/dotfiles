@@ -135,6 +135,7 @@ require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
 require("user.plugins.copilot")
+require("user.plugins.inlayhints")
 require("user.plugins.mason")
 require("user.plugins.openingh")
 require("user.plugins.persistence")
