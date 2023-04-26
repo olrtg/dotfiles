@@ -6,12 +6,11 @@
 # Plugins
 plug "Aloxaf/fzf-tab"
 plug "wintermi/zsh-brew"
-plug "wintermi/zsh-golang"
+# plug "wintermi/zsh-golang"
 plug "wintermi/zsh-rust"
 plug "zap-zsh/exa"
 plug "zap-zsh/fnm"
 plug "zap-zsh/fzf"
-plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-autosuggestions"
 
