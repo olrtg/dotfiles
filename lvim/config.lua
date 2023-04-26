@@ -91,6 +91,13 @@ lvim.plugins = {
   },
 
   {
+    "dmmulroy/tsc.nvim",
+    config = function()
+      require("tsc").setup()
+    end,
+  },
+
+  {
     dir = "~/code/nvim-i18n",
     dependencies = "MunifTanjim/nui.nvim",
     config = function()
