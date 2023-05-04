@@ -15,16 +15,20 @@ vim.diagnostic.config({ virtual_text = false })
 -- Plugins
 --
 lvim.plugins = {
-  { "tpope/vim-surround" },
+  { "imsnif/kdl.vim" },
   { "tpope/vim-repeat" },
   { "tpope/vim-abolish" },
+  { "tpope/vim-surround" },
   { "folke/lsp-colors.nvim" },
-  { "imsnif/kdl.vim" },
   { "folke/tokyonight.nvim" },
-  {
-    "j-hui/fidget.nvim",
-    config = true,
-  },
+  { "dmmulroy/tsc.nvim", config = true },
+  { "j-hui/fidget.nvim", config = true },
+  { "axelvc/template-string.nvim", config = true },
+  { "simrat39/symbols-outline.nvim", config = true },
+  { "folke/todo-comments.nvim", event = "BufRead", config = true },
+  { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
+  { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim", config = true },
+  { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
   {
     "ruifm/gitlinker.nvim",
@@ -37,28 +41,11 @@ lvim.plugins = {
   },
 
   {
-    "petertriho/cmp-git",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = true,
-  },
-
-  {
     "benfowler/telescope-luasnip.nvim",
     after = "telescope.nvim",
     config = function()
       require("telescope").load_extension("luasnip")
     end,
-  },
-
-  {
-    "axelvc/template-string.nvim",
-    config = true,
-  },
-
-  {
-    "folke/todo-comments.nvim",
-    event = "BufRead",
-    config = true,
   },
 
   {
@@ -76,31 +63,8 @@ lvim.plugins = {
     end,
   },
 
-  {
-    "simrat39/symbols-outline.nvim",
-    config = true,
-  },
-
-  {
-    "dmmulroy/tsc.nvim",
-    config = function()
-      require("tsc").setup()
-    end,
-  },
-
-  {
-    "chrishrb/gx.nvim",
-    event = { "BufEnter" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = true,
-  },
-
-  {
-    dir = "~/code/nvim-i18n",
-    dependencies = "MunifTanjim/nui.nvim",
-    config = true,
-    enabled = false,
-  },
+  -- NOTE: My plugins in development
+  { dir = "~/code/nvim-i18n", dependencies = "MunifTanjim/nui.nvim", config = true, enabled = false },
 }
 
 --
