@@ -1,7 +1,8 @@
 --
 -- LunarVim
 --
-lvim.format_on_save = true
+lvim.format_on_save.enabled = true
+lvim.format_on_save.timeout = 5000
 lvim.lsp.diagnostics.virtual_text = false
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
@@ -18,13 +19,10 @@ lvim.plugins = {
   { "tpope/vim-abolish" },
   { "folke/lsp-colors.nvim" },
   { "imsnif/kdl.vim" },
-  { "felipec/vim-sanegx", event = "BufRead" },
   { "folke/tokyonight.nvim" },
   {
     "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup({})
-    end,
+    config = true,
   },
 
   {
@@ -40,9 +38,7 @@ lvim.plugins = {
   {
     "petertriho/cmp-git",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("cmp_git").setup()
-    end,
+    config = true,
   },
 
   {
@@ -55,17 +51,13 @@ lvim.plugins = {
 
   {
     "axelvc/template-string.nvim",
-    config = function()
-      require("template-string").setup()
-    end,
+    config = true,
   },
 
   {
     "folke/todo-comments.nvim",
     event = "BufRead",
-    config = function()
-      require("todo-comments").setup()
-    end,
+    config = true,
   },
 
   {
@@ -85,9 +77,7 @@ lvim.plugins = {
 
   {
     "simrat39/symbols-outline.nvim",
-    config = function()
-      require("symbols-outline").setup()
-    end,
+    config = true,
   },
 
   {
@@ -98,11 +88,16 @@ lvim.plugins = {
   },
 
   {
+    "chrishrb/gx.nvim",
+    event = { "BufEnter" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+  },
+
+  {
     dir = "~/code/nvim-i18n",
     dependencies = "MunifTanjim/nui.nvim",
-    config = function()
-      require("nvim-i18n").setup()
-    end,
+    config = true,
     enabled = false,
   },
 }
