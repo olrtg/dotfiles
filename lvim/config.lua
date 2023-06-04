@@ -7,9 +7,10 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.nvimtree.setup.view.side = "right"
 lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.alpha.active = false
-lvim.colorscheme = "tokyonight"
+-- lvim.colorscheme = "tokyonight"
 
 vim.diagnostic.config({ virtual_text = false })
+vim.opt.relativenumber = true
 
 --
 -- Plugins
@@ -63,8 +64,16 @@ lvim.plugins = {
     end,
   },
 
+  {
+    "ggandor/leap.nvim",
+    name = "leap",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+
   -- NOTE: My plugins in development
-  { dir = "~/code/nvim-i18n", dependencies = "MunifTanjim/nui.nvim", config = true, enabled = false },
+  { dir = "~/code/nvim-i18n", dependencies = "MunifTanjim/nui.nvim", config = true, enabled = true },
 }
 
 --
@@ -75,6 +84,7 @@ vim.keymap.set("i", "jk", "<ESC>", { silent = true })
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
+lvim.keys.normal_mode["<Enter>"] = "ciw"
 
 lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
 
@@ -82,6 +92,11 @@ lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Repl
 
 -- BUG: This doesn't work as expected
 lvim.builtin.which_key.vmappings["l"] = { name = "LSP", a = { vim.lsp.buf.code_action, "Code Action" } }
+
+lvim.builtin.treesitter.incremental_selection = {
+  enable = true,
+  keymaps = { node_incremental = "<Tab>", init_selection = "<Tab>", node_decremental = "<BS>" },
+}
 
 --
 -- Modules
