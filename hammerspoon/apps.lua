@@ -11,7 +11,7 @@ hs.hotkey.bind(config.hyper, "c", bindApp("kitty"))
 hs.hotkey.bind(config.hyper, "g", bindApp("Whatsapp"))
 hs.hotkey.bind(config.hyper, "e", bindApp("Slack"))
 hs.hotkey.bind(config.hyper, "r", bindApp("Todoist"))
-hs.hotkey.bind(config.hyper, "f", bindApp("Arc"))
+hs.hotkey.bind(config.hyper, "f", bindApp("Google Chrome"))
 hs.hotkey.bind(config.hyper, "v", bindApp("Spotify"))
 hs.hotkey.bind(config.hyper, "t", bindApp("Tomito"))
 
