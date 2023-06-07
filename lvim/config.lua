@@ -20,6 +20,7 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
+  { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
   { "dmmulroy/tsc.nvim", config = true },
@@ -84,7 +85,7 @@ vim.keymap.set("i", "jk", "<ESC>", { silent = true })
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
-lvim.keys.normal_mode["<Enter>"] = "ciw"
+-- lvim.keys.normal_mode["<Enter>"] = "ciw"
 
 lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
 

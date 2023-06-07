@@ -4,15 +4,16 @@
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
 # Plugins
-plug "Aloxaf/fzf-tab"
-plug "wintermi/zsh-brew"
-# plug "wintermi/zsh-golang"
-plug "wintermi/zsh-rust"
 plug "zap-zsh/exa"
 plug "zap-zsh/fnm"
 plug "zap-zsh/fzf"
-plug "zsh-users/zsh-syntax-highlighting"
+plug "Aloxaf/fzf-tab"
+plug "wintermi/zsh-brew"
+plug "wintermi/zsh-rust"
+plug "zap-zsh/zap-prompt"
+# plug "wintermi/zsh-golang"
 plug "zsh-users/zsh-autosuggestions"
+plug "zsh-users/zsh-syntax-highlighting"
 
 plug "olrtg/zsh-fvm"
 
@@ -70,9 +71,9 @@ alias rnios="npx react-native run-ios"
 alias rncls="rm -rf node_modules && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
-alias nc='npm-check -u'
+alias nc="npm-check -u"
 
-alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
 
 alias dcu="docker compose up"
 alias dcd="docker compose down"
@@ -94,9 +95,6 @@ function docker_connect() {
 setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
-
-# starship
-eval "$(starship init zsh)"
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
