@@ -47,6 +47,7 @@ lvim.plugins = {
     after = "telescope.nvim",
     config = function()
       require("telescope").load_extension("luasnip")
+      lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope luasnip<cr>", "Snippets" }
     end,
   },
 
