@@ -13,4 +13,4 @@ npm i -g pnpm \
 	cz-conventional-changelog
 
 # Python
-pip3 pynvim
+pip3 install pynvim
