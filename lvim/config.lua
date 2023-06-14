@@ -74,8 +74,28 @@ lvim.plugins = {
     end,
   },
 
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("chatgpt").setup({
+  --       api_key_cmd = 'op read "op://Personal/jawpmm6snisueuiboamijysdgq/api key" --no-newline',
+  --     })
+  --   end,
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- },
+
   -- NOTE: My plugins in development
-  { dir = "~/code/nvim-i18n", dependencies = "MunifTanjim/nui.nvim", config = true, enabled = true },
+  {
+    dir = "~/code/nvim-i18n",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    config = true,
+    enabled = true,
+  },
 }
 
 --
@@ -95,10 +115,10 @@ lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Repl
 -- BUG: This doesn't work as expected
 lvim.builtin.which_key.vmappings["l"] = { name = "LSP", a = { vim.lsp.buf.code_action, "Code Action" } }
 
-lvim.builtin.treesitter.incremental_selection = {
-  enable = true,
-  keymaps = { node_incremental = "<Tab>", init_selection = "<Tab>", node_decremental = "<BS>" },
-}
+-- lvim.builtin.treesitter.incremental_selection = {
+--   enable = true,
+--   keymaps = { node_incremental = "<Tab>", init_selection = "<Tab>", node_decremental = "<BS>" },
+-- }
 
 --
 -- Modules
