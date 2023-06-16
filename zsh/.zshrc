@@ -57,6 +57,7 @@ alias x="exit"
 alias lzd="lazydocker"
 alias lzg="lazygit"
 
+alias gc="git clone"
 alias gl="git pull"
 alias gs="git switch"
 alias gss="git status -s"
