@@ -13,7 +13,6 @@
     /usr/local/bin/lt: bin/lt
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
-    ~/.config/starship.toml: zsh/starship.toml
     ~/.gitconfig: git/.gitconfig
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.zshrc: zsh/.zshrc
