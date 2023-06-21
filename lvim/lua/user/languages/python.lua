@@ -9,5 +9,5 @@ api.setup_formatters({
 })
 
 api.setup_linters({
-  { command = "flake8" },
+  { command = "flake8", args = { "--ignore=E501" } },
 })
