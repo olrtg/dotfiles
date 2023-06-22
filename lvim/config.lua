@@ -23,6 +23,7 @@ lvim.plugins = {
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
+  { "AndrewRadev/bufferize.vim" },
   { "dmmulroy/tsc.nvim", config = true },
   { "j-hui/fidget.nvim", config = true },
   { "axelvc/template-string.nvim", config = true },

@@ -14,6 +14,7 @@ api.install_tools({
   "stylelint-lsp",
   "svelte-language-server",
   "tailwindcss-language-server",
+  "unocss-language-server",
   "vue-language-server",
 })
 
@@ -23,6 +24,7 @@ api.install_parsers({
   "html",
   "javascript",
   "prisma",
+  "scss",
   "svelte",
   "tsx",
   "typescript",
@@ -96,6 +98,11 @@ require("lvim.lsp.manager").setup("emmet_ls", {
   --   },
   -- },
 })
+
+---
+--- Unocss
+---
+require("lvim.lsp.manager").setup("unocss")
 
 --
 -- Tailwind CSS Formatter

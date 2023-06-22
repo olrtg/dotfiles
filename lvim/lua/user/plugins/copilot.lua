@@ -1,14 +1,13 @@
 local api = require("user.utils.api")
 
 api.install_plugins({
-  { "zbirenbaum/copilot.lua", cmd = "Copilot", build = ":Copilot auth" },
+  { "zbirenbaum/copilot.lua" },
 })
 
 --
 -- copilot.lua
 --
 api.setup_plugin("copilot", {
-  plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
   suggestion = {
     auto_trigger = true,
     keymap = {
