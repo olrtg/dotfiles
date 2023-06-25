@@ -2,13 +2,7 @@ local api = require("user.utils.api")
 
 api.install_plugins({
   { "nvim-treesitter/nvim-treesitter-textobjects", before = "nvim-treesitter" },
-  {
-    "nvim-treesitter/playground",
-    event = "BufRead",
-    config = function()
-      lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
-    end,
-  },
+  { "nvim-treesitter/playground", event = "BufRead" },
 })
 
 api.install_parsers({
