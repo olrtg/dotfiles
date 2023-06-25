@@ -10,7 +10,6 @@ lvim.builtin.alpha.active = false
 -- lvim.colorscheme = "tokyonight"
 
 vim.diagnostic.config({ virtual_text = false })
-vim.opt.relativenumber = true
 
 --
 -- Plugins
@@ -23,11 +22,10 @@ lvim.plugins = {
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
-  { "AndrewRadev/bufferize.vim" },
   { "dmmulroy/tsc.nvim", config = true },
-  { "j-hui/fidget.nvim", config = true },
   { "axelvc/template-string.nvim", config = true },
   { "simrat39/symbols-outline.nvim", config = true },
+  { "j-hui/fidget.nvim", version = "legacy", config = true },
   { "folke/todo-comments.nvim", event = "BufRead", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim", config = true },
@@ -67,29 +65,6 @@ lvim.plugins = {
     end,
   },
 
-  {
-    "ggandor/leap.nvim",
-    name = "leap",
-    config = function()
-      require("leap").add_default_mappings()
-    end,
-  },
-
-  -- {
-  --   "jackMort/ChatGPT.nvim",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     require("chatgpt").setup({
-  --       api_key_cmd = 'op read "op://Personal/jawpmm6snisueuiboamijysdgq/api key" --no-newline',
-  --     })
-  --   end,
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  -- },
-
   -- NOTE: My plugins in development
   {
     dir = "~/code/nvim-i18n",
@@ -107,19 +82,14 @@ vim.keymap.set("i", "jk", "<ESC>", { silent = true })
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
--- lvim.keys.normal_mode["<Enter>"] = "ciw"
 
-lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
+lvim.builtin.which_key.mappings["l"]["t"] = { "<cmd>lvimtoggleformatonsave<cr>", "toggle format on save" }
+lvim.builtin.which_key.mappings["t"]["p"] = { "<cmd>tsplaygroundtoggle<cr>", "playground" }
 
-lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<CR>cgn]], "Search/Replace" }
+lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "search/replace" }
 
--- BUG: This doesn't work as expected
-lvim.builtin.which_key.vmappings["l"] = { name = "LSP", a = { vim.lsp.buf.code_action, "Code Action" } }
-
--- lvim.builtin.treesitter.incremental_selection = {
---   enable = true,
---   keymaps = { node_incremental = "<Tab>", init_selection = "<Tab>", node_decremental = "<BS>" },
--- }
+-- BUG: this doesn't work as expected
+-- lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "code action" } }
 
 --
 -- Modules
@@ -140,6 +110,7 @@ require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
 require("user.plugins.copilot")
+require("user.plugins.flash")
 -- require("user.plugins.inlayhints")
 require("user.plugins.mason")
 require("user.plugins.openingh")
