@@ -12,12 +12,12 @@ api.setup_plugin("colorizer", {
     "*",
     "!mason",
     "!toggleterm",
+    "!TelescopePrompt",
   },
   user_default_options = {
     RRGGBBAA = true,
     AARRGGBB = true,
     css_fn = true,
     tailwind = true,
-    always_update = true,
   },
 })
