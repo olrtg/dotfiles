@@ -28,7 +28,6 @@ lvim.plugins = {
   { "j-hui/fidget.nvim", version = "legacy", config = true },
   { "folke/todo-comments.nvim", event = "BufRead", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
-  { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim", config = true },
   { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
   {
@@ -83,13 +82,13 @@ lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"
 lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 
-lvim.builtin.which_key.mappings["l"]["t"] = { "<cmd>lvimtoggleformatonsave<cr>", "toggle format on save" }
-lvim.builtin.which_key.mappings["t"]["p"] = { "<cmd>tsplaygroundtoggle<cr>", "playground" }
+lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
+lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
 
-lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "search/replace" }
+lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Replace" }
 
 -- BUG: this doesn't work as expected
--- lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "code action" } }
+-- lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
 
 --
 -- Modules
