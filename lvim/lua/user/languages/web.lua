@@ -7,7 +7,6 @@ api.override_servers({ "tsserver" })
 api.install_tools({
   "astro-language-server",
   "css-lsp",
-  "emmet-ls",
   "html-lsp",
   "prisma-language-server",
   "rustywind",
@@ -87,17 +86,36 @@ api.setup_plugin("nvim-ts-autotag")
 --
 -- Emmet
 --
--- require("lspconfig").emmet_ls.setup({
-require("lvim.lsp.manager").setup("emmet_ls", {
-  -- NOTE: For SolidJS (className -> class)
-  -- init_options = {
-  --   jsx = {
-  --     options = {
-  --       ["markup.attributes"] = { className = "class" },
-  --     },
-  --   },
-  -- },
-})
+lvim.autocommands = {
+  {
+    "FileType",
+    {
+      pattern = "astro,css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue",
+      callback = function()
+        vim.lsp.start({
+          cmd = { "emmet-ls", "--stdio" },
+          root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
+          init_options = {
+            --- @type table<string, any> https://docs.emmet.io/customization/preferences/
+            preferences = {},
+            --- @type "always" | "never" Defaults to `"always"`
+            showExpandedAbbreviation = "always",
+            --- @type boolean Defaults to `false`
+            showAbbreviationSuggestions = true,
+            --- @type boolean Defaults to `false`
+            showSuggestionsAsSnippets = false,
+            --- @type table<string, any> https://docs.emmet.io/customization/syntax-profiles/
+            syntaxProfiles = {},
+            --- @type table<string, string> https://docs.emmet.io/customization/snippets/#variables
+            variables = {},
+            --- @type string[]
+            excludeLanguages = {},
+          },
+        })
+      end,
+    },
+  },
+}
 
 ---
 --- Unocss
