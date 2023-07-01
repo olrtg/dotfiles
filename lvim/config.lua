@@ -48,6 +48,13 @@ lvim.plugins = {
   },
 
   {
+    "nvim-telescope/telescope-ui-select.nvim",
+    config = function()
+      require("telescope").load_extension("ui-select")
+    end,
+  },
+
+  {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
@@ -107,7 +114,7 @@ require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
 require("user.plugins.copilot")
-require("user.plugins.flash")
+-- require("user.plugins.flash")
 -- require("user.plugins.inlayhints")
 require("user.plugins.mason")
 require("user.plugins.openingh")
