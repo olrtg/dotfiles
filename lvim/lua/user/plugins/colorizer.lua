@@ -1,7 +1,8 @@
 local api = require("user.utils.api")
 
 api.install_plugins({
-  { "NvChad/nvim-colorizer.lua" },
+  -- { "NvChad/nvim-colorizer.lua" },
+  { "mehalter/nvim-colorizer.lua" }, -- NOTE: until https://github.com/NvChad/nvim-colorizer.lua/pull/63 is merged
 })
 
 --
@@ -19,5 +20,6 @@ api.setup_plugin("colorizer", {
     AARRGGBB = true,
     css_fn = true,
     tailwind = true,
+    mode = "inline",
   },
 })
