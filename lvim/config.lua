@@ -9,8 +9,6 @@ lvim.builtin.nvimtree.setup.view.width = 40
 lvim.builtin.alpha.active = false
 -- lvim.colorscheme = "tokyonight"
 
-vim.diagnostic.config({ virtual_text = false })
-
 --
 -- Plugins
 --
