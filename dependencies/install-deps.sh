@@ -3,7 +3,6 @@
 # Node
 npm i -g pnpm \
 	@antfu/ni \
-	neovim \
 	typescript \
 	@angular/cli \
 	react-native \
@@ -12,5 +11,3 @@ npm i -g pnpm \
 	commitizen \
 	cz-conventional-changelog
 
-# Python
-pip3 install pynvim
