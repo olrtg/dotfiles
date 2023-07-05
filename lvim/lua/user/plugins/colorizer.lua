@@ -14,6 +14,7 @@ api.setup_plugin("colorizer", {
     "!mason",
     "!toggleterm",
     "!TelescopePrompt",
+    "!lazy",
   },
   user_default_options = {
     RRGGBBAA = true,
