@@ -9,6 +9,13 @@
       {
         "language": "dart",
         "path": "./flutter.json"
+      },
+      {
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
+        "path": "./typescript.json"
       }
     ]
   }
