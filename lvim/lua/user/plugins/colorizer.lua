@@ -17,6 +17,7 @@ api.setup_plugin("colorizer", {
     "!lazy",
   },
   user_default_options = {
+    names = false,
     RRGGBBAA = true,
     AARRGGBB = true,
     css_fn = true,

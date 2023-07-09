@@ -90,10 +90,10 @@ lvim.autocommands = {
   {
     "FileType",
     {
-      pattern = "astro,css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue",
+      pattern = "astro,css,eruby,html,htmldjango,javascript,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue,php",
       callback = function()
         vim.lsp.start({
-          cmd = { "emmet-ls", "--stdio" },
+          cmd = { "emmet-language-server", "--stdio" },
           root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
           init_options = {
             --- @type table<string, any> https://docs.emmet.io/customization/preferences/

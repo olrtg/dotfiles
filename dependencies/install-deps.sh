@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # Node
+# TODO: Deprecate commitizen and cz-conventional-changelog after building a
+# custom commitizen with lazygit
 npm i -g pnpm \
 	@antfu/ni \
 	typescript \
@@ -10,4 +12,3 @@ npm i -g pnpm \
 	yarn \
 	commitizen \
 	cz-conventional-changelog
-

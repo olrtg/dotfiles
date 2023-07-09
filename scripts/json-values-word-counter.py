@@ -20,7 +20,7 @@ with open(filepath) as file:
     values = []
 
     def get_final_value(obj):
-        for _key, value in obj.items():
+        for _, value in obj.items():
             if isinstance(value, dict):
                 get_final_value(value)
             elif isinstance(value, str):

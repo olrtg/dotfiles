@@ -80,6 +80,7 @@ alias dcu="docker compose up"
 alias dcd="docker compose down"
 alias dcdv="docker compose down -v"
 
+# BUG: Doesn't work with arguments
 function patchfont() {
 	# Patch a normal font with nerdfont
 	# USAGE: patchfont <input_folder_path> <output_folder_path>
