@@ -100,7 +100,7 @@ lvim.autocommands = {
             preferences = {},
             --- @type "always" | "never" Defaults to `"always"`
             showExpandedAbbreviation = "always",
-            --- @type boolean Defaults to `false`
+            --- @type boolean Defaults to `true`
             showAbbreviationSuggestions = true,
             --- @type boolean Defaults to `false`
             showSuggestionsAsSnippets = false,
