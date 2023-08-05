@@ -10,7 +10,7 @@ api.install_tools({
   "html-lsp",
   "prisma-language-server",
   "rustywind",
-  "stylelint-lsp",
+  "stylelint",
   "svelte-language-server",
   "tailwindcss-language-server",
   "unocss-language-server",
