@@ -13,9 +13,11 @@
     /usr/local/bin/lt: bin/lt
     ~/.config/kitty: kitty
     ~/.config/lvim: lvim
+    ~/.config/nvim: nvim
     ~/.gitconfig: git/.gitconfig
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.zshrc: zsh/.zshrc
+    ~/.asdfrc: asdf/.asdfrc
 
     ~/.hammerspoon:
       if: '[ `uname` = Darwin ]'
