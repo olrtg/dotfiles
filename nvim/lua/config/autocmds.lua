@@ -1,3 +1,11 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
--- Add any additional autocmds here
+-- Podfile syntax highlight (useful for React Native)
+vim.api.nvim_create_autocmd(
+  { "BufNewFile", "BufRead" },
+  { pattern = "Podfile,*.podspec", command = "set filetype=ruby" }
+)
+
+-- Brewfile syntax highlight
+vim.api.nvim_create_autocmd(
+  { "BufNewFile", "BufRead" },
+  { pattern = "Brewfile,.Brewfile", command = "set filetype=ruby" }
+)
