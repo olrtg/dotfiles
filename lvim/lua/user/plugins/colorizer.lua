@@ -23,5 +23,6 @@ api.setup_plugin("colorizer", {
     css_fn = true,
     tailwind = true,
     mode = "inline",
+    virtualtext = " ■",
   },
 })
