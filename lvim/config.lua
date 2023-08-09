@@ -47,6 +47,7 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
+  { "filNaj/tree-setter" },
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },

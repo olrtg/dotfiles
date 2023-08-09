@@ -62,3 +62,10 @@ lvim.builtin.treesitter.textobjects = {
     },
   },
 }
+
+--
+-- tree-setter
+--
+lvim.builtin.treesitter.tree_setter = {
+  enable = true,
+}
