@@ -20,6 +20,7 @@ api.install_tools({
 api.install_parsers({
   "astro",
   "css",
+  "graphql",
   "html",
   "javascript",
   "prisma",
