@@ -37,5 +37,6 @@ lvim.builtin.which_key.vmappings["m"] = {
   c = { 'c```<cr><C-r>"```<esc>', "Code Block" },
   e = { 'c`<C-r>"`<esc>', "Inline Code" },
   i = { 'c_<C-r>"_<esc>', "Italic" },
+  k = { 'c[<C-r>"]()<esc>', "Link" },
   s = { 'c~<C-r>"~<esc>', "Strike-through" },
 }
