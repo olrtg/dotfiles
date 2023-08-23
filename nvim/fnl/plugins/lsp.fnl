@@ -16,6 +16,11 @@
 (define-signs "Diagnostic")
 
 [{1 :neovim/nvim-lspconfig
+  :dependencies [{1 :williamboman/mason.nvim :config true}
+                 {1 :williamboman/mason-lspconfig.nvim :config true}
+                 {1 :j-hui/fidget.nvim :tag :legacy :opts {}}
+                 {1 :folke/neodev.nvim :opts {}}
+                 ]
   :config (fn []
             (let [lsp (require :lspconfig)
                   cmplsp (require :cmp_nvim_lsp)
@@ -61,6 +66,12 @@
 
               ;; Clojure
               (lsp.clojure_lsp.setup {:on_attach on_attach
+                                      :handlers handlers
+                                      :before_init before_init
+                                      :capabilities capabilities})
+
+              ;; Fennel
+              (lsp.fennel_language_server.setup {:on_attach on_attach
                                       :handlers handlers
                                       :before_init before_init
                                       :capabilities capabilities})))}]
