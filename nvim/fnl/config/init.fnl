@@ -5,6 +5,11 @@
 ;space is reserved to be lead
 (nvim.set_keymap :n :<space> :<nop> {:noremap true})
 
+(nvim.set_keymap :i :jk :<esc> {:silent true})
+(nvim.set_keymap :n :<leader>w :<cmd>w<cr> {:noremap true})
+(nvim.set_keymap :n :<leader>q :<cmd>q<cr> {:noremap true})
+(nvim.set_keymap :n :<leader>e "<cmd>Neotree float<cr>" {:noremap true})
+
 ;sets a nvim global options
 (let [options
       {;tabs is space

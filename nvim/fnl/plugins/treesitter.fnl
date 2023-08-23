@@ -6,7 +6,7 @@
                                  :indent {:enable true}
                                  :ensure_installed [:bash
                                                     :clojure
-                                                    :commonlisp
+                                                    :query
                                                     :dockerfile
                                                     :fennel
                                                     :html
