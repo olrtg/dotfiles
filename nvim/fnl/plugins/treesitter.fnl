@@ -12,7 +12,10 @@
                                                     :html
                                                     :java
                                                     :javascript
+                                                    :typescript
+                                                    :tsx
                                                     :json
+                                                    :python
                                                     :lua
                                                     :markdown
                                                     :yaml]})))}]

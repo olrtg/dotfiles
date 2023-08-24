@@ -72,6 +72,6 @@
 
               ;; Fennel
               (lsp.fennel_language_server.setup {:on_attach on_attach
-                                      :handlers handlers
                                       :before_init before_init
-                                      :capabilities capabilities})))}]
+                                      :capabilities capabilities
+                                      :settings {:fennel {:workspace {:library (vim.api.nvim_list_runtime_paths)} :diagnostics {:globals [:vim]}}}})))}]
