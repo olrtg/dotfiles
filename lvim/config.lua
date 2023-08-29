@@ -113,6 +113,12 @@ lvim.plugins = {
 -- Keybindings
 --
 vim.keymap.set("i", "jk", "<ESC>", { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+  local ls = require("luasnip")
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, { silent = true })
 
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<cr>"

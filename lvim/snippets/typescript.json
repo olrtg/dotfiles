@@ -1,7 +1,0 @@
-{
-  "Expect error": {
-    "prefix": "ee",
-    "body": ["// @ts-expect-error"],
-    "description": "Expect error"
-  }
-}
