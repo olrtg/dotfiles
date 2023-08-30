@@ -1,2 +1,2 @@
 -- [nfnl] Compiled from fnl/plugins/basic.fnl by https://github.com/Olical/nfnl, do not edit.
-return {{"bakpakin/fennel.vim", lazy = true, ft = {"fennel"}}}
+return {{"bakpakin/fennel.vim", lazy = true, ft = {"fennel"}}, {"numToStr/Comment.nvim", opts = {}, lazy = false}}

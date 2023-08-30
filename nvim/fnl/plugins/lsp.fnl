@@ -18,9 +18,8 @@
 [{1 :neovim/nvim-lspconfig
   :dependencies [{1 :williamboman/mason.nvim :config true}
                  {1 :williamboman/mason-lspconfig.nvim :config true}
-                 {1 :j-hui/fidget.nvim :tag :legacy :opts {}}
-                 {1 :folke/neodev.nvim :opts {}}
-                 ]
+                 {1 :folke/neodev.nvim :opts {}}]
+                 
   :config (fn []
             (let [lsp (require :lspconfig)
                   cmplsp (require :cmp_nvim_lsp)
@@ -70,8 +69,20 @@
                                       :before_init before_init
                                       :capabilities capabilities})
 
+              ;; Clojure
+              (lsp.lua_ls.setup {:on_attach on_attach
+                                      :handlers handlers
+                                      :before_init before_init
+                                      :capabilities capabilities})
+
               ;; Fennel
               (lsp.fennel_language_server.setup {:on_attach on_attach
-                                      :before_init before_init
-                                      :capabilities capabilities
-                                      :settings {:fennel {:workspace {:library (vim.api.nvim_list_runtime_paths)} :diagnostics {:globals [:vim]}}}})))}]
+                                                 :before_init before_init
+                                                 :capabilities capabilities
+                                                 :settings {:fennel {:workspace {:library (vim.api.nvim_list_runtime_paths)} :diagnostics {:globals [:vim]}}}})
+              
+              ;; Clojure
+              (lsp.efm.setup {:on_attach on_attach
+                                   :handlers handlers
+                                   :before_init before_init
+                                   :capabilities capabilities})))}]

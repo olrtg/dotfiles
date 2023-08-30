@@ -6,11 +6,12 @@
                  :nvim-lua/popup.nvim
                  :nvim-lua/plenary.nvim]
   :init (fn []
-          (nvim.set_keymap :n :<leader>ff ":lua require('telescope.builtin').find_files()<CR>" {:noremap true})
-          (nvim.set_keymap :n :<leader>fg ":lua require('telescope.builtin').live_grep()<CR>" {:noremap true})
+          (nvim.set_keymap :n :<leader>f ":lua require('telescope.builtin').git_files()<CR>" {:noremap true})
+          (nvim.set_keymap :n :<leader>sf ":lua require('telescope.builtin').find_files()<CR>" {:noremap true})
+          (nvim.set_keymap :n :<leader>st ":lua require('telescope.builtin').live_grep()<CR>" {:noremap true})
           (nvim.set_keymap :n :<leader><leader> ":lua require('telescope.builtin').buffers()<CR>" {:noremap true})
-          (nvim.set_keymap :n :<leader>fh ":lua require('telescope.builtin').help_tags()<CR>" {:noremap true})
-          (nvim.set_keymap :n :<leader>fr ":lua require('telescope.builtin').resume()<CR>" {:noremap true}))
+          (nvim.set_keymap :n :<leader>sh ":lua require('telescope.builtin').help_tags()<CR>" {:noremap true})
+          (nvim.set_keymap :n :<leader>sr ":lua require('telescope.builtin').resume()<CR>" {:noremap true}))
   :config (fn []
             (let [telescope (require :telescope)
                   themes (require :telescope.themes)]

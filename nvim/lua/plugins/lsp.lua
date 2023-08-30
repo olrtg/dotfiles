@@ -45,6 +45,8 @@ local function _2_()
   end
   on_attach = _4_
   lsp.clojure_lsp.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
-  return lsp.fennel_language_server.setup({on_attach = on_attach, before_init = before_init, capabilities = capabilities, settings = {fennel = {workspace = {library = vim.api.nvim_list_runtime_paths()}, diagnostics = {globals = {"vim"}}}}})
+  lsp.lua_ls.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
+  lsp.fennel_language_server.setup({on_attach = on_attach, before_init = before_init, capabilities = capabilities, settings = {fennel = {workspace = {library = vim.api.nvim_list_runtime_paths()}, diagnostics = {globals = {"vim"}}}}})
+  return lsp.efm.setup({on_attach = on_attach, handlers = handlers, before_init = before_init, capabilities = capabilities})
 end
-return {{"neovim/nvim-lspconfig", dependencies = {{"williamboman/mason.nvim", config = true}, {"williamboman/mason-lspconfig.nvim", config = true}, {"j-hui/fidget.nvim", tag = "legacy", opts = {}}, {"folke/neodev.nvim", opts = {}}}, config = _2_}}
+return {{"neovim/nvim-lspconfig", dependencies = {{"williamboman/mason.nvim", config = true}, {"williamboman/mason-lspconfig.nvim", config = true}, {"folke/neodev.nvim", opts = {}}}, config = _2_}}
