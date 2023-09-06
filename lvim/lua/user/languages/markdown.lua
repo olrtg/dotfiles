@@ -1,6 +1,6 @@
 local api = require("user.utils.api")
 
-api.install_tools({ "markdownlint", "proselint" })
+api.install_tools({ "markdownlint" })
 
 api.install_parsers({ "markdown" })
 
@@ -24,11 +24,6 @@ api.setup_linters({
       "MD041",
     },
   },
-  { command = "proselint" },
-})
-
-api.setup_code_actions({
-  { command = "proselint" },
 })
 
 lvim.builtin.which_key.vmappings["m"] = {
