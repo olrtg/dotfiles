@@ -130,8 +130,7 @@ lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Pl
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Replace" }
 
--- BUG: this doesn't work as expected
--- lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
+lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
 
 --
 -- Modules
@@ -152,7 +151,7 @@ require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
 require("user.plugins.copilot")
--- require("user.plugins.flash")
+require("user.plugins.flash")
 -- require("user.plugins.inlayhints")
 require("user.plugins.mason")
 require("user.plugins.openingh")
