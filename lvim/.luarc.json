@@ -8,5 +8,13 @@
         "/Users/olrtg/.local/share/lunarvim/site/pack/packer/start/plenary.nvim/lua",
         "/Users/olrtg/.local/share/lunarvim/site/pack/packer/start/telescope.nvim/lua",
         "${3rd}/luassert/library"
+    ],
+    "diagnostics.globals": [
+        "vim",
+        "lvim",
+        "reload",
+        "s",
+        "c",
+        "t"
     ]
 }
