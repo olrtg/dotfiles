@@ -5,7 +5,6 @@ lvim.format_on_save.enabled = true
 lvim.format_on_save.timeout = 5000
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
--- lvim.colorscheme = "tokyonight"
 
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#center-a-floating-nvim-tree-window
 local HEIGHT_RATIO = 0.8
@@ -38,6 +37,8 @@ lvim.builtin.nvimtree.setup.view = {
     return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
   end,
 }
+
+vim.opt.relativenumber = true
 
 --
 -- Plugins
@@ -102,7 +103,7 @@ lvim.plugins = {
 
   -- NOTE: My plugins in development
   {
-    dir = "~/code/nvim-i18n",
+    dir = "~/i/nvim-i18n",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     config = true,
     enabled = true,

@@ -35,7 +35,7 @@ api.install_plugins({
   { "jose-elias-alvarez/typescript.nvim" },
   { "windwp/nvim-ts-autotag" },
   {
-    dir = "~/code/nvim-rename-state",
+    dir = "~/i/nvim-rename-state",
     -- enabled = false,
   },
 })
