@@ -11,14 +11,26 @@ if not project_has_eslint_config() then
   return
 end
 
+local custom_filetypes =
+  vim.tbl_extend("force", require("null-ls").builtins.formatting.eslint_d["filetypes"], { "svelte" })
+
 api.setup_formatters({
-  { command = "eslint_d" },
+  {
+    command = "eslint_d",
+    filetypes = custom_filetypes,
+  },
 })
 
 api.setup_linters({
-  { command = "eslint_d" },
+  {
+    command = "eslint_d",
+    filetypes = custom_filetypes,
+  },
 })
 
 api.setup_code_actions({
-  { command = "eslint_d" },
+  {
+    command = "eslint_d",
+    filetypes = custom_filetypes,
+  },
 })
