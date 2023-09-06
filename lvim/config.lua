@@ -132,6 +132,21 @@ lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Repl
 
 lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
 
+lvim.builtin.telescope.defaults.mappings.n["q"] = require("telescope.actions").close
+
+lvim.builtin.nvimtree.setup.on_attach = function(bufnr)
+  local api = require("nvim-tree.api")
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+  -- custom mappings
+  vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
+end
+
 --
 -- Modules
 --
