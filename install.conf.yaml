@@ -18,8 +18,3 @@
     ~/.tmux.conf: tmux/.tmux.conf
     ~/.zshrc: zsh/.zshrc
     ~/.asdfrc: asdf/.asdfrc
-
-    ~/.hammerspoon:
-      if: '[ `uname` = Darwin ]'
-      path: hammerspoon
-      force: true
