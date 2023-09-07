@@ -26,7 +26,3 @@ brew-restore:
 # Set MacOS defaults
 macos:
 	./macos/set-defaults.sh
-
-# Setup karabiner's commands 
-karabiner:
-	deno run --allow-env --allow-read --allow-write karabiner/karabiner.ts
