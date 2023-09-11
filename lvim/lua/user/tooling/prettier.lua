@@ -7,8 +7,13 @@ local project_has_prettier_config = function()
   return (vim.fn.glob("{.,}prettier*") ~= "" or utils.is_in_package_json("prettier"))
 end
 
-local custom_filetypes =
-  vim.tbl_extend("force", require("null-ls").builtins.formatting.prettierd["filetypes"], { "svelte" })
+--- @type string[]
+local base_filetypes = require("null-ls").builtins.formatting.prettierd["filetypes"]
+local custom_filetypes = { "astro", "svelte" }
+
+for _, v in pairs(base_filetypes) do
+  table.insert(custom_filetypes, v)
+end
 
 if not project_has_prettier_config() then
   api.setup_formatters({

@@ -11,8 +11,13 @@ if not project_has_eslint_config() then
   return
 end
 
-local custom_filetypes =
-  vim.tbl_extend("force", require("null-ls").builtins.formatting.eslint_d["filetypes"], { "svelte" })
+--- @type string[]
+local base_filetypes = require("null-ls").builtins.formatting.eslint_d["filetypes"]
+local custom_filetypes = { "svelte" }
+
+for _, v in pairs(base_filetypes) do
+  table.insert(custom_filetypes, v)
+end
 
 api.setup_formatters({
   {
