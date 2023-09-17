@@ -12,6 +12,7 @@
     /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
     /usr/local/bin/lt: bin/lt
     ~/.config/kitty: kitty
+    ~/.wezterm.lua: wezterm/.wezterm.lua
     ~/.config/lvim: lvim
     ~/.config/nvim: nvim
     ~/.gitconfig: git/.gitconfig
