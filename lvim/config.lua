@@ -128,6 +128,13 @@ lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<cr>"
 lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
 lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
 
+lvim.builtin.which_key.mappings["l"]["h"] = {
+  function()
+    vim.lsp.inlay_hint(0, nil)
+  end,
+  "Toggle Inlay Hints",
+}
+
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Replace" }
 
 lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
@@ -167,7 +174,6 @@ require("user.tooling.prettier")
 require("user.plugins.colorizer")
 require("user.plugins.copilot")
 require("user.plugins.flash")
--- require("user.plugins.inlayhints")
 require("user.plugins.mason")
 require("user.plugins.openingh")
 require("user.plugins.persistence")

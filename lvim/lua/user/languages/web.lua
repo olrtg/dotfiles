@@ -51,30 +51,30 @@ api.setup_plugin("typescript", {
     on_attach = require("lvim.lsp").common_on_attach,
     on_init = require("lvim.lsp").common_on_init,
     capabilities = require("lvim.lsp").common_capabilities(),
-    -- settings = {
-    --   typescript = {
-    --     inlayHints = {
-    --       includeInlayParameterNameHints = "all",
-    --       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --       includeInlayFunctionParameterTypeHints = false,
-    --       includeInlayVariableTypeHints = true,
-    --       includeInlayPropertyDeclarationTypeHints = true,
-    --       includeInlayFunctionLikeReturnTypeHints = true,
-    --       includeInlayEnumMemberValueHints = true,
-    --     },
-    --   },
-    --   javascript = {
-    --     inlayHints = {
-    --       includeInlayParameterNameHints = "all",
-    --       includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-    --       includeInlayFunctionParameterTypeHints = false,
-    --       includeInlayVariableTypeHints = true,
-    --       includeInlayPropertyDeclarationTypeHints = true,
-    --       includeInlayFunctionLikeReturnTypeHints = true,
-    --       includeInlayEnumMemberValueHints = true,
-    --     },
-    --   },
-    -- },
+    settings = {
+      typescript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = false,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+      javascript = {
+        inlayHints = {
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = false,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+        },
+      },
+    },
   },
 })
 
