@@ -20,6 +20,8 @@ api.setup_linters({
       "--disable",
       -- https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md013---line-length
       "MD013",
+      -- https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md033---inline-html
+      "MD033",
       -- https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md#md041---first-line-in-file-should-be-a-top-level-header
       "MD041",
     },
