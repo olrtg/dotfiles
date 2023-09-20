@@ -9,7 +9,6 @@ api.install_tools({
   "css-lsp",
   "html-lsp",
   "prisma-language-server",
-  "rustywind",
   "stylelint",
   "svelte-language-server",
   "tailwindcss-language-server",
@@ -87,37 +86,6 @@ api.setup_plugin("nvim-ts-autotag")
 --
 -- Emmet
 --
-lvim.autocommands = {
-  {
-    "FileType",
-    {
-      pattern = "astro,css,eruby,html,htmldjango,javascript,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue,php",
-      callback = function()
-        vim.lsp.start({
-          cmd = { "emmet-language-server", "--stdio" },
-          root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
-          init_options = {
-            --- @type table<string, any> https://docs.emmet.io/customization/preferences/
-            preferences = {},
-            --- @type "always" | "never" Defaults to `"always"`
-            showExpandedAbbreviation = "always",
-            --- @type boolean Defaults to `true`
-            showAbbreviationSuggestions = true,
-            --- @type boolean Defaults to `false`
-            showSuggestionsAsSnippets = false,
-            --- @type table<string, any> https://docs.emmet.io/customization/syntax-profiles/
-            syntaxProfiles = {},
-            --- @type table<string, string> https://docs.emmet.io/customization/snippets/#variables
-            variables = {},
-            --- @type string[]
-            excludeLanguages = {},
-          },
-        })
-      end,
-    },
-  },
-}
--- require("lvim.lsp.manager").setup("emmet_language_server")
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "astro,css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue",
   callback = function()
@@ -151,23 +119,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 ---
 require("lvim.lsp.manager").setup("unocss")
 
---
--- Tailwind CSS Formatter
---
-local utils = require("user.utils.functions")
-
-local project_has_tailwindcss_dependency = function()
-  return (vim.fn.glob("tailwind*")) ~= ""
-    or (vim.fn.glob("web/config/tailwind*")) ~= "" -- for redwood
-    or utils.is_in_package_json("tailwindcss")
-end
-
-if project_has_tailwindcss_dependency() and not utils.is_in_package_json("prettier-plugin-tailwindcss") then
-  api.setup_formatters({
-    { command = "rustywind" },
-  })
-  return
-end
 
 --
 -- Linters
