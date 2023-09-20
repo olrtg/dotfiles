@@ -50,9 +50,6 @@ end
 ---@param setup? table
 ---@param callback? fun(plugin: table)
 api.setup_plugin = function(name, setup, callback)
-  local setup = setup or nil
-  local callback = callback or nil
-
   local ok, plugin = pcall(require, name)
 
   if not ok then
