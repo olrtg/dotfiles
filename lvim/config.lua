@@ -46,13 +46,14 @@ vim.opt.relativenumber = true
 lvim.plugins = {
   { "imsnif/kdl.vim" },
   { "tpope/vim-repeat" },
+  { "tpope/vim-sleuth" },
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
-  { "filNaj/tree-setter" },
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
   { "dmmulroy/tsc.nvim", config = true },
+  { "filNaj/tree-setter", enabled = false },
   { "axelvc/template-string.nvim", config = true },
   { "simrat39/symbols-outline.nvim", config = true },
   { "j-hui/fidget.nvim", version = "legacy", config = true },
@@ -175,6 +176,7 @@ require("user.plugins.colorizer")
 require("user.plugins.copilot")
 require("user.plugins.flash")
 require("user.plugins.mason")
+require("user.plugins.neorg")
 require("user.plugins.openingh")
 require("user.plugins.persistence")
 -- require("user.plugins.refactoring")
