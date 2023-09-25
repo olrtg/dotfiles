@@ -16,6 +16,10 @@ api.install_plugins({
 
 api.install_parsers({ "fennel" })
 
+api.setup_formatters({
+  { command = "fnlfmt" },
+})
+
 require("lvim.lsp.manager").setup("fennel_language_server", {
   settings = {
     fennel = {
