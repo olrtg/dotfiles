@@ -1,5 +1,4 @@
-[{
-  1 :zbirenbaum/copilot.lua
+[{1 :zbirenbaum/copilot.lua
   :config (fn []
             (local copilot (require :copilot))
             (copilot.setup {:suggestion {:auto_trigger true
@@ -9,5 +8,3 @@
                                                   :dismiss :<M-c>
                                                   :next "<M-]>"
                                                   :prev "<M-[>"}}}))}]
-
-
