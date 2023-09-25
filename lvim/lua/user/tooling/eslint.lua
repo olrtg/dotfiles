@@ -4,7 +4,25 @@ local utils = require("user.utils.functions")
 api.install_tools({ "eslint_d" })
 
 local project_has_eslint_config = function()
-  return (vim.fn.glob(".eslintrc*") ~= "" or utils.is_in_package_json("eslint"))
+  if utils.is_dependency_in_package_json("eslint") then
+    return true
+  end
+
+  local filenames = {
+    ".eslintrc.js",
+    ".eslintrc.cjs",
+    ".eslintrc.yaml",
+    ".eslintrc.yml",
+    ".eslintrc.json",
+  }
+
+  for _, v in pairs(filenames) do
+    if vim.fn.filereadable(vim.fn.getcwd() .. v) == 1 then
+      return true
+    end
+  end
+
+  return false
 end
 
 if not project_has_eslint_config() then

@@ -4,7 +4,32 @@ local utils = require("user.utils.functions")
 api.install_tools({ "prettier" })
 
 local project_has_prettier_config = function()
-  return (vim.fn.glob("{.,}prettier*") ~= "" or utils.is_in_package_json("prettier"))
+  if utils.is_dependency_in_package_json("prettier") then
+    return true
+  end
+
+  local filenames = {
+    ".prettierrc",
+    ".prettierrc.json",
+    ".prettierrc.yml",
+    ".prettierrc.yaml",
+    ".prettierrc.json5",
+    ".prettierrc.js",
+    "prettier.config.js",
+    ".prettierrc.cjs",
+    "prettier.config.cjs",
+    ".prettierrc.mjs",
+    "prettier.config.mjs",
+    ".prettierrc.toml",
+  }
+
+  for _, v in pairs(filenames) do
+    if vim.fn.filereadable(vim.fn.getcwd() .. v) == 1 then
+      return true
+    end
+  end
+
+  return false
 end
 
 --- @type string[]
