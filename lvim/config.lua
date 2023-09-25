@@ -178,6 +178,7 @@ end
 require("user.autocommands")
 
 require("user.languages.docker")
+require("user.languages.lisp")
 require("user.languages.flutter")
 require("user.languages.lua")
 require("user.languages.markdown")
