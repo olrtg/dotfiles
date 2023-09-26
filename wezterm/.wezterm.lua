@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "Tokyo Night"
-config.font = wezterm.font("Berkeley Mono")
+config.font = wezterm.font("Comic Code")
 config.font_size = 13.0
 config.line_height = 1.2
 config.warn_about_missing_glyphs = false
