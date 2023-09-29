@@ -31,40 +31,12 @@ api.install_parsers({
 })
 
 api.install_plugins({
-  { "jose-elias-alvarez/typescript.nvim" },
-  { "windwp/nvim-ts-autotag" },
   {
-    dir = "~/i/nvim-rename-state",
-    -- enabled = false,
-  },
-})
-
---
--- typescript.nvim
---
-api.setup_plugin("typescript", {
-  debug = false,
-  go_to_source_definition = {
-    fallback = true,
-  },
-  server = {
-    on_attach = require("lvim.lsp").common_on_attach,
-    on_init = require("lvim.lsp").common_on_init,
-    capabilities = require("lvim.lsp").common_capabilities(),
-    settings = {
-      typescript = {
-        inlayHints = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = false,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-      javascript = {
-        inlayHints = {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {
+      settings = {
+        tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
           includeInlayFunctionParameterTypeHints = false,
@@ -75,6 +47,11 @@ api.setup_plugin("typescript", {
         },
       },
     },
+  },
+  { "windwp/nvim-ts-autotag" },
+  {
+    dir = "~/i/nvim-rename-state",
+    -- enabled = false,
   },
 })
 
@@ -118,7 +95,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --- Unocss
 ---
 require("lvim.lsp.manager").setup("unocss")
-
 
 --
 -- Linters
