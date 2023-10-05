@@ -94,7 +94,7 @@ local config = {
         },
       },
       format = {
-        enabled = false,
+        enabled = true,
       },
     },
     signatureHelp = { enabled = true },
