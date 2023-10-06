@@ -164,7 +164,7 @@ require("user.tooling.eslint")
 require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
-require("user.plugins.copilot")
+-- require("user.plugins.copilot")
 require("user.plugins.flash")
 require("user.plugins.mason")
 require("user.plugins.neorg")
