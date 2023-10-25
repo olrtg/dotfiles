@@ -5,6 +5,7 @@ lvim.format_on_save.enabled = true
 lvim.format_on_save.timeout = 5000
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
+lvim.builtin.bufferline.active = false
 
 -- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#center-a-floating-nvim-tree-window
 local HEIGHT_RATIO = 0.8
@@ -159,7 +160,6 @@ require("user.languages.serialized")
 require("user.languages.shell")
 require("user.languages.web")
 
-require("user.tooling.eslint")
 require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
