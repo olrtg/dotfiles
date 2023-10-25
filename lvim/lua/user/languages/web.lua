@@ -7,6 +7,7 @@ api.override_servers({ "tsserver" })
 api.install_tools({
   "astro-language-server",
   "css-lsp",
+  "eslint",
   "html-lsp",
   "prisma-language-server",
   "stylelint",
@@ -67,6 +68,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "astro,css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue",
   callback = function()
     vim.lsp.start({
+      name = "emmet",
       cmd = { "emmet-language-server", "--stdio" },
       root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]),
       -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
@@ -99,6 +101,8 @@ require("lvim.lsp.manager").setup("unocss")
 --
 -- Linters
 --
+require("lvim.lsp.manager").setup("eslint")
+
 api.setup_linters({
   { command = "stylelint" },
 })

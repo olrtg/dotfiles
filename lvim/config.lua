@@ -159,7 +159,6 @@ require("user.languages.serialized")
 require("user.languages.shell")
 require("user.languages.web")
 
-require("user.tooling.eslint")
 require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
