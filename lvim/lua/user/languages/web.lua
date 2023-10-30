@@ -9,6 +9,7 @@ api.install_tools({
   "css-lsp",
   "eslint",
   "html-lsp",
+  "mdx-analyzer",
   "prisma-language-server",
   "stylelint",
   "svelte-language-server",
@@ -97,6 +98,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --- Unocss
 ---
 require("lvim.lsp.manager").setup("unocss")
+
+---
+--- MDX
+---
+vim.filetype.add({
+  extension = {
+    mdx = "markdown.mdx",
+  },
+})
+
+require("lvim.lsp.manager").setup("mdx_analyzer")
 
 --
 -- Linters
