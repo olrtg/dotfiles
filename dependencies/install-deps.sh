@@ -12,3 +12,5 @@ npm i -g pnpm \
 	yarn \
 	commitizen \
 	cz-conventional-changelog
+
+pip3 install fb-idb
