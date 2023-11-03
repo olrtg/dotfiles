@@ -39,7 +39,8 @@ lvim.builtin.nvimtree.setup.view = {
   end,
 }
 
-vim.opt.relativenumber = true
+vim.o.relativenumber = true
+vim.o.cmdheight = 0
 
 --
 -- Plugins
