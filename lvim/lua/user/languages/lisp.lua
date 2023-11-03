@@ -6,12 +6,12 @@ api.install_tools({ "fennel-language-server" })
 
 api.install_plugins({
   { "Olical/conjure" },
-  {
-    "PaterJason/cmp-conjure",
-    config = function()
-      vim.list_extend(lvim.builtin.cmp.sources, { { name = "conjure" } })
-    end,
-  },
+  -- {
+  --   "PaterJason/cmp-conjure",
+  --   config = function()
+  --     vim.list_extend(lvim.builtin.cmp.sources, { { name = "conjure" } })
+  --   end,
+  -- },
 })
 
 api.install_parsers({ "fennel" })
