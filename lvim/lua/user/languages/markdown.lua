@@ -1,6 +1,6 @@
 local api = require("user.utils.api")
 
-api.install_tools({ "markdownlint" })
+api.install_tools({ "markdownlint", "mdx-analyzer" })
 
 api.install_parsers({ "markdown" })
 
@@ -37,3 +37,14 @@ lvim.builtin.which_key.vmappings["m"] = {
   k = { 'c[<C-r>"]()<esc>', "Link" },
   s = { 'c~<C-r>"~<esc>', "Strike-through" },
 }
+
+---
+--- MDX
+---
+vim.filetype.add({
+  extension = {
+    mdx = "markdown.mdx",
+  },
+})
+
+require("lvim.lsp.manager").setup("mdx_analyzer")

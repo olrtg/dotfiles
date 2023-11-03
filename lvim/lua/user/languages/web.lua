@@ -9,7 +9,6 @@ api.install_tools({
   "css-lsp",
   "eslint",
   "html-lsp",
-  "mdx-analyzer",
   "prisma-language-server",
   "stylelint",
   "svelte-language-server",
@@ -77,6 +76,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
       init_options = {
         --- @type string[]
         excludeLanguages = {},
+        --- @type string[]
+        extensionsPath = { "./.vscode" },
         --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
         preferences = {},
         --- @type boolean Defaults to `true`
@@ -98,17 +99,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --- Unocss
 ---
 require("lvim.lsp.manager").setup("unocss")
-
----
---- MDX
----
-vim.filetype.add({
-  extension = {
-    mdx = "markdown.mdx",
-  },
-})
-
-require("lvim.lsp.manager").setup("mdx_analyzer")
 
 --
 -- Linters
