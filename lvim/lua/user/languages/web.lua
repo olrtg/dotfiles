@@ -5,6 +5,7 @@ local api = require("user.utils.api")
 api.override_servers({ "tsserver" })
 
 api.install_tools({
+  "angular-language-server",
   "astro-language-server",
   "css-lsp",
   "eslint",
@@ -50,6 +51,8 @@ api.install_plugins({
     },
   },
   { "windwp/nvim-ts-autotag" },
+  -- { "nvim-treesitter/nvim-treesitter-angular" },
+  { "elgiano/nvim-treesitter-angular", branch = "topic/jsx-fix" }, -- NOTE: until https://github.com/nvim-treesitter/nvim-treesitter-angular/pull/4 is merged
   {
     dir = "~/i/nvim-rename-state",
     -- enabled = false,
@@ -77,7 +80,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         --- @type string[]
         excludeLanguages = {},
         --- @type string[]
-        extensionsPath = { "./.vscode" },
+        extensionsPath = {},
         --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
         preferences = {},
         --- @type boolean Defaults to `true`
@@ -95,10 +98,15 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
----
---- Unocss
----
+--
+-- Unocss
+--
 require("lvim.lsp.manager").setup("unocss")
+
+--
+-- Angular
+--
+require("lvim.lsp.manager").setup("angularls")
 
 --
 -- Linters
