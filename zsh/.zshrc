@@ -67,9 +67,11 @@ alias d="nr dev"
 alias b="nr build"
 alias t="nr test"
 
+alias ncls="rm -rf node_modules"
+
 alias rnand="npx react-native run-android"
 alias rnios="npx react-native run-ios"
-alias rncls="rm -rf node_modules && rm -rf ios/Pods"
+alias rncls="ncls && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
 alias nc="npm-check -u"
