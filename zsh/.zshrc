@@ -80,7 +80,8 @@ alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
 
 alias dcu="docker compose up"
 alias dcd="docker compose down"
-alias dcdv="docker compose down -v"
+alias dcdv="dcd -v"
+alias dcdv="dcd --rmi all"
 
 # BUG: Doesn't work with arguments
 function patchfont() {

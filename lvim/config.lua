@@ -40,7 +40,6 @@ lvim.builtin.nvimtree.setup.view = {
 }
 
 vim.o.relativenumber = true
-vim.o.cmdheight = 0
 
 -- independent node version for neovim
 local node_bin = os.getenv("HOME") .. "/.asdf/installs/nodejs/18.17.0/bin"
