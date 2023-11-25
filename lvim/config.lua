@@ -6,38 +6,7 @@ lvim.format_on_save.timeout = 5000
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
-
--- https://github.com/nvim-tree/nvim-tree.lua/wiki/Recipes#center-a-floating-nvim-tree-window
-local HEIGHT_RATIO = 0.8
-local WIDTH_RATIO = 0.4
-
-lvim.builtin.nvimtree.setup.view = {
-  float = {
-    enable = true,
-    open_win_config = function()
-      local screen_w = vim.opt.columns:get()
-      local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-      local window_w = screen_w * WIDTH_RATIO
-      local window_h = screen_h * HEIGHT_RATIO
-      local window_w_int = math.floor(window_w)
-      local window_h_int = math.floor(window_h)
-      local center_x = (screen_w - window_w) / 2
-      local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
-
-      return {
-        border = "rounded",
-        relative = "editor",
-        row = center_y,
-        col = center_x,
-        width = window_w_int,
-        height = window_h_int,
-      }
-    end,
-  },
-  width = function()
-    return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-  end,
-}
+lvim.builtin.nvimtree.active = false
 
 vim.o.relativenumber = true
 
@@ -64,6 +33,25 @@ lvim.plugins = {
   { "simrat39/symbols-outline.nvim", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("neo-tree").setup({
+        window = {
+          position = "float",
+          mappings = { ["<leader>e"] = "cancel" },
+        },
+      })
+      lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree<cr>", "Explorer" }
+    end,
+  },
 
   {
     "benfowler/telescope-luasnip.nvim",
