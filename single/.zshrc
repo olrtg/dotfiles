@@ -30,7 +30,6 @@ export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000000
-export FLYCTL_INSTALL="/home/olrtg/.fly"
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
@@ -48,7 +47,6 @@ path=(
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
 	${HOME}/bin
-	${FLYCTL_INSTALL}/bin
 	$path
 )
 
