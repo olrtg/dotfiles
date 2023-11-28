@@ -19,10 +19,10 @@ plug "olrtg/zsh-fvm"
 # Plugins in development
 # plug ~/code/zsh-fvm/zsh-fvm.plugin.zsh
 
-if [[ `uname` == "Darwin" ]]; then
-  export ANDROID_HOME="$HOME/Library/Android/Sdk"
+if [[ $(uname) == "Darwin" ]]; then
+	export ANDROID_HOME="$HOME/Library/Android/Sdk"
 else
-  export ANDROID_HOME="$HOME/Android/Sdk"
+	export ANDROID_HOME="$HOME/Android/Sdk"
 fi
 
 export EDITOR=lvim
@@ -90,7 +90,7 @@ alias dcdv="dcd --rmi all"
 function patchfont() {
 	# Patch a normal font with nerdfont
 	# USAGE: patchfont <input_folder_path> <output_folder_path>
-	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher 
+	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
 }
 
 function docker_connect() {
@@ -105,14 +105,16 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 
 # asdf
-. "$HOME/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit && compinit
+if [[ $(uname) == "Darwin" ]]; then
+	. /opt/homebrew/opt/asdf/libexec/asdf.sh
+else
+	. "$HOME/.asdf/asdf.sh"
+	fpath=(${ASDF_DIR}/completions $fpath)
+	autoload -Uz compinit && compinit
+fi
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # opam configuration
-[[ ! -r /home/olrtg/.opam/opam-init/init.zsh ]] || source /home/olrtg/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r /home/olrtg/.opam/opam-init/init.zsh ]] || source /home/olrtg/.opam/opam-init/init.zsh >/dev/null 2>/dev/null
