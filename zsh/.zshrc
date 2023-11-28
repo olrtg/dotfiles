@@ -5,7 +5,6 @@
 
 # Plugins
 plug "zap-zsh/exa"
-plug "zap-zsh/fnm"
 plug "zap-zsh/fzf"
 plug "Aloxaf/fzf-tab"
 plug "wintermi/zsh-brew"
@@ -32,6 +31,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000000
 
+export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
+
 # FZF Tokionight
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
 	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
@@ -54,7 +55,6 @@ alias c="clear"
 alias r="source ~/.zshrc"
 alias x="exit"
 
-alias lzd="lazydocker"
 alias lzg="lazygit"
 
 alias gc="git clone"
@@ -103,3 +103,5 @@ setopt hist_ignore_space
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
