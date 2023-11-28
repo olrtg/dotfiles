@@ -9,13 +9,14 @@
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
     /usr/local/bin/lt: bin/lt
-    ~/.config/kitty: kitty
-    ~/.wezterm.lua: wezterm/.wezterm.lua
+    /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
+
     ~/.config/lvim: lvim
-    ~/.config/nvim: nvim
-    ~/.gitconfig: git/.gitconfig
-    ~/.tmux.conf: tmux/.tmux.conf
-    ~/.zshrc: zsh/.zshrc
-    ~/.asdfrc: asdf/.asdfrc
+    ~/.config/kitty: kitty
+
+    ~/.zshrc: single/.zshrc
+    ~/.asdfrc: single/.asdfrc
+    ~/.gitconfig: single/.gitconfig
+    ~/.tmux.conf: single/.tmux.conf
+    ~/.wezterm.lua: single/.wezterm.lua
