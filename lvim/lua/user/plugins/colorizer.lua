@@ -11,10 +11,11 @@ api.install_plugins({
 api.setup_plugin("colorizer", {
   filetypes = {
     "*",
+    "!lazy",
     "!mason",
+    "!neo-tree",
     "!toggleterm",
     "!TelescopePrompt",
-    "!lazy",
   },
   user_default_options = {
     names = false,
