@@ -49,7 +49,7 @@ lvim.plugins = {
           mappings = { ["<leader>e"] = "cancel" },
         },
       })
-      lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree<cr>", "Explorer" }
+      lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree reveal<cr>", "Explorer" }
     end,
   },
 
