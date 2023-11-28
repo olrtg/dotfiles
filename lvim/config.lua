@@ -117,7 +117,7 @@ end, { silent = true })
 lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
 
 lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
-lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>TSPlaygroundToggle<cr>", "Playground" }
+lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>InspectTree<cr>", "Playground" }
 
 lvim.builtin.which_key.mappings["l"]["h"] = {
   function()
