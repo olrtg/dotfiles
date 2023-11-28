@@ -68,7 +68,7 @@ api.setup_plugin("nvim-ts-autotag")
 -- Emmet
 --
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = "astro,css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,svelte,typescriptreact,vue",
+  pattern = "css,eruby,html,htmldjango,javascriptreact,less,pug,sass,scss,typescriptreact",
   callback = function()
     vim.lsp.start({
       name = "emmet",

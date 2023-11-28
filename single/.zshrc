@@ -30,6 +30,7 @@ export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history
 export SAVEHIST=1000000
+export FLYCTL_INSTALL="/home/olrtg/.fly"
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
@@ -46,6 +47,8 @@ path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
+	${HOME}/bin
+	${FLYCTL_INSTALL}/bin
 	$path
 )
 
@@ -101,7 +104,15 @@ setopt inc_append_history
 setopt hist_ignore_dups
 setopt hist_ignore_space
 
+# asdf
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit && compinit
+
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# opam configuration
+[[ ! -r /home/olrtg/.opam/opam-init/init.zsh ]] || source /home/olrtg/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

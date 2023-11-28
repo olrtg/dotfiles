@@ -19,7 +19,6 @@ vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 -- Plugins
 --
 lvim.plugins = {
-  { "imsnif/kdl.vim" },
   { "tpope/vim-repeat" },
   { "tpope/vim-sleuth" },
   { "tpope/vim-abolish" },
@@ -32,6 +31,7 @@ lvim.plugins = {
   { "axelvc/template-string.nvim", config = true },
   { "simrat39/symbols-outline.nvim", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
+  { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
   { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
   {
@@ -136,6 +136,11 @@ lvim.builtin.nvimtree.setup.on_attach = function(bufnr)
   -- custom mappings
   vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 end
+
+--
+-- Custom stuff
+--
+vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy_json_path").exec, {})
 
 --
 -- Modules
