@@ -17,6 +17,7 @@
 
     ~/.zshrc: single/.zshrc
     ~/.asdfrc: single/.asdfrc
+    ~/.ideavimrc: single/.ideavimrc
     ~/.gitconfig: single/.gitconfig
     ~/.tmux.conf: single/.tmux.conf
     ~/.wezterm.lua: single/.wezterm.lua

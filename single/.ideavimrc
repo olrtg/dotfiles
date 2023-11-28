@@ -1,0 +1,39 @@
+let mapleader=" "
+
+""" General
+set scrolloff=10
+set number relativenumber
+set visualbell
+set clipboard+=unnamed
+
+""" Plugins
+set surround
+set commentary
+set highlightedyank
+set nerdtree
+
+""" Better search
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+""" Keybindings
+imap jk <Esc>
+
+map <leader>w <Action>(SaveAll)
+map <leader>h :noh<cr>
+map <leader>e :NERDTreeToggle<cr>
+
+map <leader>gr <Action>(ShowUsages)
+
+map <leader>lr <Action>(RenameElement)
+map <leader>la <Action>(ShowIntentionActions)
+map <leader>lj <Action>(GotoNextError)
+map <leader>lk <Action>(GotoPreviousError)
+map <leader>lf <Action>(ReformatCode)
+
+map <leader>f <Action>(GotoFile)
+map <leader>st <Action>(TextSearchAction)
+
+map <C-k> <Action>(ParameterInfo)
