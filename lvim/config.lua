@@ -44,9 +44,17 @@ lvim.plugins = {
     },
     config = function()
       require("neo-tree").setup({
+        popup_border_style = "rounded",
         window = {
           position = "float",
           mappings = { ["<leader>e"] = "cancel" },
+        },
+        filesystem = {
+          filtered_items = {
+            visible = true,
+            hide_dotfiles = false,
+            hide_gitignored = false,
+          },
         },
       })
       lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree reveal<cr>", "Explorer" }
