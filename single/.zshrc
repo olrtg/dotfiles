@@ -10,7 +10,6 @@ plug "Aloxaf/fzf-tab"
 plug "wintermi/zsh-brew"
 plug "wintermi/zsh-rust"
 plug "zap-zsh/zap-prompt"
-# plug "wintermi/zsh-golang"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 
