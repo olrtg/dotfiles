@@ -1,7 +1,7 @@
 local api = require("user.utils.api")
 local utils = require("user.utils.functions")
 
-api.install_tools({ "prettier" })
+api.install_tools({ "prettierd" })
 
 local project_has_prettier_config = function()
   if utils.is_dependency_in_package_json("prettier") then
@@ -43,7 +43,7 @@ end
 if not project_has_prettier_config() then
   api.setup_formatters({
     {
-      command = "prettier",
+      command = "prettierd",
       filetypes = custom_filetypes,
       extra_args = { "--no-semi", "--single-quote", "--trailing-comma=all", "--arrow-parens=avoid" },
     },
@@ -54,7 +54,7 @@ end
 
 api.setup_formatters({
   {
-    command = "prettier",
+    command = "prettierd",
     filetypes = custom_filetypes,
   },
 })
