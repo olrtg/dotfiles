@@ -83,7 +83,7 @@ alias dcd="docker compose down"
 alias dcdv="dcd -v"
 alias dcdv="dcd --rmi all"
 
-alias nrepl="NODE_PATH=$(npm root) node"
+type npm >/dev/null 2>&1 && alias nrepl="NODE_PATH=$(npm root) node"
 
 # BUG: Doesn't work with arguments
 function patchfont() {
