@@ -7,16 +7,13 @@
 plug "zap-zsh/exa"
 plug "zap-zsh/fzf"
 plug "Aloxaf/fzf-tab"
-plug "wintermi/zsh-brew"
-plug "wintermi/zsh-rust"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
 
-plug "olrtg/zsh-fvm"
-
-# Plugins in development
-# plug ~/code/zsh-fvm/zsh-fvm.plugin.zsh
+# Completion plugins
+plug "zsh-users/zsh-completions"
+plug "jscutlery/nx-completion"
 
 if [[ $(uname) == "Darwin" ]]; then
 	export ANDROID_HOME="$HOME/Library/Android/Sdk"
@@ -69,8 +66,8 @@ alias t="nr test"
 
 alias ncls="rm -rf node_modules"
 
-alias rnand="npx react-native run-android"
-alias rnios="npx react-native run-ios"
+alias rnand="react-native run-android"
+alias rnios="react-native run-ios"
 alias rncls="ncls && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
