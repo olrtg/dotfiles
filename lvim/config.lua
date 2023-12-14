@@ -7,7 +7,6 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
-lvim.builtin.autopairs.active = false
 
 vim.o.relativenumber = true
 
