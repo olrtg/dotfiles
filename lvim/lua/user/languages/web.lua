@@ -53,6 +53,8 @@ api.install_plugins({
   { "windwp/nvim-ts-autotag" },
   -- { "nvim-treesitter/nvim-treesitter-angular" },
   { "elgiano/nvim-treesitter-angular", branch = "topic/jsx-fix" }, -- NOTE: until https://github.com/nvim-treesitter/nvim-treesitter-angular/pull/4 is merged
+  { "dmmulroy/tsc.nvim", config = true },
+  { "axelvc/template-string.nvim", config = true },
   {
     dir = "~/i/nvim-rename-state",
     -- enabled = false,

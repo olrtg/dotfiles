@@ -1,16 +1,15 @@
 #!/bin/sh
 
 # Node
-# TODO: Deprecate commitizen and cz-conventional-changelog after building a
-# custom commitizen with lazygit
-npm i -g pnpm \
-	@antfu/ni \
-	typescript \
+npm i -g \
 	@angular/cli \
-	react-native \
+	@antfu/ni \
+	@nestjs/cli \
 	npm-check \
-	yarn \
-	commitizen \
-	cz-conventional-changelog
+	nx \
+	pnpm \
+	react-native \
+	typescript \
+	yarn
 
 pip3 install fb-idb

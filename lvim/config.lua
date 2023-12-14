@@ -7,6 +7,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
+lvim.builtin.autopairs.active = false
 
 vim.o.relativenumber = true
 
@@ -26,9 +27,7 @@ lvim.plugins = {
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
-  { "dmmulroy/tsc.nvim", config = true },
   { "filNaj/tree-setter", enabled = false },
-  { "axelvc/template-string.nvim", config = true },
   { "simrat39/symbols-outline.nvim", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
@@ -91,6 +90,15 @@ lvim.plugins = {
         f = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go to Mark 4" },
       }
       lvim.builtin.which_key.mappings["<leader>"] = { require("harpoon.ui").toggle_quick_menu, "Marks Menu" }
+    end,
+  },
+
+  {
+    "almo7aya/openingh.nvim",
+    config = function()
+      require("openingh").setup()
+      lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>OpenInGHRepo<cr>", "Open Repo (GH)" }
+      lvim.builtin.which_key.mappings["g"]["f"] = { "<cmd>OpenInGHFile<cr>", "Open File (GH)" }
     end,
   },
 
@@ -161,6 +169,7 @@ require("user.languages.flutter")
 require("user.languages.java")
 require("user.languages.lua")
 require("user.languages.markdown")
+require("user.languages.ocaml")
 require("user.languages.python")
 require("user.languages.serialized")
 require("user.languages.shell")
@@ -172,7 +181,5 @@ require("user.plugins.colorizer")
 -- require("user.plugins.copilot")
 require("user.plugins.flash")
 require("user.plugins.mason")
-require("user.plugins.openingh")
 require("user.plugins.persistence")
--- require("user.plugins.refactoring")
 require("user.plugins.treesitter")
