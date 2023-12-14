@@ -26,6 +26,7 @@ map <leader>h :noh<cr>
 map <leader>e :NERDTreeToggle<cr>
 
 map <leader>gr <Action>(ShowUsages)
+map gs <Action>(ParameterInfo)
 
 map <leader>lr <Action>(RenameElement)
 map <leader>la <Action>(ShowIntentionActions)
@@ -36,4 +37,3 @@ map <leader>lf <Action>(ReformatCode)
 map <leader>f <Action>(GotoFile)
 map <leader>st <Action>(TextSearchAction)
 
-map <C-k> <Action>(ParameterInfo)

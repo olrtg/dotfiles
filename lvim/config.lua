@@ -114,7 +114,7 @@ vim.keymap.set({ "i", "s" }, "<C-l>", function()
   end
 end, { silent = true })
 
-lvim.keys.normal_mode["<C-a>"] = "ggVG" -- select everything in a buffer
+lvim.keys.normal_mode["<C-a>"] = "ggVGy" -- select everything in a buffer
 
 lvim.builtin.which_key.mappings["L"]["t"] = { "<cmd>LvimToggleFormatOnSave<cr>", "Toggle Format on Save" }
 lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>InspectTree<cr>", "Playground" }
