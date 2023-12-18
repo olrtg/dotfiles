@@ -156,6 +156,7 @@ end
 -- Custom stuff
 --
 vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy_json_path").exec, {})
+vim.api.nvim_create_user_command("UnifyMuiImports", require("user.custom.unify-mui-imports").exec, {})
 
 --
 -- Modules
