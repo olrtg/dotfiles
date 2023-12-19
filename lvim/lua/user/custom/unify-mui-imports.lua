@@ -4,13 +4,13 @@ local g = {
   --- @param specifiers string
   --- @return string
   import = function(specifiers)
-    return string.format("import %s from 'mui/material'", specifiers)
+    return string.format("import %s from '@mui/material'", specifiers)
   end,
 
   --- @param specifiers string[]
   --- @return string
   specifiers = function(specifiers)
-    return "{ " .. vim.fn.join(specifiers, ",") .. " }"
+    return "{ " .. vim.fn.join(specifiers, ", ") .. " }"
   end,
 
   --- @param name string
@@ -42,6 +42,8 @@ M.exec = function()
 
   local tree = parser:parse()[1]
   local bufnr = 0
+  local start = 0
+  local stop = -1
 
   --- @type table[]
   local import_ranges = {}
@@ -52,7 +54,7 @@ M.exec = function()
   --- @type string[]
   local import_specifiers = {}
 
-  for _, match, _ in query:iter_matches(tree:root(), bufnr) do
+  for _, match, _ in query:iter_matches(tree:root(), bufnr, start, stop) do
     for id, node in pairs(match) do
       local name = query.captures[id]
 
@@ -94,7 +96,13 @@ M.exec = function()
     local replacement = {}
 
     if index == 1 then
-      replacement = { g.import("") }
+      local specifiers = {}
+      for i, specifier in pairs(import_specifiers) do
+        local alias = import_default_specifiers[i] ~= specifier and import_default_specifiers[i] or nil
+        table.insert(specifiers, g.specifier(specifier, alias))
+      end
+
+      replacement = { g.import(g.specifiers(specifiers)) }
     end
 
     vim.api.nvim_buf_set_lines(bufnr, range.start_row, range.end_row + 1, true, replacement)
