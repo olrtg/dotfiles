@@ -128,7 +128,13 @@ lvim.builtin.which_key.mappings["T"]["p"] = { "<cmd>InspectTree<cr>", "Playgroun
 
 lvim.builtin.which_key.mappings["l"]["h"] = {
   function()
-    vim.lsp.inlay_hint(0, nil)
+    local bufnr = 0
+    if vim.lsp.inlay_hint.is_enabled(bufnr) then
+      vim.lsp.inlay_hint.enable(bufnr, false)
+      return
+    end
+
+    vim.lsp.inlay_hint.enable(bufnr, true)
   end,
   "Toggle Inlay Hints",
 }
