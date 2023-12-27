@@ -28,6 +28,7 @@ lvim.plugins = {
   { "folke/tokyonight.nvim" },
   { "filNaj/tree-setter", enabled = false },
   { "simrat39/symbols-outline.nvim", config = true },
+  { "sourcegraph/sg.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
   { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
