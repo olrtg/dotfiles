@@ -12,6 +12,15 @@ api.install_parsers({
   "ruby",
 })
 
+lvim.builtin.treesitter.incremental_selection = {
+  enable = true,
+  keymaps = {
+    init_selection = "<Tab>",
+    node_incremental = "<Tab>",
+    node_decremental = "<S-Tab>",
+  },
+}
+
 --
 -- nvim-treesitter-textobjects
 --
