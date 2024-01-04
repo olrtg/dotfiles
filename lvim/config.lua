@@ -26,6 +26,7 @@ lvim.plugins = {
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
+  { "j-hui/fidget.nvim", opts = {} },
   { "filNaj/tree-setter", enabled = false },
   { "simrat39/symbols-outline.nvim", config = true },
   { "sourcegraph/sg.nvim", dependencies = { "nvim-lua/plenary.nvim" } },

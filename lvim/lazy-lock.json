@@ -8,6 +8,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "conjure": { "branch": "master", "commit": "4880144f13a7693cded529b302de491bfbaedbd6" },
   "cyclist.vim": { "branch": "master", "commit": "d611ea3a21365f90d512dd024874e070e864309e" },
+  "fidget.nvim": { "branch": "main", "commit": "a4a7edfea37e557dbff5509ee374ffb57051bba9" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
   "flutter-tools.nvim": { "branch": "main", "commit": "6cbe2cdbaff480decd2ab77c407eb09b9ca452bc" },
   "friendly-snippets": { "branch": "main", "commit": "53d3df271d031c405255e99410628c26a8f0d2b0" },
