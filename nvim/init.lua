@@ -4,16 +4,32 @@ vim.g.maplocalleader = " "
 
 require("core.treesitter")
 
+require("languages.docker")
+-- require("languages.lisp")
+require("languages.flutter")
+require("languages.java")
+require("languages.lua")
+require("languages.markdown")
+require("languages.ocaml")
+require("languages.python")
+require("languages.serialized")
+require("languages.shell")
+require("languages.web")
+
+require("autocmds")
+
 local x = require("x")
 
 x.setup_lazy({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
+			"folke/neodev.nvim",
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			{ "nvimtools/none-ls.nvim", opts = {} },
 			{ "j-hui/fidget.nvim", tag = "legacy", opts = {} },
-			"folke/neodev.nvim",
+			{ "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = x.store.tools } },
 		},
 	},
 
@@ -109,6 +125,87 @@ x.setup_lazy({
 			},
 		},
 	},
+
+	{ "tpope/vim-repeat" },
+	{ "tpope/vim-sleuth" },
+	{ "tpope/vim-abolish" },
+	{ "tpope/vim-surround" },
+	{ "tjdevries/cyclist.vim" },
+	{ "folke/lsp-colors.nvim" },
+	{ "filNaj/tree-setter" },
+	{ "simrat39/symbols-outline.nvim", config = true },
+	{ "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
+	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+	{ "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("neo-tree").setup({
+				popup_border_style = "rounded",
+				window = {
+					position = "float",
+					mappings = { ["<leader>e"] = "cancel" },
+				},
+				filesystem = {
+					filtered_items = {
+						visible = true,
+						hide_dotfiles = false,
+						hide_gitignored = false,
+					},
+				},
+			})
+			vim.keymap.set("n", "<leader>e", "<cmd>Neotree reveal<cr>", { desc = "Explorer" })
+		end,
+	},
+
+	{
+		"benfowler/telescope-luasnip.nvim",
+		after = "telescope.nvim",
+		config = function()
+			require("telescope").load_extension("luasnip")
+			-- lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope luasnip<cr>", "Snippets" }
+		end,
+	},
+
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
+		config = function()
+			require("telescope").load_extension("ui-select")
+		end,
+	},
+
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("harpoon").setup()
+			-- lvim.builtin.which_key.mappings["m"] = {
+			--   name = "Harpoon",
+			--   m = { require("harpoon.mark").add_file, "Mark File" },
+			--   a = { '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', "Go to Mark 1" },
+			--   s = { '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', "Go to Mark 2" },
+			--   d = { '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', "Go to Mark 3" },
+			--   f = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go to Mark 4" },
+			-- }
+			-- lvim.builtin.which_key.mappings["<leader>"] = { require("harpoon.ui").toggle_quick_menu, "Marks Menu" }
+		end,
+	},
+
+	{
+		"almo7aya/openingh.nvim",
+		config = function()
+			require("openingh").setup()
+			-- lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>OpenInGHRepo<cr>", "Open Repo (GH)" }
+			-- lvim.builtin.which_key.mappings["g"]["f"] = { "<cmd>OpenInGHFile<cr>", "Open File (GH)" }
+		end,
+	},
 }, { dev = { path = "~/i" } })
 
 -- Make line numbers default
@@ -188,7 +285,7 @@ vim.keymap.set("n", "<leader>sf", require("telescope.builtin").git_files, { desc
 vim.keymap.set("n", "<leader>sa", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 -- vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set("n", "<leader>st", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+vim.keymap.set("n", "<leader>st", require("telescope.builtin").live_grep, { desc = "[S]earch by [T]ext" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[S]earch [R]esume" })
 
@@ -227,7 +324,7 @@ local on_attach = function(_, bufnr)
 
 	-- See `:help K` for why this keymap
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+	nmap("gs", vim.lsp.buf.signature_help, "Signature Documentation")
 
 	-- Lesser used LSP functionality
 	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
