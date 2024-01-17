@@ -12,7 +12,7 @@ lvim.lazy.opts.dev = { path = "~/i" }
 vim.o.relativenumber = true
 
 -- independent node version for neovim
-local node_bin = os.getenv("HOME") .. "/.asdf/installs/nodejs/18.17.0/bin"
+local node_bin = os.getenv("HOME") .. "/.asdf/installs/nodejs/lts/bin"
 vim.g.node_host_prog = node_bin .. "/node"
 vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 

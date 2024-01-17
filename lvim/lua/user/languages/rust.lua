@@ -1,7 +1,7 @@
 local api = require("user.utils.api")
 
 api.install_plugins({
-  { "simrat39/rust-tools.nvim" },
+  { "mrcjkb/rustaceanvim", version = "^3", ft = { "rust" } },
 })
 
 api.install_parsers({ "rust" })
