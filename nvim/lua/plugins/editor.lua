@@ -1,3 +1,8 @@
 return {
-  { "chrishrb/gx.nvim", dependencies = { "nvim-lua/plenary.nvim" }, keys = "gx", config = true },
+  {
+    "chrishrb/gx.nvim",
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+  },
 }
