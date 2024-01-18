@@ -7,6 +7,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
+lvim.lazy.opts.dev = { path = "~/i" }
 
 vim.o.relativenumber = true
 
@@ -20,7 +21,6 @@ vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
 --
 lvim.plugins = {
   { "tpope/vim-repeat" },
-  { "tpope/vim-sleuth" },
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
   { "tjdevries/cyclist.vim" },
@@ -32,7 +32,13 @@ lvim.plugins = {
   { "sourcegraph/sg.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
-  { "chrishrb/gx.nvim", event = { "BufEnter" }, dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+  {
+    "chrishrb/gx.nvim",
+    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = true,
+  },
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -103,12 +109,11 @@ lvim.plugins = {
     end,
   },
 
-  -- NOTE: My plugins in development
   {
-    dir = "~/i/nvim-i18n",
+    "olrtg/nvim-i18n",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     config = true,
-    enabled = true,
+    dev = true,
   },
 }
 

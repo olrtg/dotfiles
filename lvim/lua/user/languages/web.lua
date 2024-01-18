@@ -55,10 +55,7 @@ api.install_plugins({
   { "elgiano/nvim-treesitter-angular", branch = "topic/jsx-fix" }, -- NOTE: until https://github.com/nvim-treesitter/nvim-treesitter-angular/pull/4 is merged
   { "dmmulroy/tsc.nvim", config = true },
   { "axelvc/template-string.nvim", config = true },
-  {
-    dir = "~/i/nvim-rename-state",
-    -- enabled = false,
-  },
+  { "olrtg/nvim-rename-state", dev = true },
 })
 
 --
