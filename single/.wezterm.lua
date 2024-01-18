@@ -7,13 +7,13 @@ if wezterm.config_builder then
 end
 
 if wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin" then
-	config.font_size = 14.0
+	config.font_size = 16.0
 else
-	config.font_size = 12.0
+	config.font_size = 14.0
 end
 
 config.color_scheme = "Tokyo Night"
-config.font = wezterm.font("Comic Code")
+config.font = wezterm.font("Berkeley Mono")
 config.line_height = 1.2
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
