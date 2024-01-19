@@ -26,6 +26,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.rust" },
     -- import/override with your plugins
     { import = "plugins" },
+    { import = "languages" },
   },
   dev = { path = "~/i" },
   defaults = {
