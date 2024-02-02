@@ -30,9 +30,18 @@ lvim.plugins = {
   { "j-hui/fidget.nvim", opts = {} },
   { "filNaj/tree-setter", enabled = false },
   { "simrat39/symbols-outline.nvim", config = true },
-  { "sourcegraph/sg.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+  {
+    "sourcegraph/sg.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("sg").setup({ enable_cody = true, accept_tos = true, node_excecutable = node_bin })
+      table.insert(lvim.builtin.cmp.sources, { name = "cody" })
+      lvim.builtin.cmp.formatting.source_names.cody = "(Cody)"
+    end,
+  },
 
   {
     "chrishrb/gx.nvim",
