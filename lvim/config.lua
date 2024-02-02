@@ -112,6 +112,7 @@ lvim.plugins = {
     end,
   },
 
+  -- My own plugins
   {
     "olrtg/nvim-i18n",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
@@ -167,6 +168,11 @@ lvim.builtin.nvimtree.setup.on_attach = function(bufnr)
   -- custom mappings
   vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 end
+
+--
+-- Custom stuff
+--
+vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy-json-path").exec, {})
 
 --
 -- Modules
