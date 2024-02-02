@@ -7,6 +7,7 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
+lvim.builtin.treesitter.context_commentstring = nil -- https://github.com/LunarVim/LunarVim/issues/4468
 lvim.lazy.opts.dev = { path = "~/i" }
 
 vim.o.relativenumber = true
@@ -164,12 +165,6 @@ lvim.builtin.nvimtree.setup.on_attach = function(bufnr)
   -- custom mappings
   vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 end
-
---
--- Custom stuff
---
-vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy_json_path").exec, {})
-vim.api.nvim_create_user_command("UnifyMuiImports", require("user.custom.unify-mui-imports").exec, {})
 
 --
 -- Modules
