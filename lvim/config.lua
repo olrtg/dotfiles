@@ -12,11 +12,6 @@ lvim.lazy.opts.dev = { path = "~/i" }
 
 vim.o.relativenumber = true
 
--- independent node version for neovim
-local node_bin = os.getenv("HOME") .. "/.asdf/installs/nodejs/lts/bin"
-vim.g.node_host_prog = node_bin .. "/node"
-vim.cmd("let $PATH = '" .. node_bin .. ":' . $PATH")
-
 --
 -- Plugins
 --
@@ -28,8 +23,6 @@ lvim.plugins = {
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
   { "j-hui/fidget.nvim", opts = {} },
-  { "filNaj/tree-setter", enabled = false },
-  { "simrat39/symbols-outline.nvim", config = true },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
 
@@ -37,7 +30,7 @@ lvim.plugins = {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("sg").setup({ enable_cody = true, accept_tos = true, node_excecutable = node_bin })
+      require("sg").setup({ enable_cody = true, accept_tos = true })
       table.insert(lvim.builtin.cmp.sources, { name = "cody" })
       lvim.builtin.cmp.formatting.source_names.cody = "(Cody)"
     end,

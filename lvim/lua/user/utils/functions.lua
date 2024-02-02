@@ -1,7 +1,7 @@
 local utils = {}
 
 --- @param dependency string
-utils.is_dependency_in_package_json = function(dependency)
+function utils.is_dependency_in_package_json(dependency)
   if vim.fn.filereadable(vim.fn.getcwd() .. "/package.json") ~= 0 then
     local package_json = vim.fn.json_decode(vim.fn.readfile("package.json"))
     if package_json[dependency] ~= nil then
@@ -22,7 +22,7 @@ utils.is_dependency_in_package_json = function(dependency)
   return false
 end
 
-utils.is_web_project = function()
+function utils.is_web_project()
   return (vim.fn.glob("package.json") ~= "" or vim.fn.glob("yarn.lock") ~= "" or vim.fn.glob("node_modules") ~= "")
 end
 

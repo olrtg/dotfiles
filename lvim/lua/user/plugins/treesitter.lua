@@ -26,7 +26,9 @@ lvim.builtin.treesitter.incremental_selection = {
 --
 lvim.builtin.treesitter.textobjects = {
   select = {
-    enable = true,
+    -- BUG: Weirdly this conflicts with typescript-tools.nvim and makes the LSP
+    -- not attach to the buffer
+    enable = false,
     lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
     keymaps = {
       -- You can use the capture groups defined in textobjects.scm
@@ -69,11 +71,4 @@ lvim.builtin.treesitter.textobjects = {
       ["<leader>A"] = "@parameter.inner",
     },
   },
-}
-
---
--- tree-setter
---
-lvim.builtin.treesitter.tree_setter = {
-  enable = true,
 }

@@ -36,32 +36,15 @@ api.install_plugins({
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {
-      settings = {
-        tsserver_file_preferences = {
-          includeInlayParameterNameHints = "all",
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = false,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-        },
-      },
-    },
+    opts = {},
   },
-  { "windwp/nvim-ts-autotag" },
+  { "windwp/nvim-ts-autotag", config = true },
   -- { "nvim-treesitter/nvim-treesitter-angular" },
   { "elgiano/nvim-treesitter-angular", branch = "topic/jsx-fix" }, -- NOTE: until https://github.com/nvim-treesitter/nvim-treesitter-angular/pull/4 is merged
-  { "dmmulroy/tsc.nvim", config = true },
+  { "dmmulroy/tsc.nvim", cmd = { "TSC" }, config = true },
   { "axelvc/template-string.nvim", config = true },
   { "olrtg/nvim-rename-state", dev = true },
 })
-
---
--- nvim-ts-autotag
---
-api.setup_plugin("nvim-ts-autotag")
 
 --
 -- Emmet
