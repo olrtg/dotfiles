@@ -7,3 +7,5 @@
 	rebase = false
 [push]
 	autoSetupRemote = true
+[rerere]
+	enabled = true
