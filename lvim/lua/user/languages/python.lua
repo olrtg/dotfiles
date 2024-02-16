@@ -2,7 +2,7 @@ local api = require("user.utils.api")
 
 api.install_tools({ "black", "flake8", "pyright" })
 
-api.install_parsers({ "python" })
+api.install_parsers({ "ninja", "python", "requirements", "rst" })
 
 api.setup_formatters({
   { command = "black" },
