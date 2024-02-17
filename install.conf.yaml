@@ -15,7 +15,7 @@
     ~/.config/lvim: lvim
     ~/.config/kitty: kitty
 
-    ~/.zshrc: single/.zshrc
+    ~/.zshrc: zsh/.zshrc
     ~/.asdfrc: single/.asdfrc
     ~/.ideavimrc: single/.ideavimrc
     ~/.gitconfig: single/.gitconfig

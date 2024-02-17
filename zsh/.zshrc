@@ -3,6 +3,9 @@
 # Load Zap
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
+# Load FZF theme
+source "$HOME/i/dotfiles/zsh/themes/bash/base16-onedark.config"
+
 # Plugins
 plug "zap-zsh/exa"
 plug "zap-zsh/fzf"
@@ -28,13 +31,6 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=1000000
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
-
-# FZF Tokionight
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' 
-	--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
-	--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
-	--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff 
-	--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
 
 export BAT_THEME="base16"
 

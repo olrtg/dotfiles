@@ -9,6 +9,7 @@ lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
 lvim.builtin.treesitter.context_commentstring = nil -- https://github.com/LunarVim/LunarVim/issues/4468
 lvim.lazy.opts.dev = { path = "~/i" }
+lvim.colorscheme = "onedark"
 
 vim.o.relativenumber = true
 
@@ -25,6 +26,17 @@ lvim.plugins = {
   { "j-hui/fidget.nvim", opts = {} },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+  {
+    -- Theme inspired by Atom
+    "navarasu/onedark.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("onedark").setup()
+      require("onedark").load()
+    end,
+  },
 
   {
     "sourcegraph/sg.nvim",

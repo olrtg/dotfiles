@@ -2,6 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "kitty/tokio-night"]
-	path = kitty/tokio-night
-	url = git@github.com:davidmathers/tokyo-night-kitty-theme.git
+[submodule "zsh/themes"]
+	path = zsh/themes
+	url = https://github.com/tinted-theming/base16-fzf
