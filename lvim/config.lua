@@ -3,11 +3,15 @@
 --
 lvim.format_on_save.enabled = true
 lvim.format_on_save.timeout = 5000
+
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
+
 lvim.builtin.treesitter.context_commentstring = nil -- https://github.com/LunarVim/LunarVim/issues/4468
+lvim.builtin.treesitter.autotag.enable = true
+
 lvim.lazy.opts.dev = { path = "~/i" }
 lvim.colorscheme = "onedark"
 
