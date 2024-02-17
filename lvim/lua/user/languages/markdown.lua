@@ -1,12 +1,13 @@
 local api = require("user.utils.api")
 
-api.install_tools({ "markdownlint", "mdx-analyzer" })
+api.install_tools({ "markdownlint", "mdx-analyzer", "marksman" })
 
 api.install_parsers({ "markdown" })
 
 api.install_plugins({
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
@@ -27,6 +28,8 @@ api.setup_linters({
     },
   },
 })
+
+require("lvim.lsp.manager").setup("marksman")
 
 lvim.builtin.which_key.vmappings["m"] = {
   name = "Markdown",
