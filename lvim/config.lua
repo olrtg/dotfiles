@@ -110,18 +110,22 @@ lvim.plugins = {
 
   {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     dependencies = "nvim-lua/plenary.nvim",
     config = function()
-      require("harpoon").setup()
+      local harpoon = require("harpoon")
+      harpoon:setup()
+      -- stylua: ignore start
       lvim.builtin.which_key.mappings["m"] = {
         name = "Harpoon",
-        m = { require("harpoon.mark").add_file, "Mark File" },
-        a = { '<cmd>lua require("harpoon.ui").nav_file(1)<cr>', "Go to Mark 1" },
-        s = { '<cmd>lua require("harpoon.ui").nav_file(2)<cr>', "Go to Mark 2" },
-        d = { '<cmd>lua require("harpoon.ui").nav_file(3)<cr>', "Go to Mark 3" },
-        f = { '<cmd>lua require("harpoon.ui").nav_file(4)<cr>', "Go to Mark 4" },
+        m = { function() harpoon:list():append() end, "Mark File" },
+        a = { function() harpoon:list():select(1) end, "Go to Mark 1" },
+        s = { function() harpoon:list():select(2) end, "Go to Mark 2" },
+        d = { function() harpoon:list():select(3) end, "Go to Mark 3" },
+        f = { function() harpoon:list():select(4) end, "Go to Mark 4" },
       }
-      lvim.builtin.which_key.mappings["<leader>"] = { require("harpoon.ui").toggle_quick_menu, "Marks Menu" }
+      lvim.builtin.which_key.mappings["<leader>"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Marks Menu", }
+      -- stylua: ignore end
     end,
   },
 
