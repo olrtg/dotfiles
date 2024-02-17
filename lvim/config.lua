@@ -11,8 +11,6 @@ lvim.builtin.treesitter.context_commentstring = nil -- https://github.com/LunarV
 lvim.lazy.opts.dev = { path = "~/i" }
 lvim.colorscheme = "onedark"
 
-vim.o.relativenumber = true
-
 --
 -- Plugins
 --
@@ -23,6 +21,7 @@ lvim.plugins = {
   { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
+  { "farmergreg/vim-lastplace" },
   { "j-hui/fidget.nvim", opts = {} },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
@@ -36,6 +35,13 @@ lvim.plugins = {
       require("onedark").setup()
       require("onedark").load()
     end,
+  },
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    config = true,
+    keys = { { "<leader>S", require("persistence").load } },
   },
 
   {
@@ -163,23 +169,9 @@ lvim.builtin.which_key.mappings["l"]["h"] = {
 }
 
 lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Replace" }
-
 lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
 
 lvim.builtin.telescope.defaults.mappings.n["q"] = require("telescope.actions").close
-
-lvim.builtin.nvimtree.setup.on_attach = function(bufnr)
-  local api = require("nvim-tree.api")
-
-  local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
-  -- default mappings
-  api.config.mappings.default_on_attach(bufnr)
-  -- custom mappings
-  vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
-end
 
 --
 -- Custom stuff
@@ -210,5 +202,4 @@ require("user.plugins.colorizer")
 -- require("user.plugins.copilot")
 require("user.plugins.flash")
 require("user.plugins.mason")
-require("user.plugins.persistence")
 require("user.plugins.treesitter")
