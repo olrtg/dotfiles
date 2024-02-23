@@ -45,27 +45,4 @@ function api.setup_code_actions(code_actions)
   null_ls_code_actions.setup(code_actions)
 end
 
----Better plugin loading with reduced boilerplate
----@param name string
----@param setup? table
----@param callback? fun(plugin: table)
-function api.setup_plugin(name, setup, callback)
-  local ok, plugin = pcall(require, name)
-
-  if not ok then
-    vim.notify(name .. " not found!", vim.log.levels.WARN)
-    return
-  end
-
-  if setup then
-    plugin.setup(setup)
-  else
-    plugin.setup()
-  end
-
-  if callback then
-    callback(plugin)
-  end
-end
-
 return api
