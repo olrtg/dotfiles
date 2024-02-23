@@ -15,6 +15,9 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.lazy.opts.dev = { path = "~/i" }
 lvim.colorscheme = "onedark"
 
+vim.o.spell = true
+vim.o.spellfile = get_config_dir() .. "/spell/en.utf-8.add"
+
 --
 -- Plugins
 --
