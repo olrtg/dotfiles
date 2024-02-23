@@ -8,28 +8,27 @@ api.install_plugins({
   {
     "akinsho/flutter-tools.nvim",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function()
-      require("flutter-tools").setup({
-        fvm = true,
-        flutter_path = os.getenv("HOME") .. "/fvm/default/bin/flutter",
-        lsp = {
-          on_attach = require("lvim.lsp").common_on_attach,
-          color = { enabled = true },
-        },
-        debugger = {
-          enabled = true,
-          run_via_dap = true,
-          -- if empty, dap will not stop on any exceptions, otherwise it will stop on those specified
-          -- see |:help dap.set_exception_breakpoints()| for more info
-          exception_breakpoints = {},
-          register_configurations = function(_)
-            require("dap").configurations.dart = {}
-            require("dap.ext.vscode").load_launchjs()
-          end,
-        },
-        dev_log = { enabled = false },
-      })
-
+    opts = {
+      fvm = true,
+      flutter_path = os.getenv("HOME") .. "/fvm/default/bin/flutter",
+      lsp = {
+        on_attach = require("lvim.lsp").common_on_attach,
+        color = { enabled = true },
+      },
+      debugger = {
+        enabled = true,
+        run_via_dap = true,
+        -- if empty, dap will not stop on any exceptions, otherwise it will stop on those specified
+        -- see |:help dap.set_exception_breakpoints()| for more info
+        exception_breakpoints = {},
+        register_configurations = function(_)
+          require("dap").configurations.dart = {}
+          require("dap.ext.vscode").load_launchjs()
+        end,
+      },
+      dev_log = { enabled = false },
+    },
+    init = function()
       require("telescope").load_extension("flutter")
 
       lvim.builtin.which_key.mappings["F"] = {

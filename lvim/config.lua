@@ -35,8 +35,8 @@ lvim.plugins = {
     "navarasu/onedark.nvim",
     priority = 1000,
     lazy = false,
-    config = function()
-      require("onedark").setup()
+    config = true,
+    init = function()
       require("onedark").load()
     end,
   },
@@ -51,8 +51,11 @@ lvim.plugins = {
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("sg").setup({ enable_cody = true, accept_tos = true })
+    opts = {
+      enable_cody = true,
+      accept_tos = true,
+    },
+    init = function()
       table.insert(lvim.builtin.cmp.sources, { name = "cody" })
       lvim.builtin.cmp.formatting.source_names.cody = "(Cody)"
     end,
@@ -73,21 +76,21 @@ lvim.plugins = {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = function()
-      require("neo-tree").setup({
-        popup_border_style = "rounded",
-        window = {
-          position = "float",
-          mappings = { ["<leader>e"] = "cancel" },
+    opts = {
+      popup_border_style = "rounded",
+      window = {
+        position = "float",
+        mappings = { ["<leader>e"] = "cancel" },
+      },
+      filesystem = {
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
         },
-        filesystem = {
-          filtered_items = {
-            visible = true,
-            hide_dotfiles = false,
-            hide_gitignored = false,
-          },
-        },
-      })
+      },
+    },
+    init = function()
       lvim.builtin.which_key.mappings["e"] = { "<cmd>Neotree reveal<cr>", "Explorer" }
     end,
   },
@@ -112,9 +115,9 @@ lvim.plugins = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     dependencies = "nvim-lua/plenary.nvim",
-    config = function()
+    config = true,
+    init = function()
       local harpoon = require("harpoon")
-      harpoon:setup()
       -- stylua: ignore start
       lvim.builtin.which_key.mappings["m"] = {
         name = "Harpoon",
@@ -124,17 +127,30 @@ lvim.plugins = {
         d = { function() harpoon:list():select(3) end, "Go to Mark 3" },
         f = { function() harpoon:list():select(4) end, "Go to Mark 4" },
       }
-      lvim.builtin.which_key.mappings["<leader>"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "Marks Menu", }
+      lvim.builtin.which_key.mappings["<leader>"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end,
+        "Marks Menu", }
       -- stylua: ignore end
     end,
   },
 
   {
     "almo7aya/openingh.nvim",
-    config = function()
-      require("openingh").setup()
+    config = true,
+    init = function()
       lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>OpenInGHRepo<cr>", "Open Repo (GH)" }
       lvim.builtin.which_key.mappings["g"]["f"] = { "<cmd>OpenInGHFile<cr>", "Open File (GH)" }
+    end,
+  },
+
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    config = true,
+    init = function()
+      require("telescope").load_extension("git_worktree")
+      lvim.builtin.which_key.mappings["g"]["w"] =
+        { require("telescope").extensions.git_worktree.git_worktrees, "Worktrees" }
+      lvim.builtin.which_key.mappings["g"]["W"] =
+        { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" }
     end,
   },
 

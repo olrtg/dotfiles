@@ -2,6 +2,9 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "kitty/themes"]
+	path = kitty/themes
+	url = https://github.com/dexpota/kitty-themes
 [submodule "zsh/themes"]
 	path = zsh/themes
 	url = https://github.com/tinted-theming/base16-fzf
