@@ -52,19 +52,6 @@ lvim.plugins = {
   },
 
   {
-    "sourcegraph/sg.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      enable_cody = true,
-      accept_tos = true,
-    },
-    init = function()
-      table.insert(lvim.builtin.cmp.sources, { name = "cody" })
-      lvim.builtin.cmp.formatting.source_names.cody = "(Cody)"
-    end,
-  },
-
-  {
     "chrishrb/gx.nvim",
     keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
     dependencies = { "nvim-lua/plenary.nvim" },
