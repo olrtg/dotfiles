@@ -126,16 +126,6 @@ lvim.plugins = {
   },
 
   {
-    "almo7aya/openingh.nvim",
-    config = true,
-    keys = { "<leader>gr", "<leader>gf" },
-    init = function()
-      lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>OpenInGHRepo<cr>", "Open Repo (GH)" }
-      lvim.builtin.which_key.mappings["g"]["f"] = { "<cmd>OpenInGHFile<cr>", "Open File (GH)" }
-    end,
-  },
-
-  {
     "ThePrimeagen/git-worktree.nvim",
     config = true,
     keys = { "<leader>gw", "<leader>gW" },
@@ -146,12 +136,6 @@ lvim.plugins = {
       lvim.builtin.which_key.mappings["g"]["W"] =
         { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" }
     end,
-  },
-
-  {
-    "dgagn/diagflow.nvim",
-    event = "LspAttach",
-    opts = {},
   },
 
   -- My own plugins

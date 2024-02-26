@@ -10,3 +10,4 @@ Brewfile
 env
 worktrees
 SvelteKit
+Redux

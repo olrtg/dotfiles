@@ -12,10 +12,11 @@ else
 	config.font_size = 14.0
 end
 
-config.color_scheme = "Tokyo Night"
+config.color_scheme = "OneDark (base16)"
 config.font = wezterm.font("Berkeley Mono")
 config.line_height = 1.2
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
+config.max_fps = 240
 
 return config
