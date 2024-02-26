@@ -88,7 +88,8 @@ lvim.plugins = {
   {
     "benfowler/telescope-luasnip.nvim",
     after = "telescope.nvim",
-    config = function()
+    keys = { "<leader>ss" },
+    init = function()
       require("telescope").load_extension("luasnip")
       lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope luasnip<cr>", "Snippets" }
     end,
@@ -96,7 +97,7 @@ lvim.plugins = {
 
   {
     "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
+    init = function()
       require("telescope").load_extension("ui-select")
     end,
   },
@@ -106,6 +107,7 @@ lvim.plugins = {
     branch = "harpoon2",
     dependencies = "nvim-lua/plenary.nvim",
     config = true,
+    keys = { "<leader>mm", "<leader>ma", "<leader>ms", "<leader>md", "<leader>mf", "<leader><leader>" },
     init = function()
       local harpoon = require("harpoon")
       -- stylua: ignore start
@@ -126,6 +128,7 @@ lvim.plugins = {
   {
     "almo7aya/openingh.nvim",
     config = true,
+    keys = { "<leader>gr", "<leader>gf" },
     init = function()
       lvim.builtin.which_key.mappings["g"]["r"] = { "<cmd>OpenInGHRepo<cr>", "Open Repo (GH)" }
       lvim.builtin.which_key.mappings["g"]["f"] = { "<cmd>OpenInGHFile<cr>", "Open File (GH)" }
@@ -135,6 +138,7 @@ lvim.plugins = {
   {
     "ThePrimeagen/git-worktree.nvim",
     config = true,
+    keys = { "<leader>gw", "<leader>gW" },
     init = function()
       require("telescope").load_extension("git_worktree")
       lvim.builtin.which_key.mappings["g"]["w"] =
@@ -142,6 +146,12 @@ lvim.plugins = {
       lvim.builtin.which_key.mappings["g"]["W"] =
         { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" }
     end,
+  },
+
+  {
+    "dgagn/diagflow.nvim",
+    event = "LspAttach",
+    opts = {},
   },
 
   -- My own plugins
