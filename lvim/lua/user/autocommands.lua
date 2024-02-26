@@ -22,7 +22,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 })
 
 -- Provide .env file for worktrees
-vim.api.nvim_create_autocmd("VimEnter", {
+vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
   pattern = "*",
   callback = function()
     local parent_env_exists = vim.fn.filereadable("./../.env") ~= 0
