@@ -16,13 +16,3 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "Brewfile,.Brewfile",
 	command = "set filetype=ruby",
 })
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	desc = "Open help in vertical split",
-	pattern = { "*.txt" },
-	callback = function()
-		if vim.o.filetype == "help" then
-			vim.cmd.wincmd("L")
-		end
-	end,
-})

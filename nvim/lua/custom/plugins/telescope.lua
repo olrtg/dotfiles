@@ -20,8 +20,14 @@ return {
 			require("telescope").setup({
 				defaults = {
 					mappings = {
-						n = {
-							q = "close",
+						n = { q = "close" },
+					},
+				},
+				pickers = {
+					help_tags = {
+						mappings = {
+							i = { ["<cr>"] = "select_vertical" },
+							n = { ["<cr>"] = "select_vertical" },
 						},
 					},
 				},
