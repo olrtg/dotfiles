@@ -8,15 +8,13 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
+lvim.builtin.indentlines.active = false
 
 lvim.builtin.treesitter.context_commentstring = nil -- https://github.com/LunarVim/LunarVim/issues/4468
 lvim.builtin.treesitter.autotag.enable = true
 
 lvim.lazy.opts.dev = { path = "~/i" }
 lvim.colorscheme = "onedark"
-
-vim.o.spell = true
-vim.o.spellfile = get_config_dir() .. "/spell/en.utf-8.add"
 
 --
 -- Plugins
@@ -125,19 +123,6 @@ lvim.plugins = {
     end,
   },
 
-  {
-    "ThePrimeagen/git-worktree.nvim",
-    config = true,
-    keys = { "<leader>gw", "<leader>gW" },
-    init = function()
-      require("telescope").load_extension("git_worktree")
-      lvim.builtin.which_key.mappings["g"]["w"] =
-        { require("telescope").extensions.git_worktree.git_worktrees, "Worktrees" }
-      lvim.builtin.which_key.mappings["g"]["W"] =
-        { require("telescope").extensions.git_worktree.create_git_worktree, "Create worktree" }
-    end,
-  },
-
   -- My own plugins
   {
     "olrtg/nvim-i18n",
@@ -180,6 +165,12 @@ lvim.builtin.which_key.vmappings["s"] = { [["sy:let @/=@s<cr>cgn]], "Search/Repl
 lvim.builtin.which_key.vmappings["l"] = { name = "lsp", a = { vim.lsp.buf.code_action, "Code Action" } }
 
 lvim.builtin.telescope.defaults.mappings.n["q"] = require("telescope.actions").close
+lvim.builtin.telescope.pickers.help_tags = {
+  mappings = {
+    i = { ["<cr>"] = require("telescope.actions").select_vertical },
+    n = { ["<cr>"] = require("telescope.actions").select_vertical },
+  },
+}
 
 --
 -- Custom stuff

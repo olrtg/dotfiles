@@ -34,6 +34,10 @@ export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
 export BAT_THEME="base16"
 
+# Disable LunarVim's core plugins pinning
+# https://www.lunarvim.org/docs/configuration/plugins/core-plugins#pinning
+export LVIM_DEV_MODE=true
+
 path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/

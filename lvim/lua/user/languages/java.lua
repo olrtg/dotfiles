@@ -2,12 +2,53 @@ local api = require("user.utils.api")
 
 api.override_servers({ "jdtls" })
 
-api.install_tools({ "java-debug-adapter", "java-test" })
+api.install_tools({ "jdtls", "java-debug-adapter", "java-test" })
 
 api.install_plugins({
-  "mfussenegger/nvim-jdtls",
+  {
+    "nvim-java/nvim-java",
+    dependencies = {
+      "nvim-java/lua-async-await",
+      "nvim-java/nvim-java-core",
+      "nvim-java/nvim-java-test",
+      "nvim-java/nvim-java-dap",
+      "MunifTanjim/nui.nvim",
+      "neovim/nvim-lspconfig",
+      "mfussenegger/nvim-dap",
+      {
+        "williamboman/mason.nvim",
+        opts = {
+          registries = {
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
+          },
+        },
+      },
+    },
+  },
 })
 
--- api.setup_formatters({ command = "google_java_format" })
-
 api.install_parsers({ "java" })
+
+require("lvim.lsp.manager").setup("jdtls", {
+  settings = {
+    java = {
+      configuration = {
+        runtimes = {
+          {
+            name = "JavaSE-20",
+            path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9",
+          },
+          {
+            name = "JavaSE-11",
+            path = "~/.asdf/installs/java/adoptopenjdk-11.0.9+11",
+          },
+          {
+            name = "JavaSE-1.8",
+            path = "~/.asdf/installs/java/adoptopenjdk-8.0.382+5",
+          },
+        },
+      },
+    },
+  },
+})

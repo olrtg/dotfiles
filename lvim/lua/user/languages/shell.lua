@@ -9,11 +9,3 @@ api.install_parsers({ "bash" })
 api.setup_formatters({
   { command = "shfmt" },
 })
-
-api.setup_linters({
-  { command = "shellcheck" },
-})
-
-api.setup_code_actions({
-  { command = "shellcheck" },
-})
