@@ -8,6 +8,20 @@ require("custom.options")
 require("custom.keymaps")
 require("custom.autocommands")
 
+require("custom.languages.docker")
+require("custom.languages.flutter")
+require("custom.languages.golang")
+require("custom.languages.java")
+require("custom.languages.lisp")
+require("custom.languages.lua")
+require("custom.languages.markdown")
+-- require("custom.languages.ocaml")
+require("custom.languages.python")
+require("custom.languages.rust")
+require("custom.languages.serialized")
+require("custom.languages.shell")
+require("custom.languages.web")
+
 -- [[ Lazy.nvim setup ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -33,11 +47,24 @@ require("lazy").setup({
 	"folke/tokyonight.nvim",
 	"farmergreg/vim-lastplace",
 	{ "numToStr/Comment.nvim", opts = {} },
-	{ "lewis6991/gitsigns.nvim", config = true },
 	{ "folke/which-key.nvim", event = "VeryLazy", config = true },
 	{ "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 	{ "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
 	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
+
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
+			},
+		},
+	},
 
 	{
 		"stevearc/conform.nvim",
@@ -100,18 +127,7 @@ require("lazy").setup({
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"html",
-					"lua",
-					"markdown",
-					"vim",
-					"vimdoc",
-					"javascript",
-					"typescript",
-					"tsx",
-				},
+				ensure_installed = require("custom.api").state.parsers,
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
@@ -206,4 +222,6 @@ require("lazy").setup({
 	},
 
 	{ import = "custom.plugins" },
+
+	require("custom.api").state.plugins,
 }, { dev = { path = "~/i" } })
