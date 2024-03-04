@@ -18,5 +18,6 @@ config.line_height = 1.2
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 240
+config.window_close_confirmation = "NeverPrompt"
 
 return config
