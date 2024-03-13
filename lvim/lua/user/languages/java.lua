@@ -35,18 +35,15 @@ require("lvim.lsp.manager").setup("jdtls", {
     java = {
       configuration = {
         runtimes = {
-          {
-            name = "JavaSE-20",
-            path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9",
-          },
-          {
-            name = "JavaSE-11",
-            path = "~/.asdf/installs/java/adoptopenjdk-11.0.9+11",
-          },
-          {
-            name = "JavaSE-1.8",
-            path = "~/.asdf/installs/java/adoptopenjdk-8.0.382+5",
-          },
+          { name = "JavaSE-20", path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9" },
+          { name = "JavaSE-11", path = "~/.asdf/installs/java/adoptopenjdk-11.0.20+8" },
+          { name = "JavaSE-1.8", path = "~/.asdf/installs/java/zulu-8.72.0.17" },
+        },
+      },
+      format = {
+        settings = {
+          url = "~/eclipse-java-stoplight-style.xml",
+          profile = "StoplightStyle",
         },
       },
     },
