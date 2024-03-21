@@ -9,3 +9,9 @@ vim.api.nvim_create_autocmd(
   { "BufNewFile", "BufRead" },
   { pattern = "Brewfile,.Brewfile", command = "set filetype=ruby" }
 )
+
+-- JSONC support for vscode files
+vim.api.nvim_create_autocmd(
+  { "BufNewFile", "BufRead" },
+  { pattern = "*/.vscode/*.json", command = "set filetype=jsonc" }
+)
