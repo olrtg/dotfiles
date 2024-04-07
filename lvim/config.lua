@@ -130,6 +130,13 @@ lvim.plugins = {
     config = true,
     dev = true,
   },
+
+  -- {
+  --   "olrtg/react-cult",
+  --   main = "packages/neovim",
+  --   config = true,
+  --   dev = true,
+  -- },
 }
 
 --
