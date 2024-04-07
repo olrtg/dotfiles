@@ -2,9 +2,9 @@ let mapleader=" "
 
 """ General
 set scrolloff=10
-set number relativenumber
 set visualbell
 set clipboard+=unnamed
+set ideajoin
 
 """ Plugins
 set surround
@@ -21,19 +21,27 @@ set hlsearch
 """ Keybindings
 imap jk <Esc>
 
-map <leader>w <Action>(SaveAll)
-map <leader>h :noh<cr>
-map <leader>e :NERDTreeToggle<cr>
+""" NERDTree
+map <C-l> :nohlsearch<cr>
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
+""" LSP
 map <leader>gr <Action>(ShowUsages)
-map gs <Action>(ParameterInfo)
+map <C-k> <Action>(ParameterInfo)
+map <leader>rn <Action>(RenameElement)
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>f <Action>(ReformatCode)
 
-map <leader>lr <Action>(RenameElement)
-map <leader>la <Action>(ShowIntentionActions)
-map <leader>lj <Action>(GotoNextError)
-map <leader>lk <Action>(GotoPreviousError)
-map <leader>lf <Action>(ReformatCode)
+map <leader>[d <Action>(GotoPreviousError)
+map <leader>]d <Action>(GotoNextError)
 
-map <leader>f <Action>(GotoFile)
+""" Search
+map <leader>sf <Action>(GotoFile)
 map <leader>st <Action>(TextSearchAction)
 
+""" Git
+map [c <Action>(VcsShowPrevChangeMarker)
+map ]c <Action>(VcsShowNextChangeMarker)
