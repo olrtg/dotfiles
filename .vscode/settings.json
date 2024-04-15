@@ -3,5 +3,8 @@
   "Lua.workspace.library": [
     "/opt/homebrew/Cellar/neovim/HEAD-52e6059/share/nvim/runtime",
     "/Users/olrtg/.vscode/extensions/asvetliakov.vscode-neovim-1.8.2/runtime"
-  ]
+  ],
+  "[lua]": {
+    "editor.defaultFormatter": "JohnnyMorganz.stylua"
+  }
 }
