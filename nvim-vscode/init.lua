@@ -51,3 +51,12 @@ end)
 vim.keymap.set("n", "<leader>ld", function()
 	vscode.call("workbench.actions.view.problems")
 end)
+
+-- [[ Navigation ]]
+vim.keymap.set("n", "<S-h>", function()
+	vscode.call("workbench.action.previousEditor")
+end)
+
+vim.keymap.set("n", "<S-l>", function()
+	vscode.call("workbench.action.nextEditor")
+end)
