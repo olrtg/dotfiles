@@ -53,6 +53,9 @@ vim.keymap.set("n", "<leader>gg", function()
 end)
 
 -- [[ LSP ]]
+vim.keymap.set("n", "gr", function()
+	vscode.call("editor.action.goToReferences")
+end)
 vim.keymap.set("n", "gs", function()
 	vscode.call("editor.action.triggerParameterHints")
 end)
