@@ -3,7 +3,7 @@
       create: true
       relink: true
 
-- clean: ['~', '~/.config']
+- clean: ["~", "~/.config"]
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -16,6 +16,9 @@
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/nvim-vscode: nvim-vscode
+
+    ~/.config/zed/keymap.json: zed/keymap.json
+    ~/.config/zed/settings.json: zed/settings.json
 
     ~/.zshrc: zsh/.zshrc
     ~/.asdfrc: single/.asdfrc

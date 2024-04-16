@@ -1,0 +1,66 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  // [[ Fonts ]]
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "ui_font_family": "Berkeley Mono",
+  "buffer_font_family": "Berkeley Mono",
+
+  // [[ Reduce clutter ]]
+  "features": { "copilot": false },
+  "toolbar": { "quick_actions": false },
+  "collaboration_panel": { "button": false },
+  "chat_panel": { "button": false },
+  "notification_panel": { "button": false },
+  "assistant": { "version": "1", "button": false },
+
+  // [[ Vim ]]
+  "vim_mode": true,
+  "vertical_scroll_margin": 5,
+  "relative_line_numbers": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true
+  },
+
+  // [[ UI ]]
+  "project_panel": {
+    "dock": "right",
+    "default_width": 350
+  },
+
+  "terminal": {
+    "font_size": 14,
+    "default_height": 200,
+    "max_scroll_history_lines": 100000
+  },
+
+  // [[ LSP ]]
+  "inlay_hints": { "enabled": true },
+  "lsp": {
+    "typescript-language-server": {
+      "initialization_options": {
+        "preferences": {
+          "includeInlayParameterNameHints": false,
+          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
+          "includeInlayFunctionParameterTypeHints": false,
+          "includeInlayVariableTypeHints": false,
+          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
+          "includeInlayPropertyDeclarationTypeHints": false,
+          "includeInlayFunctionLikeReturnTypeHints": false,
+          "includeInlayEnumMemberValueHints": true
+        }
+      }
+    }
+  },
+
+  // [[ Misc ]]
+  "telemetry": { "metrics": false }
+}

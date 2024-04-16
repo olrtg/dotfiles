@@ -1,0 +1,71 @@
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": { "j k": "vim::NormalBefore" }
+  },
+
+  {
+    "context": "Workspace",
+    "bindings": {}
+  },
+
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "g l": "editor::Hover",
+      "g r": "editor::FindAllReferences",
+
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space c": "pane::CloseActiveItem",
+      "space f": "file_finder::Toggle",
+      "space e": "workspace::ToggleRightDock",
+
+      "space s t": "workspace::NewSearch",
+
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "space l j": "editor::GoToDiagnostic",
+      "space l k": "editor::GoToPrevDiagnostic",
+      "space l s": "diagnostics::Deploy",
+
+      "space g j": "editor::GoToHunk",
+      "space g k": "editor::GoToPrevHunk",
+      "space g l": "editor::ToggleGitBlame",
+
+      "shift-k": "editor::Hover",
+      "shift-h": "pane::ActivatePrevItem",
+      "shift-l": "pane::ActivateNextItem"
+    }
+  },
+
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleRightDock",
+      "q": "workspace::ToggleRightDock",
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste"
+    }
+  },
+
+  {
+    "context": "Editor && showing_completions",
+    "bindings": { "ctrl-y": "editor::ConfirmCompletion" }
+  },
+
+  {
+    "context": "Editor && showing_code_actions",
+    "bindings": { "ctrl-y": "editor::ConfirmCodeAction" }
+  },
+
+  {
+    "bindings": {
+      "ctrl-\\": "terminal_panel::ToggleFocus"
+    }
+  }
+]
