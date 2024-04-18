@@ -19,7 +19,7 @@
       "space q": "pane::CloseActiveItem",
       "space c": "pane::CloseActiveItem",
       "space f": "file_finder::Toggle",
-      "space e": "workspace::ToggleRightDock",
+      "space e": "project_panel::ToggleFocus",
 
       "space s t": "workspace::NewSearch",
 
@@ -29,13 +29,19 @@
       "space l k": "editor::GoToPrevDiagnostic",
       "space l s": "diagnostics::Deploy",
 
+      "space g g": [
+        "workspace::SendKeystrokes",
+        ": new center terminal enter lazygit_zed enter"
+      ],
       "space g j": "editor::GoToHunk",
       "space g k": "editor::GoToPrevHunk",
       "space g l": "editor::ToggleGitBlame",
 
       "shift-k": "editor::Hover",
       "shift-h": "pane::ActivatePrevItem",
-      "shift-l": "pane::ActivateNextItem"
+      "shift-l": "pane::ActivateNextItem",
+
+      "ctrl-\\": "terminal_panel::ToggleFocus"
     }
   },
 
@@ -64,8 +70,7 @@
   },
 
   {
-    "bindings": {
-      "ctrl-\\": "terminal_panel::ToggleFocus"
-    }
+    "context": "Terminal",
+    "bindings": { "ctrl-\\": "workspace::ToggleBottomDock" }
   }
 ]

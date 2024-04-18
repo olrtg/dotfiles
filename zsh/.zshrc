@@ -28,7 +28,7 @@ export EDITOR=nvim
 export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history
-export SAVEHIST=1000000
+export SAVEHIST=10000000
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
@@ -82,17 +82,15 @@ alias dcdv="dcd --rmi all"
 
 type npm >/dev/null 2>&1 && alias nrepl="NODE_PATH=$(npm root) node"
 
-# BUG: Doesn't work with arguments
-function patchfont() {
-	# Patch a normal font with nerdfont
-	# USAGE: patchfont <input_folder_path> <output_folder_path>
-	docker run --rm -v "$1":/in -v "$2":/out nerdfonts/patcher
-}
-
 function docker_connect() {
 	# Spawn a bash session inside a running container
 	# USAGE: docker_connect <container_name>
 	docker container exec -it "$1" /bin/bash
+}
+
+function lazygit_zed() {
+  lazygit
+  exit
 }
 
 # https://zsh.sourceforge.io/Doc/Release/Options.html#History
@@ -108,6 +106,8 @@ else
 	fpath=(${ASDF_DIR}/completions $fpath)
 	autoload -Uz compinit && compinit
 fi
+
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
