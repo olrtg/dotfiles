@@ -20,6 +20,7 @@
       "space c": "pane::CloseActiveItem",
       "space f": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
+      "space t": "task::Spawn",
 
       "space s t": "workspace::NewSearch",
 

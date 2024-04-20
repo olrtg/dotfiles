@@ -16,9 +16,7 @@
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/nvim-vscode: nvim-vscode
-
-    ~/.config/zed/keymap.json: zed/keymap.json
-    ~/.config/zed/settings.json: zed/settings.json
+    ~/.config/zed: zed
 
     ~/.zshrc: zsh/.zshrc
     ~/.asdfrc: single/.asdfrc
