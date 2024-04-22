@@ -109,6 +109,10 @@ fi
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
+# This fixes completion in macos for zsh-users/zsh-autosuggestions
+# https://github.com/zsh-users/zsh-completions/issues/519
+autoload -U compinit && compinit
+
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
 
