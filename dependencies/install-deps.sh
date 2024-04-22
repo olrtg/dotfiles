@@ -5,6 +5,7 @@ npm i -g \
 	@angular/cli \
 	@antfu/ni \
 	@nestjs/cli \
+	git-removed-branches\
 	npm-check \
 	nx \
 	pnpm \
