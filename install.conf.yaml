@@ -13,7 +13,6 @@
     /usr/local/bin/tmux-sessionizer: bin/tmux-sessionizer
 
     ~/.config/lvim: lvim
-    ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/nvim-vscode: nvim-vscode
     ~/.config/zed: zed
