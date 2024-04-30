@@ -123,6 +123,9 @@ lvim.plugins = {
     end,
   },
 
+  -- NOTE: now nvim-dap requires this
+  { "nvim-neotest/nvim-nio" },
+
   -- My own plugins
   {
     "olrtg/nvim-i18n",
@@ -197,7 +200,7 @@ require("user.languages.java")
 require("user.languages.lua")
 require("user.languages.markdown")
 -- require("user.languages.ocaml")
-require("user.languages.python")
+-- require("user.languages.python")
 require("user.languages.serialized")
 require("user.languages.shell")
 require("user.languages.web")
@@ -205,7 +208,7 @@ require("user.languages.web")
 require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
--- require("user.plugins.copilot")
+require("user.plugins.copilot")
 require("user.plugins.flash")
 require("user.plugins.mason")
 require("user.plugins.treesitter")

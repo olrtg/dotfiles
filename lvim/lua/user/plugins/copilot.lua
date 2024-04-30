@@ -2,6 +2,8 @@ local api = require("user.utils.api")
 
 api.install_plugins({
   {
+    cmd = "Copilot",
+    event = "InsertEnter",
     "zbirenbaum/copilot.lua",
     opts = {
       suggestion = {
