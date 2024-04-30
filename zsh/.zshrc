@@ -67,9 +67,11 @@ alias t="nr test"
 alias ncls="rm -rf node_modules"
 
 alias rnand="react-native run-android"
-alias rnios="react-native run-ios"
+alias rnios="react-native run-ios --simulator='iPhone 15'"
 alias rncls="ncls && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
+
+alias lsios="xcrun simctl list devices"
 
 alias nc="npm-check -u"
 
