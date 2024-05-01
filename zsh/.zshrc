@@ -47,7 +47,7 @@ path=(
 )
 
 # Aliases
-alias v='$EDITOR .'
+alias v='$EDITOR'
 alias c="clear"
 alias r="source ~/.zshrc"
 alias x="exit"
