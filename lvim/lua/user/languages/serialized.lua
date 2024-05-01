@@ -9,3 +9,5 @@ api.install_plugins({
 api.install_tools({ "json-lsp", "jsonlint", "taplo", "yaml-language-server" })
 
 api.install_parsers({ "json", "toml", "yaml" })
+
+require("lvim.lsp.manager").setup("taplo")
