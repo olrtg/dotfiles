@@ -2,9 +2,8 @@
 -- LunarVim
 --
 lvim.format_on_save.enabled = true
-lvim.format_on_save.timeout = 5000
+lvim.format_on_save.timeout = 2000
 
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.alpha.active = false
 lvim.builtin.bufferline.active = false
 lvim.builtin.nvimtree.active = false
@@ -16,6 +15,9 @@ lvim.builtin.treesitter.autotag.enable = true
 lvim.lazy.opts.dev = { path = "~/i" }
 lvim.colorscheme = "onedark"
 
+vim.opt.list = true
+vim.opt.listchars = { eol = "↵", nbsp = "◇", tab = "→ ", trail = "⋅" }
+
 --
 -- Plugins
 --
@@ -23,13 +25,19 @@ lvim.plugins = {
   { "tpope/vim-repeat" },
   { "tpope/vim-abolish" },
   { "tpope/vim-surround" },
-  { "tjdevries/cyclist.vim" },
   { "folke/lsp-colors.nvim" },
   { "folke/tokyonight.nvim" },
   { "farmergreg/vim-lastplace" },
-  { "j-hui/fidget.nvim", opts = {} },
+  { "stevearc/dressing.nvim", opts = {} },
   { "inkarkat/vim-AdvancedSorters", dependencies = "inkarkat/vim-ingo-library" },
   { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, config = true },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
+  },
 
   {
     -- Theme inspired by Atom
@@ -46,7 +54,9 @@ lvim.plugins = {
     "folke/persistence.nvim",
     event = "BufReadPre",
     config = true,
-    keys = { { "<leader>S", require("persistence").load } },
+    init = function()
+      lvim.builtin.which_key.mappings["S"] = { require("persistence").load, "Restore session" }
+    end,
   },
 
   {
@@ -90,13 +100,6 @@ lvim.plugins = {
     init = function()
       require("telescope").load_extension("luasnip")
       lvim.builtin.which_key.mappings["ss"] = { "<cmd>Telescope luasnip<cr>", "Snippets" }
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    init = function()
-      require("telescope").load_extension("ui-select")
     end,
   },
 
@@ -193,18 +196,18 @@ vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy-json-
 require("user.autocommands")
 
 require("user.languages.docker")
-require("user.languages.lisp")
 require("user.languages.flutter")
 require("user.languages.golang")
 require("user.languages.java")
+require("user.languages.lisp")
 require("user.languages.lua")
 require("user.languages.markdown")
 -- require("user.languages.ocaml")
 -- require("user.languages.python")
+require("user.languages.rust")
 require("user.languages.serialized")
 require("user.languages.shell")
 require("user.languages.web")
-
 require("user.tooling.prettier")
 
 require("user.plugins.colorizer")
