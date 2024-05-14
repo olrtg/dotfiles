@@ -1,6 +1,6 @@
 [
   {
-    "context": "Editor && vim_mode == insert",
+    "context": "Editor && vim_mode == insert && !menu",
     "bindings": { "j k": "vim::NormalBefore" }
   },
 
@@ -55,7 +55,7 @@
       "A": "project_panel::NewDirectory",
       "r": "project_panel::Rename",
       "d": "project_panel::Delete",
-      "y": "project_panel::Copy",
+      "c": "project_panel::Copy",
       "p": "project_panel::Paste"
     }
   },
@@ -73,5 +73,15 @@
   {
     "context": "Terminal",
     "bindings": { "ctrl-\\": "workspace::ToggleBottomDock" }
+  },
+
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
   }
 ]
