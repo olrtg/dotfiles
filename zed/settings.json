@@ -14,12 +14,12 @@
   "buffer_font_family": "Berkeley Mono",
 
   // [[ Reduce clutter ]]
-  "features": { "copilot": false },
-  "toolbar": { "quick_actions": false },
-  "collaboration_panel": { "button": false },
-  "chat_panel": { "button": false },
-  "notification_panel": { "button": false },
-  "assistant": { "version": "1", "button": false },
+  // "features": { "copilot": false },
+  // "toolbar": { "quick_actions": false },
+  // "collaboration_panel": { "button": false },
+  // "chat_panel": { "button": false },
+  // "notification_panel": { "button": false },
+  // "assistant": { "version": "1", "button": false },
 
   // [[ Vim ]]
   "vim_mode": true,
@@ -28,6 +28,15 @@
   "vim": {
     "use_multiline_find": true,
     "use_smartcase_find": true
+  },
+  "gutter": {
+    "line_numbers": false
+  },
+  "cursor_blink": false,
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
   },
 
   // [[ UI ]]
