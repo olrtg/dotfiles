@@ -195,11 +195,13 @@ vim.api.nvim_create_user_command("CopyJsonPath", require("user.custom.copy-json-
 --
 require("user.autocommands")
 
+require("user.utils.api").override_servers({ "dprint", "snyk_ls" })
+
 require("user.languages.docker")
 require("user.languages.flutter")
 require("user.languages.golang")
 require("user.languages.java")
-require("user.languages.lisp")
+-- require("user.languages.lisp")
 require("user.languages.lua")
 require("user.languages.markdown")
 -- require("user.languages.ocaml")
