@@ -24,7 +24,7 @@ else
 	export ANDROID_HOME="$HOME/Android/Sdk"
 fi
 
-export EDITOR=lvim
+export EDITOR=nvim
 export GIT_EDITOR="$EDITOR"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history

@@ -10,6 +10,7 @@ npm i -g \
 	nx \
 	pnpm \
 	react-native \
+	tree-sitter-cli \
 	typescript \
 	yarn
 
