@@ -32,6 +32,8 @@ require("lazy").setup({
 
 	{ "tpope/vim-sleuth" },
 
+	{ "b0o/schemastore.nvim" },
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = { "windwp/nvim-ts-autotag" },
@@ -85,7 +87,10 @@ require("lazy").setup({
 	{
 		"stevearc/oil.nvim",
 		cmd = "Oil",
-		keys = { { "-", "<cmd>Oil --float<cr>", mode = { "n" } } },
+		keys = {
+			{ "-", "<cmd>Oil --float<cr>", mode = { "n" } },
+			{ "<leader>e", "<cmd>Oil --float<cr>", mode = { "n" } },
+		},
 		config = function()
 			require("custom.explorer")
 		end,

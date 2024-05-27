@@ -15,6 +15,7 @@ require("oil").setup({
 	keymaps = {
 		["<Esc>"] = "actions.close",
 		["q"] = "actions.close",
+		["<leader>e"] = "actions.close",
 	},
 })
 
