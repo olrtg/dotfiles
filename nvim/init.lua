@@ -29,7 +29,7 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-path" },
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "rafamadriz/friendly-snippets" },
-
+	{ "folke/neodev.nvim", opts = {} },
 	{ "tpope/vim-sleuth" },
 
 	{ "b0o/schemastore.nvim" },

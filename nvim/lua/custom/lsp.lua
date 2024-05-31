@@ -1,6 +1,7 @@
 local lsp_zero = require("lsp-zero")
+local lspconfig = require("lspconfig")
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
 	-- keybindings are listed here:
 	-- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/api-reference.md#default_keymapsopts
 	lsp_zero.default_keymaps({ buffer = bufnr, exclude = { "<F2>", "<F3>", "<F4>" } })
@@ -25,11 +26,23 @@ require("mason").setup({})
 require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name)
-			require("lspconfig")[server_name].setup({})
+			lspconfig[server_name].setup({})
+		end,
+
+		lua_ls = function()
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						completion = {
+							callSnippet = "Replace",
+						},
+					},
+				},
+			})
 		end,
 
 		jsonls = function()
-			require("lspconfig").jsonls.setup({
+			lspconfig.jsonls.setup({
 				settings = {
 					json = {
 						schemas = require("schemastore").json.schemas(),
@@ -40,7 +53,7 @@ require("mason-lspconfig").setup({
 		end,
 
 		yamlls = function()
-			require("lspconfig").yamlls.setup({
+			lspconfig.yamlls.setup({
 				settings = {
 					yaml = {
 						schemaStore = {
@@ -62,6 +75,7 @@ require("mason-lspconfig").setup({
 
 require("typescript-tools").setup({
 	settings = {
+		complete_function_calls = true,
 		tsserver_file_preferences = {
 			includeInlayParameterNameHints = false,
 			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
