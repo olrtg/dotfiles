@@ -130,16 +130,29 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "󰍵" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "│" },
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "󰐊" },
+				topdelete = { text = "󰐊" },
+				changedelete = { text = "󰐊" },
+				untracked = { text = "▎" },
 			},
 		},
 	},
-})
+
+	{
+		"supermaven-inc/supermaven-nvim",
+		opts = {},
+	},
+
+	{
+		"olrtg/nvim-emmet",
+		dev = true,
+		config = function()
+			vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation)
+		end,
+	},
+}, { dev = { path = "~/i" } })
 
 require("custom.lsp")
 require("custom.completion")
