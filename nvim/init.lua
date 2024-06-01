@@ -1,10 +1,10 @@
 vim.g.mapleader = " "
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazy = vim.fn.stdpath("data") .. "/lazy"
+local lazypath = lazy .. "/lazy.nvim"
 
 -- Auto-install lazy.nvim if not present
-if not vim.loop.fs_stat(lazypath) then
-	print("Installing lazy.nvim....")
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -29,10 +29,26 @@ require("lazy").setup({
 	{ "hrsh7th/cmp-path" },
 	{ "saadparwaiz1/cmp_luasnip" },
 	{ "rafamadriz/friendly-snippets" },
-	{ "folke/neodev.nvim", opts = {} },
 	{ "tpope/vim-sleuth" },
 
 	{ "b0o/schemastore.nvim" },
+
+	{ "nvim-lua/plenary.nvim" },
+
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		dependencies = {
+			{ "Bilal2453/luvit-meta", lazy = true }, -- `vim.uv` typings
+			{ "LuaCATS/busted", lazy = true }, -- testing typings
+		},
+		opts = {
+			library = {
+				lazy .. "/luvit-meta/library",
+				lazy .. "/busted/library",
+			},
+		},
+	},
 
 	{
 		"nvim-treesitter/nvim-treesitter",
