@@ -56,7 +56,11 @@ require("lazy").setup({
 		opts = {},
 	},
 
-	{ "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = { signs = false },
+	},
 
 	{
 		"nvim-lualine/lualine.nvim",
@@ -67,7 +71,6 @@ require("lazy").setup({
 	},
 
 	{
-		-- Theme inspired by Atom
 		"navarasu/onedark.nvim",
 		priority = 1000,
 		lazy = false,
@@ -140,9 +143,20 @@ require("lazy").setup({
 		},
 	},
 
+	{ "supermaven-inc/supermaven-nvim", opts = {} },
+
 	{
-		"supermaven-inc/supermaven-nvim",
-		opts = {},
+		"olrtg/nvim-rename-state",
+		ft = { "javascript", "javascriptreact", "typescriptreact" },
+		cmd = "RenameState",
+		dev = true,
+	},
+
+	{
+		"olrtg/nvim-i18n",
+		dev = true,
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		config = true,
 	},
 
 	{
