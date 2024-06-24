@@ -8,6 +8,8 @@ telescope.setup({
 		mappings = {
 			n = { ["q"] = actions.close },
 		},
+		-- NOTE: for the long paths when working with java
+		path_display = { "truncate" },
 	},
 
 	pickers = {
@@ -20,13 +22,10 @@ telescope.setup({
 	},
 })
 
-vim.keymap.set("n", "<leader>f", builtin.git_files, {})
-vim.keymap.set("n", "<leader>sf", builtin.find_files, {})
-vim.keymap.set("n", "<leader>st", builtin.live_grep, {})
-vim.keymap.set("n", "<leader>sh", builtin.help_tags, {})
+vim.keymap.set("n", "<leader>f", builtin.find_files)
+vim.keymap.set("n", "<leader>st", builtin.live_grep)
+vim.keymap.set("n", "<leader>sh", builtin.help_tags)
 
 telescope.load_extension("luasnip")
 
-vim.keymap.set("n", "<leader>ss", function()
-	command.load_command("luasnip")
-end)
+vim.keymap.set("n", "<leader>ss", function() command.load_command("luasnip") end)
