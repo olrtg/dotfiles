@@ -1,29 +1,31 @@
-require("conform").setup({
+local conform = require("conform")
+
+conform.setup({
 	formatters_by_ft = {
 		["lua"] = { "stylua" },
 
-		["javascript"] = { "prettierd" },
-		["typescript"] = { "prettierd" },
-		["javascriptreact"] = { "prettierd" },
-		["typescriptreact"] = { "prettierd" },
-		["vue"] = { "prettierd" },
-		["css"] = { "prettierd" },
-		["scss"] = { "prettierd" },
-		["less"] = { "prettierd" },
-		["html"] = { "prettierd" },
-		["json"] = { "prettierd" },
-		["jsonc"] = { "prettierd" },
-		["yaml"] = { "prettierd" },
-		["markdown"] = { "prettierd" },
-		["markdown.mdx"] = { "prettierd" },
-		["graphql"] = { "prettierd" },
-		["handlebars"] = { "prettierd" },
+		["javascript"] = { "prettier" },
+		["typescript"] = { "prettier" },
+		["javascriptreact"] = { "prettier" },
+		["typescriptreact"] = { "prettier" },
+		["vue"] = { "prettier" },
+		["css"] = { "prettier" },
+		["scss"] = { "prettier" },
+		["less"] = { "prettier" },
+		["html"] = { "prettier" },
+		["json"] = { "prettier" },
+		["jsonc"] = { "prettier" },
+		["yaml"] = { "prettier" },
+		["markdown"] = { "prettier" },
+		["markdown.mdx"] = { "prettier" },
+		["graphql"] = { "prettier" },
+		["handlebars"] = { "prettier" },
+
+		["sql"] = { "sqlfluff" },
 	},
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
+	callback = function(args) conform.format({ bufnr = args.buf }) end,
 })
