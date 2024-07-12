@@ -15,6 +15,7 @@
     ~/.config/lvim: lvim
     ~/.config/kitty: kitty
     ~/.config/nvim-vscode: nvim-vscode
+    ~/.config/nvim: nvim
     ~/.config/zed: zed
 
     ~/.zshrc: zsh/.zshrc
