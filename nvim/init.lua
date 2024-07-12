@@ -19,21 +19,26 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-	{ "williamboman/mason.nvim" },
-	{ "williamboman/mason-lspconfig.nvim" },
-	{ "neovim/nvim-lspconfig" },
-	{ "L3MON4D3/LuaSnip" },
-	{ "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
-	{ "saadparwaiz1/cmp_luasnip" },
-	{ "rafamadriz/friendly-snippets" },
-	{ "tpope/vim-sleuth" },
 
-	{ "b0o/schemastore.nvim" },
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"neovim/nvim-lspconfig",
+	"L3MON4D3/LuaSnip",
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"saadparwaiz1/cmp_luasnip",
+	"rafamadriz/friendly-snippets",
+	"tpope/vim-sleuth",
+	"b0o/schemastore.nvim",
+	"nvim-lua/plenary.nvim",
+	"nvim-treesitter/nvim-treesitter-context",
 
-	{ "nvim-lua/plenary.nvim" },
+	"mfussenegger/nvim-dap",
+	"jay-babu/mason-nvim-dap.nvim",
+	"theHamsta/nvim-dap-virtual-text",
+	{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
 
 	{
 		"folke/lazydev.nvim",
@@ -51,12 +56,29 @@ require("lazy").setup({
 	},
 
 	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true,
+				},
+			},
+			presets = { long_message_to_split = true },
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+	},
+
+	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = { "windwp/nvim-ts-autotag" },
 		build = ":TSUpdate",
-		config = function()
-			require("custom.treesitter")
-		end,
+		config = function() require("custom.treesitter") end,
 	},
 
 	{
@@ -81,9 +103,7 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("custom.statusline")
-		end,
+		config = function() require("custom.statusline") end,
 	},
 
 	{
@@ -91,16 +111,12 @@ require("lazy").setup({
 		priority = 1000,
 		lazy = false,
 		config = true,
-		init = function()
-			require("onedark").load()
-		end,
+		init = function() require("onedark").load() end,
 	},
 
 	{
 		"stevearc/conform.nvim",
-		config = function()
-			require("custom.formatter")
-		end,
+		config = function() require("custom.formatter") end,
 	},
 
 	{
@@ -110,9 +126,7 @@ require("lazy").setup({
 			{ "-", "<cmd>Oil --float<cr>", mode = { "n" } },
 			{ "<leader>e", "<cmd>Oil --float<cr>", mode = { "n" } },
 		},
-		config = function()
-			require("custom.explorer")
-		end,
+		config = function() require("custom.explorer") end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
@@ -124,25 +138,43 @@ require("lazy").setup({
 	},
 
 	{
-		-- NOTE: until https://github.com/pmizio/typescript-tools.nvim/pull/267 is merged
-		-- "pmizio/typescript-tools.nvim",
-		"notomo/typescript-tools.nvim",
+		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	},
+
+	{
+		"nvim-java/nvim-java",
+		dependencies = {
+			"nvim-java/lua-async-await",
+			"nvim-java/nvim-java-core",
+			"nvim-java/nvim-java-test",
+			"nvim-java/nvim-java-dap",
+			"MunifTanjim/nui.nvim",
+			"neovim/nvim-lspconfig",
+			"mfussenegger/nvim-dap",
+			{
+				"williamboman/mason.nvim",
+				opts = {
+					registries = {
+						"github:nvim-java/mason-registry",
+						"github:mason-org/mason-registry",
+					},
+				},
+			},
+		},
 	},
 
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("custom.search")
-		end,
+		config = function() require("custom.search") end,
 	},
 
 	{
 		"benfowler/telescope-luasnip.nvim",
 		after = "telescope.nvim",
-		keys = { "<leader>fs" },
+		keys = { "<leader>ss" },
 	},
 
 	{
@@ -161,10 +193,23 @@ require("lazy").setup({
 
 	{ "supermaven-inc/supermaven-nvim", opts = {} },
 
+	-- {
+	-- 	"tree-sitter-grammars/tree-sitter-test",
+	-- 	build = "make parser/test.so",
+	-- 	ft = "test",
+	-- 	init = function()
+	-- 		-- toggle dynamic language injection
+	-- 		vim.g.tstest_dynamic_injection = false
+	-- 		-- toggle full-width rules for test separators
+	-- 		vim.g.tstest_fullwidth_rules = false
+	-- 		-- set the highlight group of the rules
+	-- 		vim.g.tstest_rule_hlgroup = "FoldColumn"
+	-- 	end,
+	-- },
+
 	{
 		"olrtg/nvim-rename-state",
 		ft = { "javascript", "javascriptreact", "typescriptreact" },
-		cmd = "RenameState",
 		dev = true,
 	},
 
@@ -178,11 +223,10 @@ require("lazy").setup({
 	{
 		"olrtg/nvim-emmet",
 		dev = true,
-		config = function()
-			vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation)
-		end,
+		config = function() vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation) end,
 	},
 }, { dev = { path = "~/i" } })
 
 require("custom.lsp")
 require("custom.completion")
+require("custom.dap")

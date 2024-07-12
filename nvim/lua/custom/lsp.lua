@@ -14,9 +14,9 @@ end)
 -- neovim enables them by default.
 -- here we are just changing them to fancy icons.
 lsp_zero.set_sign_icons({
-	error = "",
+	error = "",
 	warn = "",
-	hint = "",
+	hint = "",
 	info = "",
 })
 
@@ -25,9 +25,7 @@ lsp_zero.set_sign_icons({
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	handlers = {
-		function(server_name)
-			lspconfig[server_name].setup({})
-		end,
+		function(server_name) lspconfig[server_name].setup({}) end,
 
 		lua_ls = function()
 			lspconfig.lua_ls.setup({
@@ -69,11 +67,41 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
+		jdtls = function()
+			lspconfig.jdtls.setup({
+				settings = {
+					java = {
+						configuration = {
+							runtimes = {
+								{ name = "JavaSE-20", path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9" },
+								{ name = "JavaSE-11", path = "~/.asdf/installs/java/adoptopenjdk-11.0.20+8" },
+								{ name = "JavaSE-1.8", path = "~/.asdf/installs/java/zulu-8.72.0.17" },
+							},
+						},
+						format = {
+							settings = {
+								url = "~/eclipse-java-stoplight-style.xml",
+								profile = "StoplightStyle",
+							},
+						},
+					},
+				},
+			})
+		end,
+
 		tsserver = lsp_zero.noop,
+		emmet_language_server = lsp_zero.noop,
 	},
 })
 
+require("lspconfig").emmet_language_server.setup({
+	cmd = { "emmet-language-server", "--stdio" },
+})
+
 require("typescript-tools").setup({
+	handlers = {
+		["textDocument/rename"] = require("nvim-rename-state").rename_handler,
+	},
 	settings = {
 		complete_function_calls = true,
 		tsserver_file_preferences = {

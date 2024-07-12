@@ -15,9 +15,7 @@ cmp.setup({
 		{ name = "buffer", keyword_length = 3 },
 	},
 	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
+		expand = function(args) require("luasnip").lsp_expand(args.body) end,
 	},
 	mapping = cmp.mapping.preset.insert({
 		-- confirm completion item
