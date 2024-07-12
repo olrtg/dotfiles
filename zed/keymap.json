@@ -5,11 +5,6 @@
   },
 
   {
-    "context": "Workspace",
-    "bindings": {}
-  },
-
-  {
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "g l": "editor::Hover",
@@ -28,7 +23,7 @@
       "space l r": "editor::Rename",
       "space l j": "editor::GoToDiagnostic",
       "space l k": "editor::GoToPrevDiagnostic",
-      "space l s": "diagnostics::Deploy",
+      "space l d": "diagnostics::Deploy",
 
       "space g g": [
         "workspace::SendKeystrokes",
@@ -38,7 +33,6 @@
       "space g k": "editor::GoToPrevHunk",
       "space g l": "editor::ToggleGitBlame",
 
-      "shift-k": "editor::Hover",
       "shift-h": "pane::ActivatePrevItem",
       "shift-l": "pane::ActivateNextItem",
 

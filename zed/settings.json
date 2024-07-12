@@ -1,30 +1,38 @@
 {
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
   },
-
   "base_keymap": "Atom",
-
   // [[ Fonts ]]
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-
   // [[ Reduce clutter ]]
-  // "features": { "copilot": false },
-  // "toolbar": { "quick_actions": false },
-  // "collaboration_panel": { "button": false },
-  // "chat_panel": { "button": false },
-  // "notification_panel": { "button": false },
-  // "assistant": { "version": "1", "button": false },
-
+  "toolbar": {
+    "quick_actions": false
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "notification_panel": {
+    "button": false
+  },
+  "assistant": {
+    "version": "1",
+    "button": false
+  },
   // [[ Vim ]]
   "vim_mode": true,
   "vertical_scroll_margin": 5,
-  "relative_line_numbers": true,
   "vim": {
     "use_multiline_find": true,
     "use_smartcase_find": true
@@ -38,38 +46,49 @@
       "enabled": false
     }
   },
-
   // [[ UI ]]
   "project_panel": {
     "dock": "right",
     "default_width": 350
   },
-
   "terminal": {
     "font_size": 14,
     "default_height": 200,
     "max_scroll_history_lines": 100000
   },
-
   // [[ LSP ]]
-  "inlay_hints": { "enabled": true },
+  "inlay_hints": {
+    "enabled": true
+  },
   "lsp": {
-    "typescript-language-server": {
+    "vtsls": {
       "initialization_options": {
         "preferences": {
-          "includeInlayParameterNameHints": false,
-          "includeInlayParameterNameHintsWhenArgumentMatchesName": false,
-          "includeInlayFunctionParameterTypeHints": false,
-          "includeInlayVariableTypeHints": false,
-          "includeInlayVariableTypeHintsWhenTypeMatchesName": false,
-          "includeInlayPropertyDeclarationTypeHints": false,
-          "includeInlayFunctionLikeReturnTypeHints": false,
-          "includeInlayEnumMemberValueHints": true
+          "typescript": {
+            "inlayHints": {
+              "parameterNames": {
+                "enabled": false
+              },
+              "parameterTypes": {
+                "enabled": false
+              },
+              "variableTypes": {
+                "enabled": false
+              },
+              "propertyDeclarationTypes": {
+                "enabled": false
+              },
+              "functionLikeReturnTypes": {
+                "enabled": false
+              }
+            }
+          }
         }
       }
     }
   },
-
   // [[ Misc ]]
-  "telemetry": { "metrics": false }
+  "telemetry": {
+    "metrics": false
+  }
 }
