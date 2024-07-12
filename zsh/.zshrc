@@ -43,6 +43,7 @@ path=(
 	${ANDROID_HOME}/platform-tools/
 	${HOME}/.local/bin
 	${HOME}/bin
+	./node_modules/.bin
 	$path
 )
 
