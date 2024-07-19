@@ -5,9 +5,8 @@ npm i -g \
 	@angular/cli \
 	@antfu/ni \
 	@nestjs/cli \
-	git-removed-branches\
+	git-removed-branches \
 	npm-check \
-	nx \
 	pnpm \
 	react-native \
 	tree-sitter-cli \

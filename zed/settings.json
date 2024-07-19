@@ -8,28 +8,13 @@
     "dark": "One Dark"
   },
   "base_keymap": "Atom",
+
   // [[ Fonts ]]
   "ui_font_size": 14,
   "buffer_font_size": 14,
   "ui_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  // [[ Reduce clutter ]]
-  "toolbar": {
-    "quick_actions": false
-  },
-  "collaboration_panel": {
-    "button": false
-  },
-  "chat_panel": {
-    "button": false
-  },
-  "notification_panel": {
-    "button": false
-  },
-  "assistant": {
-    "version": "1",
-    "button": false
-  },
+
   // [[ Vim ]]
   "vim_mode": true,
   "vertical_scroll_margin": 5,
@@ -58,35 +43,39 @@
   },
   // [[ LSP ]]
   "inlay_hints": {
-    "enabled": true
+    "enabled": false
   },
   "lsp": {
     "vtsls": {
       "initialization_options": {
-        "preferences": {
-          "typescript": {
-            "inlayHints": {
-              "parameterNames": {
-                "enabled": false
-              },
-              "parameterTypes": {
-                "enabled": false
-              },
-              "variableTypes": {
-                "enabled": false
-              },
-              "propertyDeclarationTypes": {
-                "enabled": false
-              },
-              "functionLikeReturnTypes": {
-                "enabled": false
-              }
+        "typescript": {
+          "inlayHints": {
+            "parameterNames": {
+              "enabled": false,
+              "suppressWhenArgumentMatchesName": false
+            },
+            "parameterTypes": {
+              "enabled": false
+            },
+            "variableTypes": {
+              "enabled": false,
+              "suppressWhenTypeMatchesName": false
+            },
+            "propertyDeclarationTypes": {
+              "enabled": false
+            },
+            "functionLikeReturnTypes": {
+              "enabled": false
+            },
+            "enumMemberValues": {
+              "enabled": true
             }
           }
         }
       }
     }
   },
+
   // [[ Misc ]]
   "telemetry": {
     "metrics": false

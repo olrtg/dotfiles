@@ -16,7 +16,6 @@ plug "zsh-users/zsh-syntax-highlighting"
 
 # Completion plugins
 plug "zsh-users/zsh-completions"
-plug "jscutlery/nx-completion"
 
 if [[ $(uname) == "Darwin" ]]; then
 	export ANDROID_HOME="$HOME/Library/Android/Sdk"
