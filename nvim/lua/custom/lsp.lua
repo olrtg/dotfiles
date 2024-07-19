@@ -10,9 +10,6 @@ lsp_zero.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
 end)
 
--- technically these are "diagnostic signs"
--- neovim enables them by default.
--- here we are just changing them to fancy icons.
 lsp_zero.set_sign_icons({
 	error = "",
 	warn = "",
@@ -22,7 +19,8 @@ lsp_zero.set_sign_icons({
 
 -- to learn how to use mason.nvim
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-require("mason").setup({})
+require("mason").setup()
+require("java").setup()
 require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name) lspconfig[server_name].setup({}) end,
