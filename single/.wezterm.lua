@@ -14,7 +14,7 @@ end
 
 config.color_scheme = "OneDark (base16)"
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.line_height = 1.2
+config.line_height = 1.5
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 240
