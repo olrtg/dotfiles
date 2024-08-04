@@ -65,6 +65,11 @@ require("lazy").setup({
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
+				hover = {
+					-- Set not show a message if hover is not available
+					-- ex: shift+k on Java code
+					silent = true,
+				},
 			},
 			presets = { long_message_to_split = true },
 		},
@@ -119,6 +124,11 @@ require("lazy").setup({
 	},
 
 	{
+		"mfussenegger/nvim-lint",
+		config = function() require("custom.linter") end,
+	},
+
+	{
 		"stevearc/oil.nvim",
 		cmd = "Oil",
 		keys = {
@@ -148,9 +158,11 @@ require("lazy").setup({
 			"nvim-java/nvim-java-core",
 			"nvim-java/nvim-java-test",
 			"nvim-java/nvim-java-dap",
+			"nvim-java/nvim-java-refactor",
 			"MunifTanjim/nui.nvim",
 			"neovim/nvim-lspconfig",
 			"mfussenegger/nvim-dap",
+			"JavaHello/spring-boot.nvim",
 			{
 				"williamboman/mason.nvim",
 				opts = {
