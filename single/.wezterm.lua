@@ -13,11 +13,18 @@ else
 end
 
 config.color_scheme = "OneDark (base16)"
-config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font = wezterm.font("Berkeley Mono")
 config.line_height = 1.5
 config.warn_about_missing_glyphs = false
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 240
 config.window_close_confirmation = "NeverPrompt"
+config.window_decorations = "RESIZE"
+config.window_padding = {
+	left = "1.5cell",
+	right = "1.5cell",
+	top = "0.5cell",
+	bottom = "0.5cell",
+}
 
 return config
