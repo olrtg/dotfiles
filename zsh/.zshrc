@@ -46,6 +46,11 @@ path=(
 	$path
 )
 
+fpath=(
+	${ASDF_DIR}/completions
+	$fpath
+)
+
 # Aliases
 alias v='$EDITOR'
 alias c="clear"
@@ -105,15 +110,12 @@ if [[ $(uname) == "Darwin" ]]; then
 	. /opt/homebrew/opt/asdf/libexec/asdf.sh
 else
 	. "$HOME/.asdf/asdf.sh"
-	fpath=(${ASDF_DIR}/completions $fpath)
-	autoload -Uz compinit && compinit
 fi
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 
-# This fixes completion in macos for zsh-users/zsh-autosuggestions
-# https://github.com/zsh-users/zsh-completions/issues/519
-autoload -U compinit && compinit
+# Initialize zsh completions
+autoload -Uz compinit && compinit
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
