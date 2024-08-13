@@ -32,3 +32,6 @@ vim.opt.showmode = false
 
 -- Make line numbers default
 vim.opt.number = true
+
+-- Disable line wrapping
+vim.o.wrap = false

@@ -98,7 +98,7 @@ require("lspconfig").emmet_language_server.setup({
 
 require("typescript-tools").setup({
 	handlers = {
-		["textDocument/rename"] = require("nvim-rename-state").rename_handler,
+		-- ["textDocument/rename"] = require("nvim-rename-state").rename_handler,
 	},
 	settings = {
 		complete_function_calls = true,

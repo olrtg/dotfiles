@@ -33,6 +33,7 @@ require("lazy").setup({
 	"b0o/schemastore.nvim",
 	"nvim-lua/plenary.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
+	"JoosepAlviste/nvim-ts-context-commentstring",
 
 	"mfussenegger/nvim-dap",
 	"jay-babu/mason-nvim-dap.nvim",
@@ -217,6 +218,12 @@ require("lazy").setup({
 	-- 		vim.g.tstest_rule_hlgroup = "FoldColumn"
 	-- 	end,
 	-- },
+
+	{
+		"tpope/vim-sleuth",
+		-- Disable for java projects
+		cond = vim.fn.filereadable(vim.fn.getcwd() .. "/pom.xml") == 0,
+	},
 
 	{
 		"olrtg/nvim-rename-state",

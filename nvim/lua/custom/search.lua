@@ -23,6 +23,7 @@ telescope.setup({
 })
 
 vim.keymap.set("n", "<leader>f", builtin.find_files)
+vim.keymap.set("n", "<leader>ld", function() builtin.diagnostics({ bufnr = 0 }) end)
 vim.keymap.set("n", "<leader>st", builtin.live_grep)
 vim.keymap.set("n", "<leader>sh", builtin.help_tags)
 

@@ -25,3 +25,12 @@ do
 
 	vim.keymap.set("n", "[c", require("treesitter-context").go_to_context)
 end
+
+do -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
+	local get_option = vim.filetype.get_option
+	---@diagnostic disable-next-line: duplicate-set-field
+	vim.filetype.get_option = function(filetype, option)
+		return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+			or get_option(filetype, option)
+	end
+end
