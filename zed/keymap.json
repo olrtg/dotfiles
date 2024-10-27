@@ -40,6 +40,17 @@
     }
   },
 
+  /*
+   * Incremental selection
+   */
+  {
+    "context": "Editor && !showing_code_actions && vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "enter": "editor::SelectLargerSyntaxNode",
+      "backspace": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
@@ -61,7 +72,12 @@
 
   {
     "context": "Editor && showing_code_actions",
-    "bindings": { "ctrl-y": "editor::ConfirmCodeAction" }
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCodeAction",
+      "j": "editor::ContextMenuNext",
+      "k": "editor::ContextMenuPrev",
+      "q": "editor::Cancel"
+    }
   },
 
   {
@@ -76,6 +92,18 @@
       "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-s": [
+        "vim::PushOperator",
+        {
+          "AddSurrounds": {}
+        }
+      ]
     }
   }
 ]

@@ -32,7 +32,13 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
 	},
-})
+
+	{
+		"vscode-neovim/vscode-multi-cursor.nvim",
+		event = "VeryLazy",
+		opts = {},
+	},
+}, { root = vim.fn.stdpath("data") .. "/lazy-vscode" })
 
 local vscode = require("vscode-neovim")
 
@@ -81,4 +87,9 @@ vim.keymap.set("n", "<S-h>", function()
 end)
 vim.keymap.set("n", "<S-l>", function()
 	vscode.call("workbench.action.nextEditor")
+end)
+
+-- [[ Terminal ]]
+vim.keymap.set("n", "<C-\\>", function()
+	vscode.call("workbench.action.terminal.toggleTerminal")
 end)

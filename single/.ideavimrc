@@ -12,36 +12,46 @@ set commentary
 set highlightedyank
 set nerdtree
 
+let g:highlightedyank_highlight_duration = "100"
+let g:highlightedyank_highlight_color = "rgba(160, 160, 160, 155)"
+
 """ Better search
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+set matchit
 
 """ Keybindings
 imap jk <Esc>
+map <leader>w <Action>(SaveAll)
+map <leader>q <Action>(CloseContent)
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+map <C-\> <Action>(ActivateTerminalToolWindow)
 
 """ NERDTree
 map <C-l> :nohlsearch<cr>
-nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>e :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 """ LSP
-map <leader>gr <Action>(ShowUsages)
-map <C-k> <Action>(ParameterInfo)
-map <leader>rn <Action>(RenameElement)
-map <leader>ca <Action>(ShowIntentionActions)
-map <leader>f <Action>(ReformatCode)
+map <S-k> <Action>(ShowHoverInfo)
+map grr <Action>(ShowUsages)
+map gs <Action>(ParameterInfo)
+map gl <Action>(ShowErrorDescription)
+map <leader>lr <Action>(RenameElement)
+map <leader>la <Action>(ShowIntentionActions)
 
-map <leader>[d <Action>(GotoPreviousError)
-map <leader>]d <Action>(GotoNextError)
+map <leader>lk <Action>(GotoPreviousError)
+map <leader>lj <Action>(GotoNextError)
 
 """ Search
-map <leader>sf <Action>(GotoFile)
+map <leader>f <Action>(GotoFile)
 map <leader>st <Action>(TextSearchAction)
 
 """ Git
-map [c <Action>(VcsShowPrevChangeMarker)
-map ]c <Action>(VcsShowNextChangeMarker)
+map gk <Action>(VcsShowPrevChangeMarker)
+map gj <Action>(VcsShowNextChangeMarker)

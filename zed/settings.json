@@ -1,83 +1,79 @@
 {
-  "features": {
-    "inline_completion_provider": "supermaven"
-  },
+  /*
+   * Personalization
+   */
+  "ui_font_size": 14,
+  "buffer_font_size": 14,
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "One Dark"
   },
   "base_keymap": "Atom",
+  "scroll_beyond_last_line": "off",
+  "project_panel": {
+    "dock": "right",
+    "default_width": 300
+  },
+  "terminal": {
+    "font_size": 12,
+    "default_height": 200,
+    "max_scroll_history_lines": 100000
+  },
+  "buffer_font_family": "Input Mono",
+  "buffer_line_height": {
+    "custom": 1.75
+  },
 
-  // [[ Fonts ]]
-  "ui_font_size": 14,
-  "buffer_font_size": 14,
-  "ui_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_family": "JetBrainsMono Nerd Font",
-
-  // [[ Vim ]]
+  /*
+   * Vim
+   */
   "vim_mode": true,
   "vertical_scroll_margin": 5,
   "vim": {
     "use_multiline_find": true,
     "use_smartcase_find": true
   },
-  "gutter": {
-    "line_numbers": false
-  },
   "cursor_blink": false,
   "git": {
-    "inline_blame": {
-      "enabled": false
-    }
+    "inline_blame": { "enabled": false }
   },
-  // [[ UI ]]
-  "project_panel": {
-    "dock": "right",
-    "default_width": 350
-  },
-  "terminal": {
-    "font_size": 14,
-    "default_height": 200,
-    "max_scroll_history_lines": 100000
-  },
-  // [[ LSP ]]
-  "inlay_hints": {
-    "enabled": false
-  },
+
+  /*
+   * Language Servers
+   */
   "lsp": {
-    "vtsls": {
-      "initialization_options": {
-        "typescript": {
-          "inlayHints": {
-            "parameterNames": {
-              "enabled": false,
-              "suppressWhenArgumentMatchesName": false
-            },
-            "parameterTypes": {
-              "enabled": false
-            },
-            "variableTypes": {
-              "enabled": false,
-              "suppressWhenTypeMatchesName": false
-            },
-            "propertyDeclarationTypes": {
-              "enabled": false
-            },
-            "functionLikeReturnTypes": {
-              "enabled": false
-            },
-            "enumMemberValues": {
-              "enabled": true
-            }
-          }
-        }
-      }
+    "pyright": {
+      "settings.python.pythonPath": ".venv/bin/python",
+      "settings.python.analysis.diagnosticMode": "workspace",
+      "settings.python.analysis.typeCheckingMode": "strict"
     }
   },
 
-  // [[ Misc ]]
-  "telemetry": {
-    "metrics": false
-  }
+  "languages": {
+    "Python": {
+      "format_on_save.language_server.name": "ruff",
+      "formatter.language_server.name": "ruff",
+      "language_servers": ["pyright", "ruff"]
+    }
+  },
+
+  /*
+   * AI Setup
+   */
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2"
+  },
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
+
+  /*
+   * Miscellaneous
+   */
+  "telemetry": { "metrics": false }
 }
