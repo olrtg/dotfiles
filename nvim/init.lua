@@ -18,17 +18,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",
-	"L3MON4D3/LuaSnip",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"saadparwaiz1/cmp_luasnip",
 	"rafamadriz/friendly-snippets",
 	"b0o/schemastore.nvim",
 	"nvim-lua/plenary.nvim",
@@ -39,6 +31,24 @@ require("lazy").setup({
 	"jay-babu/mason-nvim-dap.nvim",
 	"theHamsta/nvim-dap-virtual-text",
 	{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
+
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "v0.*",
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "normal",
+			},
+			signature = { enabled = true },
+		},
+		opts_extend = { "sources.default" },
+	},
 
 	{
 		"folke/lazydev.nvim",
@@ -55,29 +65,8 @@ require("lazy").setup({
 		},
 	},
 
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			lsp = {
-				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-				hover = {
-					-- Set not show a message if hover is not available
-					-- ex: shift+k on Java code
-					silent = true,
-				},
-			},
-			presets = { long_message_to_split = true },
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-	},
+	{ "echasnovski/mini.statusline", version = "*", opts = {} },
+	{ "stevearc/dressing.nvim", opts = {} },
 
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -103,12 +92,6 @@ require("lazy").setup({
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
-	},
-
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function() require("custom.statusline") end,
 	},
 
 	{
@@ -145,11 +128,6 @@ require("lazy").setup({
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
-	},
-
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	},
 
 	{
@@ -205,20 +183,6 @@ require("lazy").setup({
 
 	{ "supermaven-inc/supermaven-nvim", opts = {} },
 
-	-- {
-	-- 	"tree-sitter-grammars/tree-sitter-test",
-	-- 	build = "make parser/test.so",
-	-- 	ft = "test",
-	-- 	init = function()
-	-- 		-- toggle dynamic language injection
-	-- 		vim.g.tstest_dynamic_injection = false
-	-- 		-- toggle full-width rules for test separators
-	-- 		vim.g.tstest_fullwidth_rules = false
-	-- 		-- set the highlight group of the rules
-	-- 		vim.g.tstest_rule_hlgroup = "FoldColumn"
-	-- 	end,
-	-- },
-
 	{
 		"tpope/vim-sleuth",
 		-- Disable for java projects
@@ -246,5 +210,4 @@ require("lazy").setup({
 }, { dev = { path = "~/i" } })
 
 require("custom.lsp")
-require("custom.completion")
 require("custom.dap")

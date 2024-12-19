@@ -21,7 +21,5 @@ require("oil").setup({
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	desc = "",
 	pattern = "oil",
-	callback = function()
-		vim.api.nvim_set_hl(0, "FloatBorder", { bg = "Background" })
-	end,
+	callback = function() vim.api.nvim_set_hl(0, "FloatBorder", { bg = "Background" }) end,
 })

@@ -1,26 +1,17 @@
-local lsp_zero = require("lsp-zero")
 local lspconfig = require("lspconfig")
 
-lsp_zero.on_attach(function(_, bufnr)
-	-- keybindings are listed here:
-	-- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/api-reference.md#default_keymapsopts
-	lsp_zero.default_keymaps({ buffer = bufnr, exclude = { "<F2>", "<F3>", "<F4>" } })
-	vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename)
-	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
-	vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action)
-end)
-
-lsp_zero.set_sign_icons({
-	error = "",
-	warn = "",
-	hint = "",
-	info = "",
-})
+local lspconfig_defaults = lspconfig.util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+	"force",
+	lspconfig_defaults.capabilities,
+	require("blink.cmp").get_lsp_capabilities(lspconfig_defaults.capabilities)
+)
 
 -- to learn how to use mason.nvim
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
 require("mason").setup()
 require("java").setup()
+---@diagnostic disable-next-line: missing-fields
 require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name) lspconfig[server_name].setup({}) end,
@@ -87,35 +78,24 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
-		tsserver = lsp_zero.noop,
-		emmet_language_server = lsp_zero.noop,
+		emmet_language_server = function() end,
 	},
 })
 
-require("lspconfig").emmet_language_server.setup({
+lspconfig.emmet_language_server.setup({
 	cmd = { "emmet-language-server", "--stdio" },
 })
 
-require("typescript-tools").setup({
-	handlers = {
-		-- ["textDocument/rename"] = require("nvim-rename-state").rename_handler,
-	},
-	settings = {
-		complete_function_calls = true,
-		tsserver_file_preferences = {
-			includeInlayParameterNameHints = false,
-			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-			includeInlayFunctionParameterTypeHints = false,
-			includeInlayVariableTypeHints = false,
-			includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-			includeInlayPropertyDeclarationTypeHints = false,
-			includeInlayFunctionLikeReturnTypeHints = false,
-			includeInlayEnumMemberValueHints = true,
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
 		},
 	},
-})
 
-vim.diagnostic.config({
 	virtual_text = {
 		prefix = " 󱓻",
 		suffix = " ",
