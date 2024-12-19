@@ -16,6 +16,17 @@ require("mason-lspconfig").setup({
 	handlers = {
 		function(server_name) lspconfig[server_name].setup({}) end,
 
+		eslint = function()
+			lspconfig.eslint.setup({
+				settings = {
+					rulesCustomizations = {
+						-- set all eslint errors/warnings to show as warnings
+						{ rule = "*", severity = "warn" },
+					},
+				},
+			})
+		end,
+
 		lua_ls = function()
 			lspconfig.lua_ls.setup({
 				settings = {
