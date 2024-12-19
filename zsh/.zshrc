@@ -33,6 +33,8 @@ export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
 export BAT_THEME="base16"
 
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
 # Disable LunarVim's core plugins pinning
 # https://www.lunarvim.org/docs/configuration/plugins/core-plugins#pinning
 export LVIM_DEV_MODE=true
