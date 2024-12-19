@@ -78,6 +78,49 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
+		vtsls = function()
+			local location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+				.. "/node_modules/@vue/language-server"
+			lspconfig.vtsls.setup({
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"vue", -- volar uses the typescript language server in hybrid mode
+				},
+				settings = {
+					vtsls = {
+						tsserver = {
+							globalPlugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = location,
+									languages = { "vue" },
+									configNamespace = "typescript",
+									enableForWorkspaceTypeScriptVersions = true,
+								},
+							},
+						},
+					},
+					typescript = {
+						tsserver = { maxTsServerMemory = 8092 },
+						inlayHints = {
+							enumMemberValues = { enabled = true },
+						},
+					},
+					javascript = {
+						tsserver = { maxTsServerMemory = 8092 },
+						inlayHints = {
+							enumMemberValues = { enabled = true },
+						},
+					},
+				},
+			})
+		end,
+
 		emmet_language_server = function() end,
 	},
 })
