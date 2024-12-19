@@ -1,14 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.clipboard = "unnamedplus"
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank({ timeout = 300 })
-	end,
-})
-
 -- [[ Lazy ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -24,7 +16,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"tpope/vim-surround",
+	"tpope/vim-projectionist",
+
+	{
+		"kylechui/nvim-surround",
+		version = "*",
+		event = "VeryLazy",
+		config = true,
+	},
 
 	{
 		"chrishrb/gx.nvim",
@@ -32,15 +31,11 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
 	},
-
-	{
-		"vscode-neovim/vscode-multi-cursor.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
 }, { root = vim.fn.stdpath("data") .. "/lazy-vscode" })
 
 local vscode = require("vscode-neovim")
+
+vim.notify = vscode.notify
 
 vim.keymap.set("n", "<leader>w", function()
 	vscode.call("workbench.action.files.save")
@@ -63,6 +58,15 @@ end)
 vim.keymap.set("n", "<leader>gg", function()
 	vscode.call("lazygit.openLazygit")
 end)
+vim.keymap.set("n", "<leader>R", function()
+	vscode.call("workbench.action.openRecent")
+end)
+vim.keymap.set("n", "u", function()
+	vscode.call("undo")
+end)
+vim.keymap.set("n", "<C-r>", function()
+	vscode.call("redo")
+end)
 
 -- [[ LSP ]]
 vim.keymap.set("n", "gr", function()
@@ -71,7 +75,7 @@ end)
 vim.keymap.set("n", "gs", function()
 	vscode.call("editor.action.triggerParameterHints")
 end)
-vim.keymap.set("n", "<leader>la", function()
+vim.keymap.set({ "n", "x" }, "<leader>la", function()
 	vscode.call("editor.action.quickFix")
 end)
 vim.keymap.set("n", "<leader>lr", function()
@@ -79,6 +83,12 @@ vim.keymap.set("n", "<leader>lr", function()
 end)
 vim.keymap.set("n", "<leader>ld", function()
 	vscode.call("workbench.actions.view.problems")
+end)
+vim.keymap.set("n", "<leader>lj", function()
+	vscode.call("workbench.action.editor.nextChange")
+end)
+vim.keymap.set("n", "<leader>lk", function()
+	vscode.call("workbench.action.editor.previousChange")
 end)
 
 -- [[ Navigation ]]
@@ -88,8 +98,4 @@ end)
 vim.keymap.set("n", "<S-l>", function()
 	vscode.call("workbench.action.nextEditor")
 end)
-
--- [[ Terminal ]]
-vim.keymap.set("n", "<C-\\>", function()
-	vscode.call("workbench.action.terminal.toggleTerminal")
-end)
+vim.keymap.set("n", "<leader>a", "<cmd>A<cr>")
