@@ -2,8 +2,8 @@
   /*
    * Personalization
    */
-  "ui_font_size": 14,
-  "buffer_font_size": 14,
+  "ui_font_size": 15,
+  "buffer_font_size": 15,
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -16,11 +16,11 @@
     "default_width": 300
   },
   "terminal": {
-    "font_size": 12,
+    "font_size": 13,
     "default_height": 200,
     "max_scroll_history_lines": 100000
   },
-  "buffer_font_family": "Input Mono",
+  "buffer_font_family": "Berkeley Mono",
   "buffer_line_height": {
     "custom": 1.75
   },
@@ -43,14 +43,32 @@
    * Language Servers
    */
   "lsp": {
-    "pyright": {
-      "settings.python.pythonPath": ".venv/bin/python",
-      "settings.python.analysis.diagnosticMode": "workspace",
-      "settings.python.analysis.typeCheckingMode": "strict"
+    "eslint": {
+      "settings": {
+        "rulesCustomizations": [
+          // set all eslint errors/warnings to show as warnings
+          { "rule": "*", "severity": "warn" }
+        ]
+      }
     }
   },
 
   "languages": {
+    "JavaScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TypeScript": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "TSX": {
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
+    },
     "Python": {
       "format_on_save.language_server.name": "ruff",
       "formatter.language_server.name": "ruff",
@@ -64,13 +82,13 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
-  "features": {
-    "inline_completion_provider": "supermaven"
-  },
+  // "features": {
+  //   "inline_completion_provider": "supermaven"
+  // },
 
   /*
    * Miscellaneous
