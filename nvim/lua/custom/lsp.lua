@@ -140,6 +140,20 @@ lspconfig.emmet_language_server.setup({
 	cmd = { "emmet-language-server", "--stdio" },
 })
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(event)
+		local opts = { buffer = event.buf }
+
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
+		vim.keymap.set("n", "grr", builtin.lsp_references, opts)
+		vim.keymap.set("n", "gi", builtin.lsp_implementations, opts)
+		vim.keymap.set("n", "gO", builtin.lsp_document_symbols, opts)
+		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "gD", builtin.lsp_type_definitions, opts)
+	end,
+})
+
 vim.diagnostic.config({
 	signs = {
 		text = {
