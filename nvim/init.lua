@@ -26,6 +26,7 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
 	"JoosepAlviste/nvim-ts-context-commentstring",
+	"nvim-java/nvim-java",
 
 	"mfussenegger/nvim-dap",
 	"jay-babu/mason-nvim-dap.nvim",
@@ -98,8 +99,11 @@ require("lazy").setup({
 		"navarasu/onedark.nvim",
 		priority = 1000,
 		lazy = false,
-		config = true,
-		init = function() require("onedark").load() end,
+		opts = { style = "dark" },
+		init = function()
+			vim.o.background = "dark"
+			require("onedark").load()
+		end,
 	},
 
 	{
@@ -128,30 +132,6 @@ require("lazy").setup({
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = true,
-	},
-
-	{
-		"nvim-java/nvim-java",
-		dependencies = {
-			"nvim-java/lua-async-await",
-			"nvim-java/nvim-java-core",
-			"nvim-java/nvim-java-test",
-			"nvim-java/nvim-java-dap",
-			"nvim-java/nvim-java-refactor",
-			"MunifTanjim/nui.nvim",
-			"neovim/nvim-lspconfig",
-			"mfussenegger/nvim-dap",
-			"JavaHello/spring-boot.nvim",
-			{
-				"williamboman/mason.nvim",
-				opts = {
-					registries = {
-						"github:nvim-java/mason-registry",
-						"github:mason-org/mason-registry",
-					},
-				},
-			},
-		},
 	},
 
 	{
@@ -206,6 +186,12 @@ require("lazy").setup({
 		"olrtg/nvim-emmet",
 		dev = true,
 		config = function() vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation) end,
+	},
+
+	{
+		"olrtg/nvim-copy-deep-path",
+		dev = true,
+		config = true,
 	},
 }, { dev = { path = "~/i" } })
 

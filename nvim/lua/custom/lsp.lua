@@ -1,11 +1,7 @@
 local lspconfig = require("lspconfig")
 
 local lspconfig_defaults = lspconfig.util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-	"force",
-	lspconfig_defaults.capabilities,
-	require("blink.cmp").get_lsp_capabilities(lspconfig_defaults.capabilities)
-)
+lspconfig_defaults.capabilities = require("blink.cmp").get_lsp_capabilities(lspconfig_defaults.capabilities)
 
 -- to learn how to use mason.nvim
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
@@ -79,7 +75,11 @@ require("mason-lspconfig").setup({
 					java = {
 						configuration = {
 							runtimes = {
-								{ name = "JavaSE-20", path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9" },
+								{
+									name = "JavaSE-20",
+									path = "~/.asdf/installs/java/adoptopenjdk-20.0.2+9",
+									default = true,
+								},
 								{ name = "JavaSE-11", path = "~/.asdf/installs/java/adoptopenjdk-11.0.20+8" },
 								{ name = "JavaSE-1.8", path = "~/.asdf/installs/java/zulu-8.72.0.17" },
 							},

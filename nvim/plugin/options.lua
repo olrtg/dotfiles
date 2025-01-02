@@ -36,5 +36,4 @@ vim.opt.number = true
 -- Disable line wrapping
 vim.o.wrap = false
 
-vim.opt.shortmess = "I"
 vim.cmd("packadd cfilter")

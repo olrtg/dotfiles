@@ -17,6 +17,8 @@
     ~/.config/nvim-vscode: nvim-vscode
     ~/.config/nvim: nvim
     ~/.config/zed: zed
+    ~/.config/ghostty: ghostty
+    ~/.config/starship: single/starship.toml
 
     ~/.zshrc: zsh/.zshrc
     ~/.asdfrc: single/.asdfrc

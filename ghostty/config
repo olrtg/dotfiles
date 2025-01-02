@@ -1,0 +1,11 @@
+font-family = "Berkeley Mono"
+font-size = 15
+adjust-cell-height = 4
+adjust-cursor-height = 4
+font-thicken = true
+
+window-padding-x = 16
+# theme = dark:OneHalfDark,light:OneHalfLight
+
+confirm-close-surface = false
+clipboard-paste-protection = false

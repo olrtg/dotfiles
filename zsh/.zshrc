@@ -10,11 +10,8 @@ source "$HOME/i/dotfiles/zsh/themes/bash/base16-onedark.config"
 plug "zap-zsh/exa"
 plug "zap-zsh/fzf"
 plug "Aloxaf/fzf-tab"
-plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
-
-# Completion plugins
 plug "zsh-users/zsh-completions"
 
 if [[ $(uname) == "Darwin" ]]; then
@@ -73,8 +70,6 @@ alias t="nr test"
 
 alias ncls="rm -rf node_modules"
 
-alias rnand="react-native run-android"
-alias rnios="react-native run-ios --simulator='iPhone 15'"
 alias rncls="ncls && rm -rf ios/Pods"
 alias rni="ni && npx pod-install"
 
@@ -119,8 +114,8 @@ fi
 # Initialize zsh completions
 autoload -Uz compinit && compinit
 
+# Load starship
+eval "$(starship init zsh)"
+
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
-
-# opam configuration
-[[ ! -r /home/olrtg/.opam/opam-init/init.zsh ]] || source /home/olrtg/.opam/opam-init/init.zsh >/dev/null 2>/dev/null
