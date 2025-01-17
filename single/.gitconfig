@@ -1,6 +1,13 @@
 [user]
 	email = 20072509+olrtg@users.noreply.github.com
 	name = José Olórtegui
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARx7kY7VXWdaw5e2WEYup7zs5l6zTDEVHUiKrJfFrsx
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = true
 [init]
 	defaultBranch = main
 [pull]
@@ -9,3 +16,8 @@
 	autoSetupRemote = true
 [rerere]
 	enabled = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

@@ -17,7 +17,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.forcing_myself_to_learn = true
+vim.g.forcing_myself_to_learn = false
 
 require("lazy").setup({
 	"williamboman/mason.nvim",

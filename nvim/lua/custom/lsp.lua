@@ -4,8 +4,6 @@ local lspconfig_defaults = lspconfig.util.default_config
 
 if not vim.g.forcing_myself_to_learn then
 	lspconfig_defaults.capabilities = require("blink.cmp").get_lsp_capabilities(lspconfig_defaults.capabilities)
-else
-	vim.keymap.set("n", "K", "<Nop>")
 end
 
 -- to learn how to use mason.nvim

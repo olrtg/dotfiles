@@ -7,8 +7,6 @@ install:
 # Install dependencies
 install-deps:
 	rustup-init
-	./dependencies/install-deps.sh
-	/bin/bash -c "$$(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)"
 
 # Save snapshot of all Homebrew packages to macos/Brewfile
 brew:

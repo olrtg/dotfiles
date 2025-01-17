@@ -20,8 +20,10 @@
     ~/.config/ghostty: ghostty
     ~/.config/starship: single/starship.toml
 
+    ~/.asdfrc: asdf/.asdfrc
+    ~/.default-npm-packages: asdf/.default-npm-packages
+
     ~/.zshrc: zsh/.zshrc
-    ~/.asdfrc: single/.asdfrc
     ~/.ideavimrc: single/.ideavimrc
     ~/.ignore: single/.ignore
     ~/.gitconfig: single/.gitconfig
