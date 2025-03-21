@@ -35,9 +35,9 @@
     "use_smartcase_find": true
   },
   "cursor_blink": false,
-  "git": {
-    "inline_blame": { "enabled": false }
-  },
+  // "git": {
+  //   "inline_blame": { "enabled": false }
+  // },
 
   /*
    * Language Servers
@@ -49,6 +49,18 @@
           // set all eslint errors/warnings to show as warnings
           { "rule": "*", "severity": "warn" }
         ]
+      }
+    },
+
+    "pyright": {
+      "settings": {
+        // "python.analysis": {
+        //   "diagnosticMode": "workspace",
+        //   "typeCheckingMode": "strict"
+        // }
+        // "python": {
+        //   "pythonPath": ".venv/bin/python"
+        // }
       }
     }
   },
@@ -70,9 +82,21 @@
       }
     },
     "Python": {
-      "format_on_save.language_server.name": "ruff",
-      "formatter.language_server.name": "ruff",
-      "language_servers": ["pyright", "ruff"]
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ]
     }
   },
 
@@ -86,9 +110,9 @@
     },
     "version": "2"
   },
-  // "features": {
-  //   "inline_completion_provider": "supermaven"
-  // },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
 
   /*
    * Miscellaneous
