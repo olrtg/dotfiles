@@ -27,6 +27,7 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=10000000
 
 export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
+export ASDF_GOLANG_MOD_VERSION_ENABLED=true
 
 export BAT_THEME="base16"
 
@@ -42,6 +43,7 @@ path=(
 	${HOME}/.local/bin
 	${HOME}/bin
 	./node_modules/.bin
+	${GOROOT}/bin
 	$path
 )
 
@@ -110,6 +112,7 @@ else
 fi
 
 . ~/.asdf/plugins/java/set-java-home.zsh
+. ~/.asdf/plugins/golang/set-env.zsh
 
 # Initialize zsh completions
 autoload -Uz compinit && compinit
