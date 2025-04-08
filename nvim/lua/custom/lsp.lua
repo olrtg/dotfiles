@@ -160,7 +160,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gO", builtin.lsp_document_symbols, opts)
 		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 		vim.keymap.set("n", "gD", builtin.lsp_type_definitions, opts)
-		vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
 	end,
 })
 
