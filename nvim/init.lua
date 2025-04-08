@@ -18,6 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.forcing_myself_to_learn = false
+vim.g.forcing_myself_to_learn = true
 
 require("lazy").setup({
 	"williamboman/mason.nvim",
@@ -39,7 +40,7 @@ require("lazy").setup({
 		"saghen/blink.cmp",
 		dependencies = "rafamadriz/friendly-snippets",
 		version = "v0.*",
-		enabled = not vim.g.forcing_myself_to_learn,
+		cond = not vim.g.forcing_myself_to_learn,
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -90,12 +91,6 @@ require("lazy").setup({
 		version = "*",
 		event = "VeryLazy",
 		opts = {},
-	},
-
-	{
-		"folke/todo-comments.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
 	},
 
 	{
@@ -164,7 +159,7 @@ require("lazy").setup({
 		},
 	},
 
-	{ "supermaven-inc/supermaven-nvim", opts = {}, enabled = not vim.g.forcing_myself_to_learn },
+	{ "supermaven-inc/supermaven-nvim", opts = {}, cond = not vim.g.forcing_myself_to_learn },
 
 	{
 		"tpope/vim-sleuth",
