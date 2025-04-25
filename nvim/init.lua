@@ -18,7 +18,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.forcing_myself_to_learn = false
-vim.g.forcing_myself_to_learn = true
 
 require("lazy").setup({
 	"williamboman/mason.nvim",
@@ -84,6 +83,7 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
+		cond = not vim.g.forcing_myself_to_learn,
 	},
 
 	{
@@ -168,6 +168,20 @@ require("lazy").setup({
 	},
 
 	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
+		keys = {
+			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end },
+			{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end },
+			{ "r", mode = "o", function() require("flash").remote() end },
+			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end },
+			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end },
+		},
+	},
+
+	{
 		"olrtg/nvim-rename-state",
 		ft = { "javascript", "javascriptreact", "typescriptreact" },
 		dev = true,
@@ -191,6 +205,7 @@ require("lazy").setup({
 		dev = true,
 		config = true,
 	},
+	---@diagnostic disable-next-line: missing-fields
 }, { dev = { path = "~/i" } })
 
 require("custom.lsp")
