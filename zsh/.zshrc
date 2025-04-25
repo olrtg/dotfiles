@@ -15,9 +15,9 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "zsh-users/zsh-completions"
 
 if [[ $(uname) == "Darwin" ]]; then
-	export ANDROID_HOME="$HOME/Library/Android/Sdk"
+	export ANDROID_HOME="$HOME/Library/Android/sdk"
 else
-	export ANDROID_HOME="$HOME/Android/Sdk"
+	export ANDROID_HOME="$HOME/Android/sdk"
 fi
 
 export EDITOR=nvim
@@ -44,6 +44,7 @@ path=(
 	${HOME}/bin
 	./node_modules/.bin
 	${GOROOT}/bin
+	/opt/homebrew/opt/libpq/bin
 	$path
 )
 
@@ -54,9 +55,7 @@ fpath=(
 
 # Aliases
 alias v='$EDITOR'
-alias c="clear"
 alias r="source ~/.zshrc"
-alias x="exit"
 
 alias lzg="lazygit"
 
@@ -84,7 +83,7 @@ alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
 alias dcu="docker compose up"
 alias dcd="docker compose down"
 alias dcdv="dcd -v"
-alias dcdv="dcd --rmi all"
+alias dcda="dcd --rmi all"
 
 type npm >/dev/null 2>&1 && alias nrepl="NODE_PATH=$(npm root) node"
 
@@ -113,9 +112,6 @@ fi
 
 . ~/.asdf/plugins/java/set-java-home.zsh
 . ~/.asdf/plugins/golang/set-env.zsh
-
-# Initialize zsh completions
-autoload -Uz compinit && compinit
 
 # Load starship
 eval "$(starship init zsh)"
