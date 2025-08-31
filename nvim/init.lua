@@ -28,7 +28,7 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
 	"JoosepAlviste/nvim-ts-context-commentstring",
-	"nvim-java/nvim-java",
+	"tpope/vim-sleuth",
 
 	"mfussenegger/nvim-dap",
 	"jay-babu/mason-nvim-dap.nvim",
@@ -160,12 +160,6 @@ require("lazy").setup({
 	},
 
 	{ "supermaven-inc/supermaven-nvim", opts = {}, cond = not vim.g.forcing_myself_to_learn },
-
-	{
-		"tpope/vim-sleuth",
-		-- Disable for java projects
-		cond = vim.fn.filereadable(vim.fn.getcwd() .. "/pom.xml") == 0,
-	},
 
 	{
 		"folke/flash.nvim",
