@@ -8,3 +8,15 @@
 [submodule "zsh/themes"]
 	path = zsh/themes
 	url = https://github.com/tinted-theming/base16-fzf
+[submodule "zsh/zsh-completions"]
+	path = zsh/zsh-completions
+	url = git@github.com:zsh-users/zsh-completions.git
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/zsh-autosuggestions"]
+	path = zsh/zsh-autosuggestions
+	url = git@github.com:zsh-users/zsh-autosuggestions.git
+[submodule "zsh/fzf-tab"]
+	path = zsh/fzf-tab
+	url = git@github.com:Aloxaf/fzf-tab.git
