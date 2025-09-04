@@ -11,116 +11,21 @@ end
 require("mason").setup()
 ---@diagnostic disable-next-line: missing-fields
 require("mason-lspconfig").setup({
-	handlers = {
-		function(server_name) lspconfig[server_name].setup({}) end,
-
-		eslint = function()
-			lspconfig.eslint.setup({
-				settings = {
-					rulesCustomizations = {
-						-- set all eslint errors/warnings to show as warnings
-						{ rule = "*", severity = "warn" },
-					},
-				},
-				on_attach = function(_, bufnr)
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						buffer = bufnr,
-						command = "EslintFixAll",
-					})
-				end,
-			})
-		end,
-
-		lua_ls = function()
-			lspconfig.lua_ls.setup({
-				settings = {
-					Lua = {
-						completion = {
-							callSnippet = "Replace",
-						},
-					},
-				},
-			})
-		end,
-
-		jsonls = function()
-			lspconfig.jsonls.setup({
-				settings = {
-					json = {
-						schemas = require("schemastore").json.schemas(),
-						validate = { enable = true },
-					},
-				},
-			})
-		end,
-
-		yamlls = function()
-			lspconfig.yamlls.setup({
-				settings = {
-					yaml = {
-						schemaStore = {
-							-- You must disable built-in schemaStore support if you want to use
-							-- this plugin and its advanced options like `ignore`.
-							enable = false,
-							-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-							url = "",
-						},
-						schemas = require("schemastore").yaml.schemas(),
-					},
-				},
-			})
-		end,
-
-		vtsls = function()
-			local location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-				.. "/node_modules/@vue/language-server"
-			lspconfig.vtsls.setup({
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"javascript.jsx",
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-					"vue", -- volar uses the typescript language server in hybrid mode
-				},
-				settings = {
-					vtsls = {
-						tsserver = {
-							globalPlugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = location,
-									languages = { "vue" },
-									configNamespace = "typescript",
-									enableForWorkspaceTypeScriptVersions = true,
-								},
-							},
-						},
-					},
-					typescript = {
-						tsserver = { maxTsServerMemory = 8092 },
-						inlayHints = {
-							enumMemberValues = { enabled = true },
-						},
-					},
-					javascript = {
-						tsserver = { maxTsServerMemory = 8092 },
-						inlayHints = {
-							enumMemberValues = { enabled = true },
-						},
-					},
-				},
-			})
-		end,
-
-		emmet_language_server = function() end,
-	},
+	ensure_installed = { "lua_ls", "vtsls", "eslint", "jsonls", "yamlls", "ruby_lsp" },
 })
 
-lspconfig.emmet_language_server.setup({
-	cmd = { "emmet-language-server", "--stdio" },
-})
+do -- https://github.com/mason-org/mason-lspconfig.nvim/issues/113#issuecomment-1471346816
+	local registry = require("mason-registry")
+
+	for _, pkg_name in ipairs({ "stylua", "prettier" }) do
+		local ok, pkg = pcall(registry.get_package, pkg_name)
+		if ok then
+			if not pkg:is_installed() then
+				pkg:install()
+			end
+		end
+	end
+end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
