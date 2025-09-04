@@ -2,6 +2,24 @@
   /*
    * Personalization
    */
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "default_profile": "write",
+    "play_sound_when_agent_done": true,
+    "use_modifier_to_send": false
+  },
   "ui_font_size": 15,
   "buffer_font_size": 14,
   "theme": {
@@ -12,7 +30,6 @@
   "base_keymap": "Atom",
   "scroll_beyond_last_line": "off",
   "project_panel": {
-    "dock": "right",
     "default_width": 300
   },
   "terminal": {
@@ -20,24 +37,28 @@
     "default_height": 200,
     "max_scroll_history_lines": 100000
   },
-  "buffer_font_family": "GeistMono Nerd Font",
-  "buffer_line_height": {
-    "custom": 1.75
-  },
+  "buffer_font_family": "Liga SFMono Nerd Font",
+  "ui_font_family": "Liga SFMono Nerd Font",
 
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
   /*
    * Vim
    */
   "vim_mode": true,
   "vertical_scroll_margin": 5,
   "vim": {
-    "use_multiline_find": true,
     "use_smartcase_find": true
   },
   "cursor_blink": false,
-  // "git": {
-  //   "inline_blame": { "enabled": false }
-  // },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
 
   /*
    * Language Servers
@@ -50,37 +71,22 @@
           { "rule": "*", "severity": "warn" }
         ]
       }
-    },
-
-    "pyright": {
-      "settings": {
-        // "python.analysis": {
-        //   "diagnosticMode": "workspace",
-        //   "typeCheckingMode": "strict"
-        // }
-        // "python": {
-        //   "pythonPath": ".venv/bin/python"
-        // }
-      }
     }
   },
 
   "languages": {
+    // START: run ESLint on save
     "JavaScript": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "code_actions_on_format": { "source.fixAll.eslint": true }
     },
     "TypeScript": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "code_actions_on_format": { "source.fixAll.eslint": true }
     },
     "TSX": {
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
+      "code_actions_on_format": { "source.fixAll.eslint": true }
     },
+    // END: run ESLint on save
+
     "Python": {
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "on",
@@ -97,21 +103,20 @@
           }
         }
       ]
-    }
-  },
-
-  /*
-   * AI Setup
-   */
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
     },
-    "version": "2"
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
+
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "!sorbet"]
+    },
+
+    "HTML/ERB": {
+      "formatter": {
+        "external": {
+          "command": "erb-formatter",
+          "arguments": ["--stdin-filename", "{buffer_path}"]
+        }
+      }
+    }
   },
 
   /*

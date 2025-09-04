@@ -27,7 +27,7 @@
 
       "space g j": "editor::GoToHunk",
       "space g k": "editor::GoToPreviousHunk",
-      "space g l": "editor::ToggleGitBlame",
+      "space g l": "git::Blame",
 
       "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
@@ -50,8 +50,8 @@
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "space e": "workspace::ToggleRightDock",
-      "q": "workspace::ToggleRightDock",
+      "space e": "workspace::ToggleLeftDock",
+      "q": "workspace::ToggleLeftDock",
       "a": "project_panel::NewFile",
       "A": "project_panel::NewDirectory",
       "r": "project_panel::Rename",
