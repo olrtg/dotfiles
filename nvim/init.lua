@@ -200,7 +200,7 @@ require("lazy").setup({
 		config = true,
 	},
 	---@diagnostic disable-next-line: missing-fields
-}, { dev = { path = "~/i" } })
+}, { dev = { path = "~/d" } })
 
 require("custom.lsp")
 require("custom.dap")
