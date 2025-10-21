@@ -25,26 +25,20 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"rafamadriz/friendly-snippets",
 	"b0o/schemastore.nvim",
-	"nvim-lua/plenary.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
 	"JoosepAlviste/nvim-ts-context-commentstring",
-	"tpope/vim-sleuth",
-
-	"mfussenegger/nvim-dap",
-	"jay-babu/mason-nvim-dap.nvim",
-	"theHamsta/nvim-dap-virtual-text",
-	{ "rcarriga/nvim-dap-ui", dependencies = { "nvim-neotest/nvim-nio" } },
+	"NMAC427/guess-indent.nvim",
 
 	{
 		"saghen/blink.cmp",
 		dependencies = "rafamadriz/friendly-snippets",
-		version = "v0.*",
+		version = "1.*",
 		cond = not vim.g.forcing_myself_to_learn,
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = "default" },
+			keymap = { preset = "enter" },
 			appearance = {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "normal",
@@ -56,25 +50,21 @@ require("lazy").setup({
 
 	{
 		"folke/lazydev.nvim",
-		ft = "lua", -- only load on lua files
-		dependencies = {
-			{ "Bilal2453/luvit-meta", lazy = true }, -- `vim.uv` typings
-			{ "LuaCATS/busted", lazy = true }, -- testing typings
-		},
+		ft = "lua",
 		opts = {
 			library = {
-				lazy .. "/luvit-meta/library",
-				lazy .. "/busted/library",
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+				{ path = "snacks.nvim", words = { "Snacks" } },
 			},
 		},
 	},
 
 	{ "echasnovski/mini.statusline", version = "*", opts = {} },
-	{ "stevearc/dressing.nvim", opts = {} },
 
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = { "windwp/nvim-ts-autotag" },
+		lazy = false,
 		build = ":TSUpdate",
 		config = function() require("custom.treesitter") end,
 	},
@@ -115,17 +105,6 @@ require("lazy").setup({
 	},
 
 	{
-		"stevearc/oil.nvim",
-		cmd = "Oil",
-		keys = {
-			{ "-", "<cmd>Oil --float<cr>", mode = { "n" } },
-			{ "<leader>e", "<cmd>Oil --float<cr>", mode = { "n" } },
-		},
-		config = function() require("custom.explorer") end,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-
-	{
 		"chrishrb/gx.nvim",
 		keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
 		dependencies = { "nvim-lua/plenary.nvim" },
@@ -133,16 +112,25 @@ require("lazy").setup({
 	},
 
 	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function() require("custom.search") end,
-	},
+		"folke/snacks.nvim",
+		priority = 1000,
+		lazy = false,
+		---@type snacks.Config
+		opts = {
+			explorer = { enabled = true },
+			notifier = { enabled = true },
+		},
+		keys = {
+			{ "<leader>e", function() Snacks.explorer({ layout = { layout = { position = "right" } } }) end },
+			{ "<leader>gg", function() Snacks.lazygit() end },
 
-	{
-		"benfowler/telescope-luasnip.nvim",
-		after = "telescope.nvim",
-		keys = { "<leader>ss" },
+			{ "<leader>f", function() Snacks.picker.files() end },
+			{ "<leader>st", function() Snacks.picker.grep() end },
+			{ "<leader>sh", function() Snacks.picker.help() end },
+			{ "<leader>ld", function() Snacks.picker.diagnostics_buffer() end },
+			{ "<leader>lD", function() Snacks.picker.diagnostics() end },
+			{ "<leader>r", function() Snacks.picker.resume() end },
+		},
 	},
 
 	{
@@ -158,8 +146,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
-	{ "supermaven-inc/supermaven-nvim", opts = {}, cond = not vim.g.forcing_myself_to_learn },
 
 	{
 		"folke/flash.nvim",
@@ -178,29 +164,27 @@ require("lazy").setup({
 	{
 		"olrtg/nvim-rename-state",
 		ft = { "javascript", "javascriptreact", "typescriptreact" },
-		dev = true,
+		dev = false,
 	},
 
 	{
 		"olrtg/nvim-i18n",
-		dev = true,
+		dev = false,
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		config = true,
 	},
 
 	{
 		"olrtg/nvim-emmet",
-		dev = true,
+		dev = false,
 		config = function() vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation) end,
 	},
 
 	{
 		"olrtg/nvim-copy-deep-path",
-		dev = true,
+		dev = false,
 		config = true,
 	},
-	---@diagnostic disable-next-line: missing-fields
 }, { dev = { path = "~/d" } })
 
 require("custom.lsp")
-require("custom.dap")

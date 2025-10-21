@@ -1,6 +1,7 @@
 ---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "all",
+	ignore_install = { "ipkg" }, -- https://github.com/nvim-treesitter/nvim-treesitter/issues/8029
 	highlight = { enable = true },
 	indent = { enable = true },
 	incremental_selection = {

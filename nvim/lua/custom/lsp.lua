@@ -31,13 +31,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local opts = { buffer = event.buf }
 
-		local builtin = require("telescope.builtin")
-		vim.keymap.set("n", "gd", builtin.lsp_definitions, opts)
-		vim.keymap.set("n", "grr", builtin.lsp_references, opts)
-		vim.keymap.set("n", "gi", builtin.lsp_implementations, opts)
-		vim.keymap.set("n", "gO", builtin.lsp_document_symbols, opts)
+		vim.keymap.set("n", "gd", Snacks.picker.lsp_definitions, opts)
+		vim.keymap.set("n", "grr", Snacks.picker.lsp_references, opts)
+		vim.keymap.set("n", "gi", Snacks.picker.lsp_implementations, opts)
+		vim.keymap.set("n", "gO", Snacks.picker.lsp_symbols, opts)
 		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
-		vim.keymap.set("n", "gD", builtin.lsp_type_definitions, opts)
+		vim.keymap.set("n", "gD", Snacks.picker.lsp_type_definitions, opts)
 	end,
 })
 
