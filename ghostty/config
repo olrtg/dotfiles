@@ -9,3 +9,4 @@ window-padding-x = 16
 
 confirm-close-surface = false
 clipboard-paste-protection = false
+keybind = shift+enter=text:\x1b\r
