@@ -1,9 +1,8 @@
 return {
 	settings = {
 		Lua = {
-			completion = {
-				callSnippet = "Replace",
-			},
+			hint = { enable = false, semicolon = "Disable" },
+			completion = { callSnippet = "Replace" },
 		},
 	},
 }

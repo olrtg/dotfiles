@@ -17,8 +17,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.forcing_myself_to_learn = false
-
 require("lazy").setup({
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
@@ -27,13 +25,15 @@ require("lazy").setup({
 	"b0o/schemastore.nvim",
 	"nvim-treesitter/nvim-treesitter-context",
 	"JoosepAlviste/nvim-ts-context-commentstring",
-	"NMAC427/guess-indent.nvim",
+	"tpope/vim-sleuth",
+	"RRethy/nvim-treesitter-endwise",
+
+	{ "nvim-tree/nvim-web-devicons", opts = {} },
 
 	{
 		"saghen/blink.cmp",
 		dependencies = "rafamadriz/friendly-snippets",
 		version = "1.*",
-		cond = not vim.g.forcing_myself_to_learn,
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
@@ -73,7 +73,6 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
-		cond = not vim.g.forcing_myself_to_learn,
 	},
 
 	{
@@ -121,68 +120,42 @@ require("lazy").setup({
 			notifier = { enabled = true },
 		},
 		keys = {
-			{ "<leader>e", function() Snacks.explorer({ layout = { layout = { position = "right" } } }) end },
 			{ "<leader>gg", function() Snacks.lazygit() end },
-
 			{ "<leader>f", function() Snacks.picker.files() end },
 			{ "<leader>st", function() Snacks.picker.grep() end },
 			{ "<leader>sh", function() Snacks.picker.help() end },
 			{ "<leader>ld", function() Snacks.picker.diagnostics_buffer() end },
 			{ "<leader>lD", function() Snacks.picker.diagnostics() end },
-			{ "<leader>r", function() Snacks.picker.resume() end },
+			{ "<leader><space>", function() Snacks.picker.resume() end },
 		},
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "▎" },
-				change = { text = "▎" },
-				delete = { text = "󰐊" },
-				topdelete = { text = "󰐊" },
-				changedelete = { text = "󰐊" },
-				untracked = { text = "▎" },
-			},
-		},
+		config = function()
+			local gitsigns = require("gitsigns")
+			vim.keymap.set("n", "[h", function() gitsigns.nav_hunk("prev") end)
+			vim.keymap.set("n", "]h", function() gitsigns.nav_hunk("next") end)
+			vim.keymap.set("n", "<leader>hR", gitsigns.reset_hunk)
+			vim.keymap.set("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end)
+		end,
 	},
 
 	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
+		"stevearc/oil.nvim",
+		cmd = "Oil",
 		keys = {
-			{ "s", mode = { "n", "x", "o" }, function() require("flash").jump() end },
-			{ "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end },
-			{ "r", mode = "o", function() require("flash").remote() end },
-			{ "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end },
-			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end },
+			{ "-", "<cmd>Oil --float<cr>", mode = { "n" } },
+			{ "<leader>e", "<cmd>Oil --float<cr>", mode = { "n" } },
 		},
-	},
-
-	{
-		"olrtg/nvim-rename-state",
-		ft = { "javascript", "javascriptreact", "typescriptreact" },
-		dev = false,
-	},
-
-	{
-		"olrtg/nvim-i18n",
-		dev = false,
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		config = true,
-	},
-
-	{
-		"olrtg/nvim-emmet",
-		dev = false,
-		config = function() vim.keymap.set({ "n", "v" }, "<leader>ce", require("nvim-emmet").wrap_with_abbreviation) end,
+		config = function() require("custom.explorer") end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	{
 		"olrtg/nvim-copy-deep-path",
 		dev = false,
+		cmd = "CopyDeepPath",
 		config = true,
 	},
 }, { dev = { path = "~/d" } })
