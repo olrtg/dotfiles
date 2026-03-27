@@ -18,6 +18,11 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=10000000
 export BAT_THEME="base16"
 
+# https://github.com/zed-industries/zed/issues/8101#issuecomment-1956653962
+export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Android SDK
 if [[ $(uname) == "Darwin" ]]; then
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -30,6 +35,7 @@ path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	/opt/homebrew/opt/libpq/bin # postgres client
+	./node_modules/.bin
 	$path
 )
 
@@ -81,3 +87,9 @@ eval "$(mise activate zsh)" # Load mise
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
+
+. "$HOME/.local/bin/env"
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
