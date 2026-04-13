@@ -1,3 +1,5 @@
+require("vim._core.ui2").enable({})
+
 vim.g.mapleader = " "
 
 local lazy = vim.fn.stdpath("data") .. "/lazy"
@@ -44,6 +46,7 @@ require("lazy").setup({
 				nerd_font_variant = "normal",
 			},
 			signature = { enabled = true },
+			completion = { menu = { auto_show = false } },
 		},
 		opts_extend = { "sources.default" },
 	},
@@ -95,7 +98,26 @@ require("lazy").setup({
 
 	{
 		"stevearc/conform.nvim",
-		config = function() require("custom.formatter") end,
+		opts = {
+			format_on_save = {
+				timeout_ms = 5000,
+				lsp_format = "fallback",
+			},
+			formatters = {
+				prettier = {
+					require_cwd = true,
+				},
+				sqlfluff = {
+					args = { "fix", "--dialect=postgres", "-" },
+				},
+			},
+			formatters_by_ft = {
+				["lua"] = { "stylua" },
+				["go"] = { "goimports", "gofumpt" },
+				["sh"] = { "shfmt" },
+				["sql"] = { "sqlfluff" },
+			},
+		},
 	},
 
 	{
