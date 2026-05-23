@@ -25,12 +25,51 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	"rafamadriz/friendly-snippets",
 	"b0o/schemastore.nvim",
-	"nvim-treesitter/nvim-treesitter-context",
-	"JoosepAlviste/nvim-ts-context-commentstring",
 	"tpope/vim-sleuth",
 	"RRethy/nvim-treesitter-endwise",
 
 	{ "nvim-tree/nvim-web-devicons", opts = {} },
+
+	{ "nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate" },
+
+	{
+		-- This plugin doesn't really need lazy loading so I'm not going to force it
+		-- https://github.com/windwp/nvim-ts-autotag#a-note-on-lazy-loading
+		"windwp/nvim-ts-autotag",
+		opts = {},
+	},
+
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		config = function()
+			-- https://github.com/JoosepAlviste/nvim-ts-context-commentstring/wiki/Integrations#native-commenting-in-neovim-010
+			require("ts_context_commentstring").setup({ enable_autocmd = false })
+			local get_option = vim.filetype.get_option
+			---@diagnostic disable-next-line: duplicate-set-field
+			vim.filetype.get_option = function(filetype, option)
+				if option == "commentstring" then
+					local expr = require("ts_context_commentstring.internal").calculate_commentstring()
+					vim.print(expr)
+					return expr
+				else
+					return get_option(filetype, option)
+				end
+			end
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		config = function()
+			local plugin = require("treesitter-context")
+			plugin.setup({
+				max_lines = 4,
+				multiline_threshold = 1,
+				min_window_height = 20,
+			})
+			vim.keymap.set("n", "[c", plugin.go_to_context)
+		end,
+	},
 
 	{
 		"saghen/blink.cmp",
@@ -63,14 +102,6 @@ require("lazy").setup({
 	},
 
 	{ "echasnovski/mini.statusline", version = "*", opts = {} },
-
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = { "windwp/nvim-ts-autotag" },
-		lazy = false,
-		build = ":TSUpdate",
-		config = function() require("custom.treesitter") end,
-	},
 
 	{
 		"windwp/nvim-autopairs",
@@ -116,6 +147,23 @@ require("lazy").setup({
 				["go"] = { "goimports", "gofumpt" },
 				["sh"] = { "shfmt" },
 				["sql"] = { "sqlfluff" },
+
+				["html"] = { "prettier" },
+				["css"] = { "prettier" },
+				["less"] = { "prettier" },
+				["sass"] = { "prettier" },
+				["scss"] = { "prettier" },
+				["javascript"] = { "prettier" },
+				["javascriptreact"] = { "prettier" },
+				["typescript"] = { "prettier" },
+				["typescriptreact"] = { "prettier" },
+				["json"] = { "prettier" },
+				["jsonc"] = { "prettier" },
+				["yaml"] = { "prettier" },
+				["markdown"] = { "prettier" },
+				["markdown.mdx"] = { "prettier" },
+				["grahpql"] = { "prettier" },
+				["vue"] = { "prettier" },
 			},
 		},
 	},
@@ -159,6 +207,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "[h", function() gitsigns.nav_hunk("prev") end)
 			vim.keymap.set("n", "]h", function() gitsigns.nav_hunk("next") end)
 			vim.keymap.set("n", "<leader>hR", gitsigns.reset_hunk)
+			vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk_inline)
 			vim.keymap.set("n", "<leader>hb", function() gitsigns.blame_line({ full = true }) end)
 		end,
 	},
