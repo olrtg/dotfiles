@@ -1,8 +1,8 @@
-font-family = "JetBrainsMono Nerd Font"
-font-size = 15
-font-feature = 'calt', 'ss01', 'ss02'
-adjust-cell-height = 6
-adjust-cursor-height = 6
+font-family = "Monaspace Neon NF"
+font-size = 14
+font-feature = 'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09'
+# adjust-cell-height = 6
+# adjust-cursor-height = 6
 font-thicken = true
 
 window-padding-x = 16
