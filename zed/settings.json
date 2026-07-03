@@ -2,88 +2,113 @@
   /*
    * Personalization
    */
-  "context_servers": {
-    "mcp-server-context7": {
-      "source": "extension",
-      "enabled": true,
-      "settings": {
-        "default_minimum_tokens": "10000"
-      }
-    }
+  "cli_default_open_behavior": "existing_window",
+  "diff_view_style": "split",
+  "outline_panel": {
+    "dock": "left",
   },
-  "agent": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+      "default_mode": "bypassPermissions",
     },
-    "default_profile": "write",
-    "play_sound_when_agent_done": true,
-    "use_modifier_to_send": false
   },
-  "ui_font_size": 15,
-  "buffer_font_size": 14,
+  "git_panel": {
+    "tree_view": true,
+    "dock": "left",
+    "sort_by_path": true,
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 15,
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "One Dark",
   },
   "base_keymap": "Atom",
   "scroll_beyond_last_line": "off",
   "project_panel": {
-    "default_width": 300
+    "dock": "left",
+    "default_width": 300,
   },
   "terminal": {
     "font_size": 13,
     "default_height": 200,
-    "max_scroll_history_lines": 100000
+    "max_scroll_history_lines": 100000,
   },
   "buffer_font_family": "Liga SFMono Nerd Font",
-  "ui_font_family": "Liga SFMono Nerd Font",
+  // "buffer_font_features": { "calt": true, "ss01": true, "ss02": true },
+  // "ui_font_family": "GoMono Nerd Font",
+  // "ui_font_features": { "calt": true, "ss01": true, "ss02": true },
 
   "diagnostics": {
     "inline": {
-      "enabled": true
-    }
+      "enabled": true,
+    },
   },
+
   /*
    * Vim
    */
   "vim_mode": true,
   "vertical_scroll_margin": 5,
   "vim": {
-    "use_smartcase_find": true
+    "use_smartcase_find": true,
   },
   "cursor_blink": false,
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
 
   /*
    * Language Servers
    */
   "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
     "eslint": {
       "settings": {
         "rulesCustomizations": [
           // set all eslint errors/warnings to show as warnings
-          { "rule": "*", "severity": "warn" }
-        ]
-      }
-    }
-  },
+          { "rule": "*", "severity": "warn" },
+        ],
+      },
+    },
 
+    "elm-language-server": {
+      "initialization_options": {
+        "disableElmLSDiagnostics": true,
+        "onlyUpdateDiagnosticsOnSave": false,
+        "elmReviewDiagnostics": "warning",
+        "elmTestPath": "/Users/olrtg/.local/share/mise/installs/node/22.18.0/bin/elm-test-rs",
+        // adding the shims to our ~/.zprofile doesn't seem to do the trick
+        "elmFormatPath": "/Users/olrtg/.local/share/mise/installs/node/22.18.0/bin/elm-format",
+      },
+    },
+  },
   "languages": {
     // START: run ESLint on save
     "JavaScript": {
-      "code_actions_on_format": { "source.fixAll.eslint": true }
+      "code_actions_on_format": { "source.fixAll.eslint": true },
     },
     "TypeScript": {
-      "code_actions_on_format": { "source.fixAll.eslint": true }
+      "code_actions_on_format": { "source.fixAll.eslint": true },
     },
     "TSX": {
-      "code_actions_on_format": { "source.fixAll.eslint": true }
+      "code_actions_on_format": { "source.fixAll.eslint": true },
     },
     // END: run ESLint on save
 
@@ -91,36 +116,62 @@
       "language_servers": ["pyright", "ruff"],
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
-        },
+        { "code_action": "source.organizeImports.ruff" },
+        { "code_action": "source.fixAll.ruff" },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
+            "name": "ruff",
+          },
+        },
+      ],
     },
 
     "Ruby": {
-      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "!sorbet"]
+      "language_servers": [
+        "ruby-lsp",
+        "rubocop",
+        // "steep",
+        "!solargraph",
+        "!sorbet",
+      ],
     },
 
-    "HTML/ERB": {
+    "HTML+ERB": {
       "formatter": {
         "external": {
           "command": "erb-formatter",
-          "arguments": ["--stdin-filename", "{buffer_path}"]
-        }
-      }
-    }
+          "arguments": ["--stdin-filename", "{buffer_path}"],
+        },
+      },
+    },
+  },
+
+  /*
+   * AI
+   */
+  "disable_ai": true,
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "settings": {
+        "context7_api_key": "ctx7sk-62cf2625-ae9b-4397-aec2-f3d14d8372ec",
+      },
+    },
+  },
+  "agent": {
+    "dock": "right",
+    "default_model": {
+      "enable_thinking": true,
+      "provider": "openrouter",
+      "model": "openai/gpt-5.4",
+    },
+    "default_profile": "write",
+    "play_sound_when_agent_done": "always",
+    "use_modifier_to_send": false,
   },
 
   /*
    * Miscellaneous
    */
-  "telemetry": { "metrics": false }
+  "telemetry": { "metrics": false },
 }

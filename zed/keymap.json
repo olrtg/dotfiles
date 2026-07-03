@@ -1,39 +1,39 @@
 [
   {
     "context": "Editor && vim_mode == insert",
-    "bindings": { "j k": "vim::NormalBefore" }
+    "bindings": { "j k": "vim::NormalBefore" },
   },
-
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "g l": "editor::Hover",
-      "g r r": "editor::FindAllReferences",
-
       "space w": "workspace::Save",
       "space q": "pane::CloseActiveItem",
       "space c": "pane::CloseActiveItem",
       "space f": "file_finder::Toggle",
       "space e": "project_panel::ToggleFocus",
       "space t": "task::Spawn",
-
       "space s t": "workspace::NewSearch",
-
-      "g r a": "editor::ToggleCodeActions",
-      "g r n": "editor::Rename",
-      "space l j": "editor::GoToDiagnostic",
-      "space l k": "editor::GoToPreviousDiagnostic",
       "space l d": "diagnostics::Deploy",
-
-      "space g j": "editor::GoToHunk",
-      "space g k": "editor::GoToPreviousHunk",
-      "space g l": "git::Blame",
-
       "shift-h": "pane::ActivatePreviousItem",
       "shift-l": "pane::ActivateNextItem",
+      "ctrl-\\": "terminal_panel::ToggleFocus",
+      "ctrl-l": "buffer_search::Dismiss",
 
-      "ctrl-\\": "terminal_panel::ToggleFocus"
-    }
+      // Git
+      "] g": "editor::GoToHunk",
+      "[ g": "editor::GoToPreviousHunk",
+      "space g l": "git::Blame",
+      "space g b": "git::BranchDiff",
+
+      // LSP
+      "g l": "editor::Hover",
+      "g r r": "editor::FindAllReferences",
+      "g r a": "editor::ToggleCodeActions",
+      "g r n": "editor::Rename",
+      "g D": "editor::GoToDeclaration",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+    },
   },
 
   /*
@@ -43,8 +43,8 @@
     "context": "Editor && !showing_code_actions && vim_mode == normal || vim_mode == visual",
     "bindings": {
       "enter": "editor::SelectLargerSyntaxNode",
-      "backspace": "editor::SelectSmallerSyntaxNode"
-    }
+      "backspace": "editor::SelectSmallerSyntaxNode",
+    },
   },
 
   {
@@ -57,13 +57,8 @@
       "r": "project_panel::Rename",
       "d": "project_panel::Delete",
       "c": "project_panel::Copy",
-      "p": "project_panel::Paste"
-    }
-  },
-
-  {
-    "context": "Editor && showing_completions",
-    "bindings": { "ctrl-y": "editor::ConfirmCompletion" }
+      "p": "project_panel::Paste",
+    },
   },
 
   {
@@ -72,34 +67,49 @@
       "ctrl-y": "editor::ConfirmCodeAction",
       "j": "editor::ContextMenuNext",
       "k": "editor::ContextMenuPrevious",
-      "q": "editor::Cancel"
-    }
+      "q": "editor::Cancel",
+    },
   },
 
   {
     "context": "Terminal",
-    "bindings": { "ctrl-\\": "workspace::ToggleBottomDock" }
+    "bindings": { "ctrl-\\": "workspace::ToggleBottomDock" },
   },
 
   {
     "context": "Dock",
     "bindings": {
-      "ctrl-w h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-w l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-w k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-w j": ["workspace::ActivatePaneInDirection", "Down"]
-    }
+      "ctrl-w h": "workspace::ActivatePaneLeft",
+      "ctrl-w l": "workspace::ActivatePaneRight",
+      "ctrl-w k": "workspace::ActivatePaneUp",
+      "ctrl-w j": "workspace::ActivatePaneDown",
+    },
   },
 
   {
     "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
     "bindings": {
-      "shift-s": [
-        "vim::PushOperator",
-        {
-          "AddSurrounds": {}
-        }
-      ]
-    }
-  }
+      "shift-s": ["vim::PushAddSurrounds", {}],
+    },
+  },
+
+  // Lazygit
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "start lazygit", "reveal_target": "center" },
+      ],
+      "space g f": [
+        "task::Spawn",
+        { "task_name": "start lazygit file log", "reveal_target": "center" },
+      ],
+
+      "space i": [
+        "task::Spawn",
+        { "task_name": "start agent", "reveal_target": "center" },
+      ],
+    },
+  },
 ]
