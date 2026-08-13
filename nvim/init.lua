@@ -2,6 +2,10 @@ require("vim._core.ui2").enable({})
 
 vim.g.mapleader = " "
 
+if vim.g.lsp_enabled == nil then
+	vim.g.lsp_enabled = false
+end
+
 local lazy = vim.fn.stdpath("data") .. "/lazy"
 local lazypath = lazy .. "/lazy.nvim"
 
@@ -20,11 +24,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
+	{ "williamboman/mason.nvim", enabled = vim.g.lsp_enabled },
+	{ "williamboman/mason-lspconfig.nvim", enabled = vim.g.lsp_enabled },
+	{ "neovim/nvim-lspconfig", enabled = vim.g.lsp_enabled },
 	"rafamadriz/friendly-snippets",
-	"b0o/schemastore.nvim",
+	{ "b0o/schemastore.nvim", enabled = vim.g.lsp_enabled },
 	"tpope/vim-sleuth",
 	"RRethy/nvim-treesitter-endwise",
 
@@ -92,6 +96,7 @@ require("lazy").setup({
 
 	{
 		"folke/lazydev.nvim",
+		enabled = vim.g.lsp_enabled,
 		ft = "lua",
 		opts = {
 			library = {
@@ -231,4 +236,6 @@ require("lazy").setup({
 	},
 }, { dev = { path = "~/d" } })
 
-require("custom.lsp")
+if vim.g.lsp_enabled then
+	require("custom.lsp")
+end
