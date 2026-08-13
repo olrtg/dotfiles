@@ -196,12 +196,20 @@ require("lazy").setup({
 		},
 		keys = {
 			{ "<leader>gg", function() Snacks.lazygit() end },
-			{ "<leader>f", function() Snacks.picker.files() end },
-			{ "<leader>st", function() Snacks.picker.grep() end },
 			{ "<leader>sh", function() Snacks.picker.help() end },
 			{ "<leader>ld", function() Snacks.picker.diagnostics_buffer() end },
 			{ "<leader>lD", function() Snacks.picker.diagnostics() end },
 			{ "<leader><space>", function() Snacks.picker.resume() end },
+		},
+	},
+
+	{
+		"dmtrKovalenko/fff",
+		build = function() require("fff.download").download_or_build_binary() end,
+		lazy = false,
+		keys = {
+			{ "<leader>f", function() require("fff").find_files() end },
+			{ "<leader>st", function() require("fff").live_grep() end },
 		},
 	},
 
