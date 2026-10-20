@@ -65,10 +65,6 @@ alias ncls="rm -rf node_modules"
 
 alias lsios="xcrun simctl list devices"
 
-alias nc="npm-check -u"
-
-alias sail="[ -f sail ] && bash sail || bash vendor/bin/sail"
-
 alias dcu="docker compose up"
 alias dcud="dcu -d"
 alias dcd="docker compose down"
@@ -94,9 +90,6 @@ eval "$(mise activate zsh)" # Load mise
 
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
-
-# Load Angular CLI autocompletion.
-type ng >/dev/null 2>&1 && source <(ng completion script)
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/olrtg/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/olrtg/google-cloud-sdk/path.zsh.inc'; fi
