@@ -4,11 +4,8 @@ if [ "$(uname -s)" != "Darwin" ]; then
 	exit 0
 fi
 
-# Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
-
-# Ask for the administrator password upfront
-sudo -v
+# Close System Settings so it doesn't override the settings we're about to change
+osascript -e 'tell application "System Settings" to quit'
 
 # https://macos-defaults.com/
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
@@ -36,7 +33,7 @@ defaults write com.apple.dock show-recents -bool false
 echo "> Finder"
 
 echo "  > Show hidden files"
-defaults write com.apple.finder AppleShowAllFiles true
+defaults write com.apple.finder AppleShowAllFiles -bool true
 
 echo "  > Show all filename extensions"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -53,12 +50,7 @@ defaults write com.apple.finder PathBarRootAtHome -bool true
 echo "> Screen"
 
 echo "  > Require password immediately after sleep or screen saver begins"
-defaults write com.apple.screensaver askForPassword -int 1
-defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-echo "  > Enable subpixel font rendering on non-Apple LCDs"
-# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
-defaults write NSGlobalDomain AppleFontSmoothing -int 1
+sysadminctl -screenLock immediate -password -
 
 echo ""
 echo "You may want to restart your computer now."
