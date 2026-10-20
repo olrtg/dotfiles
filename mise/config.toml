@@ -8,7 +8,6 @@ pnpm = "latest"
 python = "3.13.0"
 ruby = "3.2.8"
 rust = "latest"
-usage = "latest"
 zig = "latest"
 
 [settings]
