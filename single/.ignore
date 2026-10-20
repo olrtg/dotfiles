@@ -1,3 +1,0 @@
-# So telescope can find the environment files
-!.env
-!*/.env
