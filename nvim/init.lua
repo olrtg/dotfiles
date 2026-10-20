@@ -251,7 +251,7 @@ require("lazy").setup({
 	dev = { path = "~/d" },
 	performance = {
 		-- Syntax highlighting for the Ghostty config
-		rtp = { paths = { "/Applications/Ghostty.app/Contents/Resources/vim/vimfiles" } },
+		rtp = { paths = { "/Applications/Ghostty.app/Contents/Resources/nvim/site" } },
 	},
 })
 
