@@ -4,10 +4,10 @@ tap "redis/redis", trusted: true
 brew "ast-grep"
 # Automatic configure script builder
 brew "autoconf"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3", link: true
 # Cross-platform make
 brew "cmake"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3", link: true
 # Modern, maintained replacement for ls
 brew "eza"
 # GNU multiple precision arithmetic library
@@ -36,6 +36,8 @@ brew "libpq"
 brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Mac App Store command-line interface
+brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Media player based on MPlayer and mplayer2
@@ -86,12 +88,18 @@ cask "claude"
 cask "claude-code@latest"
 # Screen capturing tool
 cask "cleanshot"
+# Claude code parallelisation
+cask "conductor"
 # Write, edit, and chat about your code with AI
 cask "cursor"
+# Server and cloud storage browser
+cask "cyberduck"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Video and audio player
+cask "elmedia-player"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
 # Collaborative team software
@@ -108,8 +116,12 @@ cask "ghostty"
 cask "gitbutler"
 # Web browser
 cask "google-chrome"
+# Chromium-based web browser
+cask "helium-browser"
 # Free and open-source media player
 cask "iina"
+# iOS Sideloading Companion
+cask "iloader"
 # File archiver
 cask "keka"
 # Customise mouse behavior
@@ -131,11 +143,13 @@ cask "qbittorrent"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Redis is an in-memory database that persists on disk. The data model is key-value, but many different kind of values are supported: Strings, Lists, Sets, Sorted Sets, Hashes, Streams, HyperLogLogs, Bitmaps.
-cask "redis/redis/redis"
+cask "redis/redis/redis", trusted: true
 # Team communication and collaboration software
 cask "slack"
 # Music streaming service
 cask "spotify"
+# Open-source media center
+cask "stremio"
 # Text editor for code, markup and prose
 cask "sublime-text"
 # Native GUI tool for relational databases
@@ -152,3 +166,6 @@ cask "whatsapp"
 cask "zed@preview"
 # Video communication and virtual meeting platform
 cask "zoom"
+mas "Klack", id: 6446206067
+mas "Numbers", id: 409203825
+mas "Xcode", id: 497799835

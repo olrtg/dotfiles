@@ -1,4 +1,4 @@
-.PHONY: bootstrap install brew brew-restore macos
+.PHONY: bootstrap install brew brew-restore drift macos
 
 # Set up a brand new machine
 bootstrap: brew-restore install
@@ -12,6 +12,14 @@ install:
 brew:
 	brew bundle dump -f --file=macos/Brewfile
 	sed -i '' -E '/^(npm|go|cargo) /d' macos/Brewfile
+
+# Show what differs between this machine and macos/Brewfile, without changing anything
+drift:
+	@echo "Installed but missing from the Brewfile:"
+	@brew bundle cleanup --file=macos/Brewfile 2>/dev/null | grep -v -E '^(Would `brew cleanup`:|Would remove:|Run `brew bundle cleanup --force`)' || true
+	@echo
+	@echo "In the Brewfile but not installed:"
+	@brew bundle check --verbose --no-upgrade --file=macos/Brewfile 2>&1 | grep '^→' || echo "nothing"
 
 # Restore Homebrew packages
 brew-restore:
