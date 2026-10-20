@@ -1,15 +1,60 @@
 #!/usr/bin/env bash
+# Symlink dotfiles into $HOME. Safe to re-run.
 
-set -e
+set -euo pipefail
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# <path in repo> <target>
+LINKS="
+bin/tmux-sessionizer         $HOME/.local/bin/tmux-sessionizer
+ghostty                      $HOME/.config/ghostty
+mise/config.toml             $HOME/.config/mise/config.toml
+mise/default-npm-packages    $HOME/.default-npm-packages
+nvim                         $HOME/.config/nvim
+single/.gitconfig            $HOME/.gitconfig
+single/.ignore               $HOME/.ignore
+single/.tmux.conf            $HOME/.tmux.conf
+zed                          $HOME/.config/zed
+zsh/.zprofile                $HOME/.zprofile
+zsh/.zshrc                   $HOME/.zshrc
+"
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
+link() {
+	local src="$DOTFILES/$1" dst="$2"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+	if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+		return
+	fi
+
+	mkdir -p "$(dirname "$dst")"
+
+	if [ -e "$dst" ] && [ ! -L "$dst" ]; then
+		local backup="$dst.backup-$(date +%Y%m%d%H%M%S)"
+		mv "$dst" "$backup"
+		echo "backed up $dst -> $backup"
+	fi
+
+	ln -sfn "$src" "$dst"
+	echo "linked $dst"
+}
+
+# Remove dangling symlinks that point into this repo, left behind by deleted configs
+clean() {
+	local dir="$1" entry
+	for entry in "$dir"/.* "$dir"/*; do
+		if [ -L "$entry" ] && [ ! -e "$entry" ] && [[ "$(readlink "$entry")" == "$DOTFILES"/* ]]; then
+			rm "$entry"
+			echo "removed dangling $entry"
+		fi
+	done
+}
+
+git -C "$DOTFILES" submodule update --init --recursive
+
+echo "$LINKS" | while read -r src dst; do
+	if [ -n "$src" ]; then link "$src" "$dst"; fi
+done
+
+clean "$HOME"
+clean "$HOME/.config"

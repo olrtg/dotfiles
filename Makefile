@@ -1,25 +1,22 @@
-.PHONY: install brew brew-restore macos karabiner
+.PHONY: bootstrap install brew brew-restore macos
 
-# Run dotbot's script
+# Set up a brand new machine
+bootstrap: brew-restore install
+	mise install
+
+# Symlink dotfiles into $HOME
 install:
 	./install
-
-# Install dependencies
-install-deps:
-	rustup-init
 
 # Save snapshot of all Homebrew packages to macos/Brewfile
 brew:
 	brew bundle dump -f --file=macos/Brewfile
-	brew bundle --force cleanup --file=macos/Brewfile
+	sed -i '' -E '/^(npm|go|cargo) /d' macos/Brewfile
 
 # Restore Homebrew packages
 brew-restore:
-	/bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-	brew update
-	brew upgrade
-	brew bundle install --file=macos/Brewfile
-	brew cleanup
+	command -v brew >/dev/null || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval "$$(/opt/homebrew/bin/brew shellenv)" && brew update && brew bundle install --file=macos/Brewfile && brew cleanup
 
 # Set MacOS defaults
 macos:

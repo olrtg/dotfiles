@@ -1,14 +1,13 @@
 # !/usr/bin/env zsh
 
-source "$HOME/d/dotfiles/zsh/themes/bash/base16-onedark.config" # Load FZF theme
+source "$HOME/d/dotfiles/zsh/base16-onedark.sh" # Load FZF theme
 
 # Plugins
 source "$HOME/d/dotfiles/zsh/fzf-tab/fzf-tab.plugin.zsh"
-source "$HOME/d/dotfiles/zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-source "$HOME/d/dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-source "$HOME/d/dotfiles/zsh/zsh-completions/zsh-completions.plugin.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fpath=("$HOMEBREW_PREFIX/share/zsh-completions" $fpath)
 source <(fzf --zsh)
-source <(mise completion zsh)
 
 # Global variables
 export EDITOR=nvim
@@ -23,6 +22,11 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CMAKE_PREFIX_PATH="/opt/homebrew/opt/llvm"
+
+
 # Android SDK
 if [[ $(uname) == "Darwin" ]]; then
 	export ANDROID_HOME="$HOME/Library/Android/sdk"
@@ -30,12 +34,14 @@ else
 	export ANDROID_HOME="$HOME/Android/sdk"
 fi
 
-# $PATH
 path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	/opt/homebrew/opt/libpq/bin # postgres client
+	/opt/homebrew/opt/llvm/bin
 	./node_modules/.bin
+	${HOME}/.local/bin
+	${HOME}/Odin
 	$path
 )
 
@@ -80,6 +86,7 @@ setopt hist_ignore_space
 # Enable completion
 autoload -Uz compinit
 compinit
+source <(mise completion zsh)
 
 # Activate
 eval "$(starship init zsh)" # Load starship
@@ -88,8 +95,14 @@ eval "$(mise activate zsh)" # Load mise
 # MOTD
 echo "Alpaca went crazy! (◕('人')◕)"
 
-. "$HOME/.local/bin/env"
-
-
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+type ng >/dev/null 2>&1 && source <(ng completion script)
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/olrtg/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/olrtg/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/olrtg/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/olrtg/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Machine-local secrets and overrides (untracked)
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local

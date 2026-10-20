@@ -1,0 +1,14 @@
+[tools]
+bun = "latest"
+elm = "latest"
+go = "latest"
+java = "17"
+node = "24.13.0"
+python = "3.13.0"
+ruby = "3.2.8"
+rust = "latest"
+usage = "latest"
+zig = "master"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
