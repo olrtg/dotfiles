@@ -54,6 +54,9 @@ echo "$LINKS" | while read -r src dst; do
 	if [ -n "$src" ]; then link "$src" "$dst"; fi
 done
 
+# mise treats mise/config.toml inside the repo as a project config
+if command -v mise >/dev/null; then mise trust --quiet "$DOTFILES/mise/config.toml"; fi
+
 clean "$HOME"
 clean "$HOME/.config"
 clean "$HOME/.local/bin"
