@@ -247,13 +247,10 @@ require("lazy").setup({
 		cmd = "CopyDeepPath",
 		config = true,
 	},
-}, {
-	dev = { path = "~/d" },
-	performance = {
-		-- Syntax highlighting for the Ghostty config
-		rtp = { paths = { "/Applications/Ghostty.app/Contents/Resources/nvim/site" } },
-	},
-})
+}, { dev = { path = "~/d" } })
+
+-- Ghostty's config plugin. Prepended after lazy's rtp reset so its ftplugin wins over the built-in one
+vim.opt.rtp:prepend("/Applications/Ghostty.app/Contents/Resources/nvim/site")
 
 if vim.g.lsp_enabled then
 	require("custom.lsp")
