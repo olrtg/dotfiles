@@ -16,12 +16,4 @@
       "program": "bash",
     },
   },
-  {
-    "label": "start agent",
-    "command": "codex",
-    "hide": "on_success",
-    "shell": {
-      "program": "bash",
-    },
-  },
 ]

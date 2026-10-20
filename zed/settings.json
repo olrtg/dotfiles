@@ -2,6 +2,7 @@
   /*
    * Personalization
    */
+  "disable_ai": true,
   "cli_default_open_behavior": "existing_window",
   "diff_view_style": "split",
   "outline_panel": {
@@ -19,10 +20,9 @@
   "git_panel": {
     "tree_view": true,
     "dock": "left",
-    "sort_by_path": true,
   },
   "ui_font_size": 14,
-  "buffer_font_size": 15,
+  "buffer_font_size": 14,
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -39,9 +39,9 @@
     "default_height": 200,
     "max_scroll_history_lines": 100000,
   },
-  "buffer_font_family": "Liga SFMono Nerd Font",
+  "buffer_font_family": "GeistMono Nerd Font",
   // "buffer_font_features": { "calt": true, "ss01": true, "ss02": true },
-  // "ui_font_family": "GoMono Nerd Font",
+  // "ui_font_family": "Liga SFMono Nerd Font",
   // "ui_font_features": { "calt": true, "ss01": true, "ss02": true },
 
   "diagnostics": {
@@ -49,6 +49,12 @@
       "enabled": true,
     },
   },
+
+  "tabs": {
+    "file_icons": true,
+  },
+
+  "code_lens": "on",
 
   /*
    * Vim
@@ -98,6 +104,13 @@
         "elmFormatPath": "/Users/olrtg/.local/share/mise/installs/node/22.18.0/bin/elm-format",
       },
     },
+
+    "ols": {
+      "binary": {
+        "path": "/Users/olrtg/ols/ols",
+        "arguments": [],
+      },
+    },
   },
   "languages": {
     // START: run ESLint on save
@@ -127,13 +140,7 @@
     },
 
     "Ruby": {
-      "language_servers": [
-        "ruby-lsp",
-        "rubocop",
-        // "steep",
-        "!solargraph",
-        "!sorbet",
-      ],
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "!sorbet"],
     },
 
     "HTML+ERB": {
@@ -149,15 +156,7 @@
   /*
    * AI
    */
-  "disable_ai": true,
-  "context_servers": {
-    "mcp-server-context7": {
-      "enabled": true,
-      "settings": {
-        "context7_api_key": "ctx7sk-62cf2625-ae9b-4397-aec2-f3d14d8372ec",
-      },
-    },
-  },
+  "context_servers": {},
   "agent": {
     "dock": "right",
     "default_model": {
@@ -174,4 +173,5 @@
    * Miscellaneous
    */
   "telemetry": { "metrics": false },
+  "format_on_save": "on",
 }

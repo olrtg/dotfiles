@@ -3,7 +3,7 @@ require("vim._core.ui2").enable({})
 vim.g.mapleader = " "
 
 if vim.g.lsp_enabled == nil then
-	vim.g.lsp_enabled = false
+	vim.g.lsp_enabled = true
 end
 
 local lazy = vim.fn.stdpath("data") .. "/lazy"
@@ -24,7 +24,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "williamboman/mason.nvim", enabled = vim.g.lsp_enabled },
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function() require("custom.mason") end,
+	},
 	{ "williamboman/mason-lspconfig.nvim", enabled = vim.g.lsp_enabled },
 	{ "neovim/nvim-lspconfig", enabled = vim.g.lsp_enabled },
 	"rafamadriz/friendly-snippets",
@@ -106,7 +110,8 @@ require("lazy").setup({
 		},
 	},
 
-	{ "echasnovski/mini.statusline", version = "*", opts = {} },
+	{ "nvim-mini/mini.statusline", version = "*", opts = {} },
+	{ "nvim-mini/mini.cursorword", version = "*", opts = {} },
 
 	{
 		"windwp/nvim-autopairs",

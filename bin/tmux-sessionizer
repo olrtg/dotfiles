@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATHS=$(find ~/i ~/f ~/r -maxdepth 1 -type d)
+PATHS=$(find ~/d -maxdepth 1 -type d)
 
 # use fzf to select a folder
 SELECTED=$(echo -e "$PATHS" | fzf)
@@ -22,6 +22,54 @@ fi
 
 if ! tmux has-session -t="$SESSION_NAME" 2>/dev/null; then
 	tmux new-session -ds "$SESSION_NAME" -c "$SELECTED"
+
+	if [ $SESSION_NAME = "denguechatPlus-backend" ]; then
+		tmux rename-window -t 1 nvim
+		tmux set -w -t 1 allow-rename off
+		tmux send-keys -t 1 'nvim' Enter
+
+		tmux new-window -n dev-server -c "$SELECTED"
+		tmux set -w -t 2 allow-rename off
+		tmux send-keys -t 2 'rails s'
+
+		tmux new-window -n codex -c "$SELECTED"
+		tmux set -w -t 3 allow-rename off
+		tmux send-keys -t 3 'codex'
+
+		tmux select-window -t 1
+	fi
+
+	if [ $SESSION_NAME = "denguechatPlus-mobile" ]; then
+		tmux rename-window -t 1 nvim
+		tmux set -w -t 1 allow-rename off
+		tmux send-keys -t 1 'nvim' Enter
+
+		tmux new-window -n dev-server -c "$SELECTED"
+		tmux set -w -t 2 allow-rename off
+		tmux send-keys -t 2 'nr start'
+
+		tmux new-window -n codex -c "$SELECTED"
+		tmux set -w -t 3 allow-rename off
+		tmux send-keys -t 3 'codex'
+
+		tmux select-window -t 1
+	fi
+
+	if [ $SESSION_NAME = "denguechatPlus-web" ]; then
+		tmux rename-window -t 1 nvim
+		tmux set -w -t 1 allow-rename off
+		tmux send-keys -t 1 'nvim' Enter
+
+		tmux new-window -n dev-server -c "$SELECTED"
+		tmux set -w -t 2 allow-rename off
+		tmux send-keys -t 2 'nr dev'
+
+		tmux new-window -n codex -c "$SELECTED"
+		tmux set -w -t 3 allow-rename off
+		tmux send-keys -t 3 'codex'
+
+		tmux select-window -t 1
+	fi
 fi
 
 tmux switch-client -t "$SESSION_NAME"

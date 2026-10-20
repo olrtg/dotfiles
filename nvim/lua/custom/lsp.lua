@@ -1,23 +1,9 @@
 -- to learn how to use mason.nvim
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-require("mason").setup()
 ---@diagnostic disable-next-line: missing-fields
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls", "vtsls", "eslint", "jsonls", "yamlls", "ruby_lsp" },
 })
-
-do -- https://github.com/mason-org/mason-lspconfig.nvim/issues/113#issuecomment-1471346816
-	local registry = require("mason-registry")
-
-	for _, pkg_name in ipairs({ "stylua", "prettier" }) do
-		local ok, pkg = pcall(registry.get_package, pkg_name)
-		if ok then
-			if not pkg:is_installed() then
-				pkg:install()
-			end
-		end
-	end
-end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
@@ -49,3 +35,4 @@ vim.diagnostic.config({
 })
 
 vim.lsp.enable("emmet_language_server")
+vim.lsp.enable("sourcekit")
