@@ -16,10 +16,7 @@ echo "  > Set a really fast key repeat"
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-echo "> Dock & Menu Bar"
-
-echo "  > Autohide Menu Bar"
-defaults write NSGlobalDomain _HIHideMenuBar -bool true
+echo "> Dock"
 
 echo "  > Autohide Dock"
 defaults write com.apple.dock autohide -bool true
