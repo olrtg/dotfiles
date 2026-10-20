@@ -110,8 +110,6 @@ cask "gitbutler"
 cask "google-chrome"
 # Free and open-source media player
 cask "iina"
-# JetBrains tools manager
-cask "jetbrains-toolbox"
 # File archiver
 cask "keka"
 # Customise mouse behavior
