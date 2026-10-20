@@ -1,6 +1,6 @@
 # Dotfiles
 
-> Personal configuration for Neovim, Zed, Ghostty, Zsh, tmux, Git, and mise.
+> Personal configuration for Neovim, Zed, Ghostty, Zsh, Git, and mise.
 
 ## Usage
 

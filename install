@@ -7,14 +7,12 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # <path in repo> <target>
 LINKS="
-bin/tmux-sessionizer         $HOME/.local/bin/tmux-sessionizer
 ghostty                      $HOME/.config/ghostty
 mise/config.toml             $HOME/.config/mise/config.toml
 mise/default-npm-packages    $HOME/.default-npm-packages
 nvim                         $HOME/.config/nvim
 single/.gitconfig            $HOME/.gitconfig
 single/.ignore               $HOME/.ignore
-single/.tmux.conf            $HOME/.tmux.conf
 zed                          $HOME/.config/zed
 zsh/.zprofile                $HOME/.zprofile
 zsh/.zshrc                   $HOME/.zshrc
@@ -58,3 +56,4 @@ done
 
 clean "$HOME"
 clean "$HOME/.config"
+clean "$HOME/.local/bin"

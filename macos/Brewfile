@@ -58,8 +58,6 @@ brew "qt@5", link: true
 brew "railway"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Terminal multiplexer
-brew "tmux"
 # Internet file retriever
 brew "wget"
 # Build server protocol implementation for integrating Xcode with sourcekit-lsp
