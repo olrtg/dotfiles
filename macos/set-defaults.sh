@@ -10,16 +10,30 @@ osascript -e 'tell application "System Settings" to quit'
 # https://macos-defaults.com/
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
+echo "> Appearance"
+
+echo "  > Switch between light and dark automatically"
+defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+
 echo "> Keyboard"
 
 echo "  > Set a really fast key repeat"
 defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain InitialKeyRepeat -int 25
 
 echo "  > Disable smart quotes, smart dashes and double-space period"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+echo "> Trackpad"
+
+echo "  > Disable Force Click"
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool false
+defaults write com.apple.AppleMultitouchTrackpad ForceSuppressed -bool true
+
+echo "  > Faster tracking speed"
+defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2
 
 echo "> Dock"
 
@@ -29,8 +43,8 @@ defaults write com.apple.dock autohide -bool true
 echo "  > Show the Dock without delay"
 defaults write com.apple.dock autohide-delay -float 0
 
-echo "  > Set icon size to 48px"
-defaults write com.apple.dock tilesize -int 48
+echo "  > Set icon size to 49px"
+defaults write com.apple.dock tilesize -int 49
 
 echo "  > Do not show recent apps"
 defaults write com.apple.dock show-recents -bool false
@@ -60,6 +74,9 @@ defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 
 echo "  > Keep folders on top"
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+echo "  > Empty the Trash after 30 days"
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
 
 echo "> Screen"
 
