@@ -46,6 +46,9 @@ defaults write com.apple.finder PathBarRootAtHome -bool true
 
 echo "> Screen"
 
+echo "  > Do not dim the display on battery"
+sudo pmset -b lessbright 0
+
 echo "  > Require password immediately after sleep or screen saver begins"
 sysadminctl -screenLock immediate -password -
 
