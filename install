@@ -11,7 +11,7 @@ ghostty                      $HOME/.config/ghostty/config
 mise/config.toml             $HOME/.config/mise/config.toml
 mise/default-npm-packages    $HOME/.default-npm-packages
 nvim                         $HOME/.config/nvim
-single/.gitconfig            $HOME/.gitconfig
+.gitconfig                   $HOME/.gitconfig
 zed                          $HOME/.config/zed
 zsh/.zprofile                $HOME/.zprofile
 zsh/.zshrc                   $HOME/.zshrc
