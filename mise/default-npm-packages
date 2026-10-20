@@ -1,3 +1,4 @@
 @antfu/ni
 eas-cli
 yarn
+@openai/codex

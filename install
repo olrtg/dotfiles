@@ -7,6 +7,9 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # <path in repo> <target>
 LINKS="
+agents/claude/settings.json  $HOME/.claude/settings.json
+agents/skill-lock.json       $HOME/.agents/.skill-lock.json
+agents/skills                $HOME/.agents/skills
 ghostty                      $HOME/.config/ghostty
 mise/config.toml             $HOME/.config/mise/config.toml
 mise/default-npm-packages    $HOME/.default-npm-packages
@@ -53,9 +56,16 @@ echo "$LINKS" | while read -r src dst; do
 	if [ -n "$src" ]; then link "$src" "$dst"; fi
 done
 
+# Claude Code reads skills from its own folder, not ~/.agents/skills
+for skill in "$DOTFILES"/agents/skills/*/; do
+	skill="$(basename "$skill")"
+	link "agents/skills/$skill" "$HOME/.claude/skills/$skill"
+done
+
 # mise treats mise/config.toml inside the repo as a project config
 if command -v mise >/dev/null; then mise trust --quiet "$DOTFILES/mise/config.toml"; fi
 
 clean "$HOME"
 clean "$HOME/.config"
 clean "$HOME/.local/bin"
+clean "$HOME/.claude/skills"

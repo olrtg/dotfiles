@@ -1,8 +1,8 @@
-.PHONY: bootstrap install brew brew-restore drift macos
+.PHONY: bootstrap install brew brew-restore drift macos mcp
 
 # Set up a brand new machine
 bootstrap: brew-restore install
-	mise install
+	eval "$$(/opt/homebrew/bin/brew shellenv)" && mise install && mise exec -- ./agents/mcp.sh
 
 # Symlink dotfiles into $HOME
 install:
@@ -25,6 +25,10 @@ drift:
 brew-restore:
 	command -v brew >/dev/null || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	eval "$$(/opt/homebrew/bin/brew shellenv)" && brew update && brew bundle install --file=macos/Brewfile && brew cleanup
+
+# Register MCP servers with Claude Code and Codex
+mcp:
+	./agents/mcp.sh
 
 # Set MacOS defaults
 macos:
