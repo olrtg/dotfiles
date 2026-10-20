@@ -22,10 +22,6 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-export CMAKE_PREFIX_PATH="/opt/homebrew/opt/llvm"
-
 
 # Android SDK
 if [[ $(uname) == "Darwin" ]]; then
@@ -38,7 +34,6 @@ path=(
 	${ANDROID_HOME}/emulator/
 	${ANDROID_HOME}/platform-tools/
 	/opt/homebrew/opt/libpq/bin # postgres client
-	/opt/homebrew/opt/llvm/bin
 	./node_modules/.bin
 	${HOME}/.local/bin
 	${HOME}/Odin
