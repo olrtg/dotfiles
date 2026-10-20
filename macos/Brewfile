@@ -90,8 +90,6 @@ cask "claude-code@latest"
 cask "cleanshot"
 # Claude code parallelisation
 cask "conductor"
-# Write, edit, and chat about your code with AI
-cask "cursor"
 # Server and cloud storage browser
 cask "cyberduck"
 # Voice and text chat software

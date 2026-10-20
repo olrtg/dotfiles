@@ -44,16 +44,6 @@
             "type": "command"
           }
         ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '/Users/olrtg/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10.0000000000000000
-          }
-        ]
       }
     ],
     "UserPromptSubmit": [
