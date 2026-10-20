@@ -247,7 +247,13 @@ require("lazy").setup({
 		cmd = "CopyDeepPath",
 		config = true,
 	},
-}, { dev = { path = "~/d" } })
+}, {
+	dev = { path = "~/d" },
+	performance = {
+		-- Syntax highlighting for the Ghostty config
+		rtp = { paths = { "/Applications/Ghostty.app/Contents/Resources/vim/vimfiles" } },
+	},
+})
 
 if vim.g.lsp_enabled then
 	require("custom.lsp")
