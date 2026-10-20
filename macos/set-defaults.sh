@@ -61,9 +61,6 @@ defaults write com.apple.finder FXDefaultSearchScope -string SCcf
 echo "  > Keep folders on top"
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-echo "  > Do not write .DS_Store files on network drives"
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-
 echo "> Screen"
 
 echo "  > Do not dim the display on battery"
