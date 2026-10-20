@@ -12,16 +12,13 @@ source <(fzf --zsh)
 # Global variables
 export EDITOR=nvim
 export GIT_EDITOR="$EDITOR"
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export HISTFILE=~/.zsh_history
 export SAVEHIST=10000000
-export BAT_THEME="base16"
 
 # https://github.com/zed-industries/zed/issues/8101#issuecomment-1956653962
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-
 
 # Android SDK
 if [[ $(uname) == "Darwin" ]]; then
