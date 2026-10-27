@@ -23,6 +23,7 @@ if command -v claude >/dev/null; then
 	claude_mcp jira-dng '{"type":"http","url":"https://mcp.atlassian.com/v2/mcp"}'
 	claude_mcp jira-acl '{"type":"http","url":"https://mcp.atlassian.com/v2/mcp"}'
 	claude_mcp chrome-devtools '{"type":"stdio","command":"npx","args":["-y","chrome-devtools-mcp@latest","--autoConnect","--no-usage-statistics"]}'
+	claude_mcp sentry-acl '{"type":"http","url":"https://mcp.sentry.dev/mcp"}'
 fi
 
 if command -v codex >/dev/null; then
