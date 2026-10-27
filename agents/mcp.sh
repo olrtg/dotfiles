@@ -31,5 +31,5 @@ if command -v codex >/dev/null; then
 	codex_mcp jira-acl --url https://mcp.atlassian.com/v2/mcp
 	codex_mcp 1password -- 1password-mcp
 	codex_mcp railway -- railway mcp
-	codex_mcp sentry -- npx -y mcp-remote@latest https://mcp.sentry.dev/mcp
+	codex_mcp sentry-acl --url https://mcp.sentry.dev/mcp
 fi
